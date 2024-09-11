@@ -1,0 +1,1091 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurokit2.complexity.fractal_dfa &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/complexity/fractal_dfa';</script>
+    <link rel="icon" href="../../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2F_modules/neurokit2/complexity/fractal_dfa.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for neurokit2.complexity.fractal_dfa</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">find_knee</span>
+
+
+<div class="viewcode-block" id="fractal_dfa">
+<a class="viewcode-back" href="../../../functions/complexity.html#neurokit2.complexity.fractal_dfa">[docs]</a>
+<span class="k">def</span> <span class="nf">fractal_dfa</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+    <span class="n">overlap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">integrate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">multifractal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">q</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+    <span class="n">maxdfa</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;**(Multifractal) Detrended Fluctuation Analysis (DFA or MFDFA)**</span>
+
+<span class="sd">    Detrended fluctuation analysis (DFA) is used to find long-term statistical dependencies in time</span>
+<span class="sd">    series.</span>
+
+<span class="sd">    For monofractal DFA, the output *alpha* :math:`\\alpha` corresponds to the slope of the linear</span>
+<span class="sd">    trend between the scale factors and the fluctuations. For multifractal DFA, the slope values</span>
+<span class="sd">    under different *q* values are actually generalised Hurst exponents *h*. Monofractal DFA</span>
+<span class="sd">    corresponds to MFDFA with *q = 2*, and its output is actually an estimation of the</span>
+<span class="sd">    **Hurst exponent** (:math:`h_{(2)}`).</span>
+
+<span class="sd">    The Hurst exponent is the measure of long range autocorrelation of a signal, and</span>
+<span class="sd">    :math:`h_{(2)} &gt; 0.5` suggests the presence of long range correlation, while</span>
+<span class="sd">    :math:`h_{(2)} &lt; 0.5`suggests short range correlations. If :math:`h_{(2)} = 0.5`, it indicates</span>
+<span class="sd">    uncorrelated indiscriminative fluctuations, i.e. a Brownian motion.</span>
+
+<span class="sd">    .. figure:: ../img/douglas2022a.png</span>
+<span class="sd">       :alt: Illustration of DFA (Douglas et al., 2022).</span>
+
+<span class="sd">    Multifractal DFA returns the generalised Hurst exponents *h* for different values of *q*. It is</span>
+<span class="sd">    converted to the multifractal **scaling exponent** *Tau* :math:`\\tau_{(q)}`, which non-linear</span>
+<span class="sd">    relationship with *q* can indicate multifractility. From there, we derive the singularity</span>
+<span class="sd">    exponent *H* (or :math:`\\alpha`) (also known as Hölder&#39;s exponents) and the singularity</span>
+<span class="sd">    dimension *D* (or :math:`f(\\alpha)`). The variation of *D* with *H* is known as multifractal</span>
+<span class="sd">    singularity spectrum (MSP), and usually has shape of an inverted parabola. It measures the long</span>
+<span class="sd">    range correlation property of a signal. From these elements, different features are extracted:</span>
+
+<span class="sd">    * **Width**: The width of the singularity spectrum, which quantifies the degree of the</span>
+<span class="sd">      multifractality. In the case of monofractal signals, the MSP width is zero, since *h*\\(q) is</span>
+<span class="sd">      independent of *q*.</span>
+<span class="sd">    * **Peak**: The value of the singularity exponent *H* corresponding to the peak of</span>
+<span class="sd">      singularity dimension *D*. It is a measure of the self-affinity of the signal, and a high</span>
+<span class="sd">      value is an indicator of high degree of correlation between the data points. In the other</span>
+<span class="sd">      words, the process is recurrent and repetitive.</span>
+<span class="sd">    * **Mean**: The mean of the maximum and minimum values of singularity exponent *H*, which</span>
+<span class="sd">      quantifies the average fluctuations of the signal.</span>
+<span class="sd">    * **Max**: The value of singularity spectrum *D* corresponding to the maximum value of</span>
+<span class="sd">      singularity exponent *H*, which indicates the maximum fluctuation of the signal.</span>
+<span class="sd">    * **Delta**: the vertical distance between the singularity spectrum *D* where the singularity</span>
+<span class="sd">      exponents are at their minimum and maximum. Corresponds to the range of fluctuations of the</span>
+<span class="sd">      signal.</span>
+<span class="sd">    * **Asymmetry**: The Asymmetric Ratio (AR) corresponds to the centrality of the peak of the</span>
+<span class="sd">      spectrum. AR = 0.5 indicates that the multifractal spectrum is symmetric (Orozco-Duque et</span>
+<span class="sd">      al., 2015).</span>
+<span class="sd">    * **Fluctuation**: The *h*-fluctuation index (hFI) is defined as the power of the second</span>
+<span class="sd">      derivative of *h*\\(q). See Orozco-Duque et al. (2015).</span>
+<span class="sd">    * **Increment**: The cumulative function of the squared increments (:math:`\\alpha CF`) of the</span>
+<span class="sd">      generalized Hurst&#39;s exponents between consecutive moment orders is a more robust index of the</span>
+<span class="sd">      distribution of the generalized Hurst&#39;s exponents (Faini et al., 2021).</span>
+
+<span class="sd">    This function can be called either via ``fractal_dfa()`` or ``complexity_dfa()``, and its</span>
+<span class="sd">    multifractal variant can be directly accessed via ``fractal_mfdfa()`` or ``complexity_mfdfa()``.</span>
+
+<span class="sd">    .. note ::</span>
+
+<span class="sd">      Help is needed to implement the modified formula to compute the slope when</span>
+<span class="sd">      *q* = 0. See for instance Faini et al. (2021). See https://github.com/LRydin/MFDFA/issues/33</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    signal : Union[list, np.array, pd.Series]</span>
+<span class="sd">        The signal (i.e., a time series) in the form of a vector of values.</span>
+<span class="sd">    scale : list</span>
+<span class="sd">        A list containing the lengths of the windows (number of data points in each subseries) that</span>
+<span class="sd">        the signal is divided into. Also referred to as Tau :math:`\\tau`. If ``&quot;default&quot;``, will</span>
+<span class="sd">        set it to a logarithmic scale (so that each window scale has the same weight) with a</span>
+<span class="sd">        minimum of 4 and maximum of a tenth of the length (to have more than 10 windows to</span>
+<span class="sd">        calculate the average fluctuation).</span>
+<span class="sd">    overlap : bool</span>
+<span class="sd">        Defaults to ``True``, where the windows will have a 50% overlap with each other, otherwise</span>
+<span class="sd">        non-overlapping windows will be used.</span>
+<span class="sd">    integrate : bool</span>
+<span class="sd">        It is common practice to convert the signal to a random walk (i.e., detrend and integrate,</span>
+<span class="sd">        which corresponds to the signal &#39;profile&#39;) in order to avoid having too small exponent</span>
+<span class="sd">        values. Note that it leads to the flattening of the signal, which can lead to the loss of</span>
+<span class="sd">        some details (see Ihlen, 2012 for an explanation). Note that for strongly anticorrelated</span>
+<span class="sd">        signals, this transformation should be applied  two times (i.e., provide</span>
+<span class="sd">        ``np.cumsum(signal - np.mean(signal))`` instead of ``signal``).</span>
+<span class="sd">    order : int</span>
+<span class="sd">       The order of the polynomial trend for detrending. 1 corresponds to a linear detrending.</span>
+<span class="sd">    multifractal : bool</span>
+<span class="sd">        If ``True``, compute Multifractal Detrended Fluctuation Analysis (MFDFA), in which case the</span>
+<span class="sd">        argument ``q`` is taken into account.</span>
+<span class="sd">    q : Union[int, list, np.array]</span>
+<span class="sd">        The sequence of fractal exponents when ``multifractal=True``. Must be a sequence between</span>
+<span class="sd">        -10 and 10 (note that zero will be removed, since the code does not converge there).</span>
+<span class="sd">        Setting ``q = 2`` (default for DFA) gives a result of a standard DFA. For instance, Ihlen</span>
+<span class="sd">        (2012) uses ``q = [-5, -3, -1, 0, 1, 3, 5]`` (default when for multifractal). In general,</span>
+<span class="sd">        positive q moments amplify the contribution of fractal components with larger amplitude and</span>
+<span class="sd">        negative q moments amplify the contribution of fractal with smaller amplitude (Kantelhardt</span>
+<span class="sd">        et al., 2002).</span>
+<span class="sd">    maxdfa : bool</span>
+<span class="sd">        If ``True``, it will locate the knee of the fluctuations (using :func:`.find_knee`) and use</span>
+<span class="sd">        that as a maximum scale value. It computes max. DFA (a similar method exists in</span>
+<span class="sd">        :func:`entropy_rate`).</span>
+<span class="sd">    show : bool</span>
+<span class="sd">        Visualise the trend between the window size and the fluctuations.</span>
+<span class="sd">    **kwargs : optional</span>
+<span class="sd">        Currently not used.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dfa : float or pd.DataFrame</span>
+<span class="sd">        If ``multifractal`` is ``False``, one DFA value is returned for a single time series.</span>
+<span class="sd">    parameters : dict</span>
+<span class="sd">        A dictionary containing additional information regarding the parameters used</span>
+<span class="sd">        to compute DFA. If ``multifractal`` is ``False``, the dictionary contains q value, a</span>
+<span class="sd">        series of windows, fluctuations of each window and the</span>
+<span class="sd">        slopes value of the log2(windows) versus log2(fluctuations) plot. If</span>
+<span class="sd">        ``multifractal`` is ``True``, the dictionary additionally contains the</span>
+<span class="sd">        parameters of the singularity spectrum.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    fractal_hurst, fractal_tmf, entropy_rate</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **Example 1:** Monofractal DFA</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import neurokit2 as nk</span>
+
+<span class="sd">      signal = nk.signal_simulate(duration=10, frequency=[5, 7, 10, 14], noise=0.05)</span>
+
+<span class="sd">      @savefig p_fractal_dfa1.png scale=100%</span>
+<span class="sd">      dfa, info = nk.fractal_dfa(signal, show=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      dfa</span>
+
+<span class="sd">    As we can see from the plot, the final value, corresponding to the slope of the red line,</span>
+<span class="sd">    doesn&#39;t capture properly the relationship. We can adjust the *scale factors* to capture the</span>
+<span class="sd">    fractality of short-term fluctuations.</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      scale = nk.expspace(10, 100, 20, base=2)</span>
+
+<span class="sd">      @savefig p_fractal_dfa2.png scale=100%</span>
+<span class="sd">      dfa, info = nk.fractal_dfa(signal, scale=scale, show=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    **Example 2:** Multifractal DFA (MFDFA)</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_fractal_dfa3.png scale=100%</span>
+<span class="sd">      mfdfa, info = nk.fractal_mfdfa(signal, q=[-5, -3, -1, 0, 1, 3, 5], show=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      mfdfa</span>
+
+<span class="sd">    References</span>
+<span class="sd">    -----------</span>
+<span class="sd">    * Faini, A., Parati, G., &amp; Castiglioni, P. (2021). Multiscale assessment of the degree of</span>
+<span class="sd">      multifractality for physiological time series. Philosophical Transactions of the Royal</span>
+<span class="sd">      Society A, 379(2212), 20200254.</span>
+<span class="sd">    * Orozco-Duque, A., Novak, D., Kremen, V., &amp; Bustamante, J. (2015). Multifractal analysis for</span>
+<span class="sd">      grading complex fractionated electrograms in atrial fibrillation. Physiological Measurement,</span>
+<span class="sd">      36(11), 2269-2284.</span>
+<span class="sd">    * Ihlen, E. A. F. E. (2012). Introduction to multifractal detrended</span>
+<span class="sd">      fluctuation analysis in Matlab. Frontiers in physiology, 3, 141.</span>
+<span class="sd">    * Kantelhardt, J. W., Zschiegner, S. A., Koscielny-Bunde, E., Havlin, S.,</span>
+<span class="sd">      Bunde, A., &amp; Stanley, H. E. (2002). Multifractal detrended fluctuation</span>
+<span class="sd">      analysis of nonstationary time series. Physica A: Statistical</span>
+<span class="sd">      Mechanics and its Applications, 316(1-4), 87-114.</span>
+<span class="sd">    * Hardstone, R., Poil, S. S., Schiavone, G., Jansen, R., Nikulin, V. V.,</span>
+<span class="sd">      Mansvelder, H. D., &amp; Linkenkaer-Hansen, K. (2012). Detrended</span>
+<span class="sd">      fluctuation analysis: a scale-free view on neuronal oscillations.</span>
+<span class="sd">      Frontiers in physiology, 3, 450.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sanity checks</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">))</span> <span class="ow">and</span> <span class="n">signal</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Multidimensional inputs (e.g., matrices or multichannel data) are not supported yet.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">_fractal_dfa_findscales</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
+
+    <span class="c1"># Sanitize fractal power (cannot be close to 0)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">_sanitize_q</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">multifractal</span><span class="o">=</span><span class="n">multifractal</span><span class="p">)</span>
+
+    <span class="c1"># Store parameters</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;scale&quot;</span><span class="p">:</span> <span class="n">scale</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">q</span><span class="p">}</span>
+
+    <span class="c1"># Preprocessing</span>
+    <span class="k">if</span> <span class="n">integrate</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Get signal profile</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">signal</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span>
+
+    <span class="c1"># Function to store fluctuations. For DFA this is an array. For MFDFA, this</span>
+    <span class="c1"># is a matrix of size (len(scale),len(q))</span>
+    <span class="n">fluctuations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)))</span>
+
+    <span class="c1"># Start looping over scale</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">window</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scale</span><span class="p">):</span>
+
+        <span class="c1"># Get window</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="n">_fractal_dfa_getwindow</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="n">overlap</span><span class="p">)</span>
+
+        <span class="c1"># Get polynomial trends</span>
+        <span class="n">trends</span> <span class="o">=</span> <span class="n">_fractal_dfa_trends</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+
+        <span class="c1"># Get local fluctuation</span>
+        <span class="n">fluctuations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_fractal_dfa_fluctuation</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">trends</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fluctuations</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">info</span>
+
+    <span class="c1"># Max. DFA ---------------------</span>
+    <span class="k">if</span> <span class="n">maxdfa</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Find knees of fluctuations</span>
+        <span class="n">knee</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span> <span class="n">fluctuations</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fluctuations</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">knee</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_knee</span><span class="p">(</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">fluctuations</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]),</span> <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+        <span class="n">knee</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">knee</span><span class="p">))</span>
+        <span class="c1"># Cut fluctuations</span>
+        <span class="n">fluctuations</span> <span class="o">=</span> <span class="n">fluctuations</span><span class="p">[</span><span class="n">scale</span> <span class="o">&lt;=</span> <span class="n">knee</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span><span class="p">[</span><span class="n">scale</span> <span class="o">&lt;=</span> <span class="n">knee</span><span class="p">]</span>
+    <span class="c1"># ------------------------------</span>
+
+    <span class="c1"># Get slopes</span>
+    <span class="n">slopes</span> <span class="o">=</span> <span class="n">_slopes</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">fluctuations</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">slopes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">slopes</span> <span class="o">=</span> <span class="n">slopes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Prepare output</span>
+    <span class="n">info</span><span class="p">[</span><span class="s2">&quot;Fluctuations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fluctuations</span>
+    <span class="n">info</span><span class="p">[</span><span class="s2">&quot;Alpha&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slopes</span>
+
+    <span class="c1"># Extract features</span>
+    <span class="k">if</span> <span class="n">multifractal</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">info</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_singularity_spectrum</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">slopes</span><span class="o">=</span><span class="n">slopes</span><span class="p">))</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">k</span><span class="p">:</span> <span class="n">v</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">k</span>
+                <span class="ow">in</span> <span class="p">[</span>
+                    <span class="s2">&quot;Peak&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Width&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Mean&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Max&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Delta&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Asymmetry&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Fluctuation&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Increment&quot;</span><span class="p">,</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">slopes</span>
+
+    <span class="c1"># Plot if show is True.</span>
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">multifractal</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">_fractal_mdfa_plot</span><span class="p">(</span>
+                <span class="n">info</span><span class="p">,</span>
+                <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+                <span class="n">fluctuations</span><span class="o">=</span><span class="n">fluctuations</span><span class="p">,</span>
+                <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_fractal_dfa_plot</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">fluctuations</span><span class="o">=</span><span class="n">fluctuations</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">out</span><span class="p">,</span> <span class="n">info</span></div>
+
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#  Utils</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_fractal_dfa_findscales</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">):</span>
+    <span class="c1"># Convert to array</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+
+    <span class="c1"># Default scale number</span>
+    <span class="k">if</span> <span class="n">scale</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="c1"># See https://github.com/neuropsychology/NeuroKit/issues/206</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">scale</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># keep only unique</span>
+
+    <span class="c1"># Sanity checks (return warning for too short scale)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;NeuroKit error: more than one window is needed. Increase &#39;scale&#39;.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;NeuroKit error: there must be at least 2 data points in each window. Decrease &#39;scale&#39;.&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;NeuroKit error: the window cannot contain more data points than the time series. Decrease &#39;scale&#39;.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">scale</span>
+
+
+<span class="k">def</span> <span class="nf">_sanitize_q</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># Turn to list</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">multifractal</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span><span class="p">]</span>
+
+    <span class="c1"># Fractal powers as floats</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray_chkfinite</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">q</span>
+
+
+<span class="k">def</span> <span class="nf">_slopes</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">fluctuations</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="c1"># Extract the slopes of each `q` power obtained with MFDFA to later produce</span>
+    <span class="c1"># either the singularity spectrum or the multifractal exponents.</span>
+    <span class="c1"># Note: added by Leonardo Rydin (see https://github.com/LRydin/MFDFA/)</span>
+
+    <span class="c1"># Ensure mfdfa has the same q-power entries as q</span>
+    <span class="k">if</span> <span class="n">fluctuations</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Fluctuation function and q powers don&#39;t match in dimension.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Allocated array for slopes</span>
+    <span class="n">slopes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+    <span class="c1"># Find slopes of each q-power</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)):</span>
+        <span class="c1"># if fluctiations is zero, log2 wil encounter zero division</span>
+        <span class="n">old_setting</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+        <span class="n">slopes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">fluctuations</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="o">**</span><span class="n">old_setting</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">slopes</span>
+
+
+<span class="k">def</span> <span class="nf">_fractal_dfa_getwindow</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="c1"># This function reshapes the segments from a one-dimensional array to a</span>
+    <span class="c1"># matrix for faster polynomail fittings. &#39;Overlap&#39; reshapes into several</span>
+    <span class="c1"># overlapping partitions of the data</span>
+
+    <span class="c1"># TODO: see whether this step could be integrated within complexity_coarsegraining</span>
+
+    <span class="k">if</span> <span class="n">overlap</span><span class="p">:</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">signal</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">window</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">window</span><span class="p">,</span> <span class="n">window</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[:</span> <span class="n">n</span> <span class="o">-</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">window</span><span class="p">)]</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">window</span><span class="p">,</span> <span class="n">window</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">segments</span>
+
+
+<span class="k">def</span> <span class="nf">_fractal_dfa_trends</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># TODO: can we rely on signal_detrend?</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+
+    <span class="n">coefs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="n">window</span><span class="p">],</span> <span class="n">segments</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="c1"># TODO: Could this be optimized? Something like np.polyval(x[:window], coefs)</span>
+    <span class="n">trends</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">coefs</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">))])</span>
+
+    <span class="k">return</span> <span class="n">trends</span>
+
+
+<span class="k">def</span> <span class="nf">_fractal_dfa_fluctuation</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">trends</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+
+    <span class="c1"># Detrend</span>
+    <span class="n">detrended</span> <span class="o">=</span> <span class="n">segments</span> <span class="o">-</span> <span class="n">trends</span>
+
+    <span class="c1"># Compute variance</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">detrended</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Remove where var is zero</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">var</span> <span class="o">&gt;</span> <span class="mf">1e-08</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span><span class="s2">&quot;All detrended segments have no variance. Retuning NaN.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="c1"># Find where q is close to zero. Limit set at |q| &lt; 0.1</span>
+    <span class="c1"># See https://github.com/LRydin/MFDFA/issues/33</span>
+    <span class="n">is0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span>
+
+    <span class="c1"># Reshape q to perform np.float_power</span>
+    <span class="n">q_non0</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="o">~</span><span class="n">is0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Get the fluctuation function, which is a function of the windows and of q</span>
+    <span class="c1"># When q = 2 (i.e., multifractal = False)</span>
+    <span class="c1"># The formula is equivalent to np.sqrt(np.mean(var))</span>
+    <span class="c1"># And corresponds to the Root Mean Square (RMS)</span>
+    <span class="n">fluctuation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float_power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float_power</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">q_non0</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">q_non0</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">is0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">fluc0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">var</span><span class="p">)))</span>
+        <span class="n">fluctuation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">fluctuation</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">is0</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">fluc0</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">fluctuation</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#  Utils MFDFA</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_singularity_spectrum</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">slopes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract the slopes of the fluctuation function to futher obtain the</span>
+<span class="sd">    singularity strength `α` (or Hölder exponents) and singularity spectrum</span>
+<span class="sd">    `f(α)` (or fractal dimension). This is iconically shaped as an inverse</span>
+<span class="sd">    parabola, but most often it is difficult to obtain the negative `q` terms,</span>
+<span class="sd">    and one can focus on the left side of the parabola (`q&gt;0`).</span>
+
+<span class="sd">    Note that these measures rarely match the theoretical expectation,</span>
+<span class="sd">    thus a variation of ± 0.25 is absolutely reasonable.</span>
+
+<span class="sd">    The parameters are mostly identical to `fractal_mfdfa()`, as one needs to</span>
+<span class="sd">    perform MFDFA to obtain the singularity spectrum. Calculating only the</span>
+<span class="sd">    DFA is insufficient, as it only has `q=2`, and a set of `q` values are</span>
+<span class="sd">    needed. Here defaulted to `q = list(range(-5,5))`, where the `0` element</span>
+<span class="sd">    is removed by `_cleanse_q()`.</span>
+
+<span class="sd">    This was first designed and implemented by Leonardo Rydin in</span>
+<span class="sd">    `MFDFA &lt;https://github.com/LRydin/MFDFA/&gt;`_ and ported here by the same.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Components of the singularity spectrum</span>
+    <span class="c1"># ---------------------------------------</span>
+    <span class="c1"># The generalised Hurst exponents `h(q)` from MFDFA, which are simply the slopes of each DFA</span>
+    <span class="c1"># for various `q` values</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="n">slopes</span><span class="p">}</span>
+
+    <span class="c1"># The generalised Hurst exponent h(q) is related to the Scaling Exponent Tau t(q):</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Tau&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span> <span class="o">*</span> <span class="n">slopes</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># Calculate Singularity Exponent H or α, which needs tau</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Tau&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+    <span class="c1"># Calculate Singularity Dimension Dq or f(α), which needs tau and q</span>
+    <span class="c1"># The relation between α and f(α) (H and D) is called the Multifractal (MF) spectrum or</span>
+    <span class="c1"># singularity spectrum, which resembles the shape of an inverted parabola.</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span> <span class="o">*</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Tau&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Features (Orozco-Duque et al., 2015)</span>
+    <span class="c1"># ---------------------------------------</span>
+    <span class="c1"># The width of the MSP quantifies the degree of the multifractality</span>
+    <span class="c1"># the spectrum width delta quantifies the degree of the multifractality.</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])</span>
+
+    <span class="c1"># the singularity exponent, for which the spectrum D takes its maximum value (α0)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Peak&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmax</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">])]</span>
+
+    <span class="c1"># The mean of the maximum and minimum values of singularity exponent H</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Mean&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]))</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># The value of singularity spectrum D, corresponding to the maximum value of</span>
+    <span class="c1"># singularity exponent H, indicates the maximum fluctuation of the signal.</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Max&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmax</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])]</span>
+
+    <span class="c1"># The vertical distance between the singularity spectrum *D* where the singularity</span>
+    <span class="c1"># exponents are at their minimum and maximum.</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Delta&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmax</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])]</span> <span class="o">-</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmin</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])]</span>
+
+    <span class="c1"># the asymmetric ratio (AR) defined as the ratio between h calculated with negative q and the</span>
+    <span class="c1"># total width of the spectrum. If the multifractal spectrum is symmetric, AR should be equal to</span>
+    <span class="c1"># 0.5</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Asymmetry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])</span> <span class="o">-</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Peak&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Width&quot;</span><span class="p">]</span>
+
+    <span class="c1"># h-fluctuation index (hFI), which is defined as the power of the second derivative of h(q)</span>
+    <span class="c1"># hFI tends to zero in high fractionation signals.</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">slopes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="c1"># Help needed to double check that!</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Fluctuation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+            <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">q</span><span class="p">))</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Fluctuation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="c1"># hFI tends to zero in high fractionation signals. hFI has no reference point when a set of</span>
+    <span class="c1"># signals is evaluated, so hFI must be normalisedd, so that hFIn = 1 is the most organised and</span>
+    <span class="c1"># the most regular signal in the set</span>
+    <span class="c1"># BUT the formula in Orozco-Duque (2015) is weird, as HFI is a single value so cannot be</span>
+    <span class="c1"># normalized by its range...</span>
+
+    <span class="c1"># Faini (2021): new index that describes the distribution of the generalized Hurst&#39;s exponents</span>
+    <span class="c1"># without requiring the Legendre transform. This index, αCF, is the cumulative function of the</span>
+    <span class="c1"># squared increments of the generalized Hurst&#39;s exponents between consecutive moment orders.</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Increment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">slopes</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#  Plots</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_fractal_dfa_plot</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">fluctuations</span><span class="p">):</span>
+
+    <span class="n">polyfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">fluctuations</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">fluctfit</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">polyfit</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">fluctuations</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#90A4AE&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log_</span><span class="si">{2}</span><span class="s2">$(Scale)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log_</span><span class="si">{2}</span><span class="s2">$(Fluctuations)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">fluctfit</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#E91E63&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\alpha$ = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;Alpha&quot;</span><span class="p">]))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Detrended Fluctuation Analysis (DFA)&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">_fractal_mdfa_plot</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">fluctuations</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+
+    <span class="c1"># Prepare figure</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">ax_fluctuation</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax_spectrum</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax_tau</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax_hq</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="c1"># Plot the points</span>
+        <span class="n">ax_fluctuation</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span>
+            <span class="n">scale</span><span class="p">,</span>
+            <span class="n">fluctuations</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span>
+            <span class="s2">&quot;o&quot;</span><span class="p">,</span>
+            <span class="n">fillstyle</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">,</span>
+            <span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+            <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+            <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Plot the polyfit line</span>
+        <span class="n">polyfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">fluctuations</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">fluctfit</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">polyfit</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+        <span class="n">ax_fluctuation</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">fluctfit</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;_no_legend_&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Add labels for max and min</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax_fluctuation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="p">[],</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$h$ = </span><span class="si">{</span><span class="n">polyfit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, $q$ = </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">ax_fluctuation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="p">[],</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$h$ = </span><span class="si">{</span><span class="n">polyfit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, $q$ = </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">)</span>
+
+    <span class="n">ax_fluctuation</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log_</span><span class="si">{2}</span><span class="s2">$(Scale)&quot;</span><span class="p">)</span>
+    <span class="n">ax_fluctuation</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log_</span><span class="si">{2}</span><span class="s2">$(Fluctuations)&quot;</span><span class="p">)</span>
+    <span class="n">ax_fluctuation</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot the singularity spectrum</span>
+    <span class="c1"># ax.set_title(&quot;Singularity Spectrum&quot;)</span>
+    <span class="n">ax_spectrum</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Singularity Dimension ($D$)&quot;</span><span class="p">)</span>
+    <span class="n">ax_spectrum</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Singularity Exponent ($H$)&quot;</span><span class="p">)</span>
+    <span class="n">ax_spectrum</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;Peak&quot;</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Peak = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;Peak&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+    <span class="n">ax_spectrum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])],</span>
+        <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">])]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Width = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;Width&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+    <span class="n">ax_spectrum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">])],</span>
+        <span class="p">[</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#B71C1C&quot;</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Delta = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;Delta&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+    <span class="n">ax_spectrum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">],</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#FFC107&quot;</span><span class="p">)</span>
+    <span class="n">ax_spectrum</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot tau against q</span>
+    <span class="c1"># ax.set_title(&quot;Scaling Exponents&quot;)</span>
+    <span class="n">ax_tau</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Scaling Exponent ($τ$)&quot;</span><span class="p">)</span>
+    <span class="n">ax_tau</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Fractal Exponent ($q$)&quot;</span><span class="p">)</span>
+    <span class="n">ax_tau</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;Tau&quot;</span><span class="p">],</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#E91E63&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot H against q</span>
+    <span class="c1"># ax.set_title(&quot;Generalised Hurst Exponents&quot;)</span>
+    <span class="n">ax_hq</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Singularity Exponent ($H$)&quot;</span><span class="p">)</span>
+    <span class="n">ax_hq</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Fractal Exponent ($q$)&quot;</span><span class="p">)</span>
+    <span class="n">ax_hq</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">],</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#2196F3&quot;</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Multifractal Detrended Fluctuation Analysis (MFDFA)&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurokit2.complexity.complexity_lyapunov &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/complexity/complexity_lyapunov';</script>
+    <link rel="icon" href="../../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2F_modules/neurokit2/complexity/complexity_lyapunov.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for neurokit2.complexity.complexity_lyapunov</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sklearn.metrics.pairwise</span>
+<span class="kn">import</span> <span class="nn">sklearn.neighbors</span>
+
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">NeuroKitWarning</span><span class="p">,</span> <span class="n">find_knee</span>
+<span class="kn">from</span> <span class="nn">..signal.signal_psd</span> <span class="kn">import</span> <span class="n">signal_psd</span>
+<span class="kn">from</span> <span class="nn">.utils_complexity_embedding</span> <span class="kn">import</span> <span class="n">complexity_embedding</span>
+
+
+<div class="viewcode-block" id="complexity_lyapunov">
+<a class="viewcode-back" href="../../../functions/complexity.html#neurokit2.complexity.complexity_lyapunov">[docs]</a>
+<span class="k">def</span> <span class="nf">complexity_lyapunov</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;rosenstein1993&quot;</span><span class="p">,</span>
+    <span class="n">separation</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;**(Largest) Lyapunov Exponent (LLE)**</span>
+
+<span class="sd">    Lyapunov exponents (LE) describe the rate of exponential separation (convergence or divergence)</span>
+<span class="sd">    of nearby trajectories of a dynamical system. It is a measure of sensitive dependence on</span>
+<span class="sd">    initial conditions, i.e. how quickly two nearby states diverge. A system can have multiple LEs,</span>
+<span class="sd">    equal to the number of the dimensionality of the phase space, and the largest LE value, &quot;LLE&quot; is</span>
+<span class="sd">    often used to determine the overall predictability of the dynamical system.</span>
+
+<span class="sd">    Different algorithms exist to estimate these indices:</span>
+
+<span class="sd">    * **Rosenstein et al.&#39;s (1993)** algorithm was designed for calculating LLEs from small</span>
+<span class="sd">      datasets. The time series is first reconstructed using a delay-embedding method, and the</span>
+<span class="sd">      closest neighbour of each vector is computed using the euclidean distance. These two</span>
+<span class="sd">      neighbouring points are then tracked along their distance trajectories for a number of data</span>
+<span class="sd">      points. The slope of the line using a least-squares fit of the mean log trajectory of the</span>
+<span class="sd">      distances gives the final LLE.</span>
+<span class="sd">    * **Makowski** is a custom modification of Rosenstein&#39;s algorithm, using KDTree for more</span>
+<span class="sd">      efficient nearest neighbors computation. Additionally, the LLE is computed as the slope up to</span>
+<span class="sd">      the changepoint of divergence rate (the point where it flattens out), making it more robust</span>
+<span class="sd">      to the length trajectory parameter.</span>
+<span class="sd">    * **Eckmann et al. (1986)** computes LEs by first reconstructing the time series using a</span>
+<span class="sd">      delay-embedding method, and obtains the tangent that maps to the reconstructed dynamics using</span>
+<span class="sd">      a least-squares fit, where the LEs are deduced from the tangent maps.</span>
+
+<span class="sd">    .. warning::</span>
+
+<span class="sd">      The **Eckman (1986)** method currently does not work. Please help us fixing it by double</span>
+<span class="sd">      checking the code, the paper and helping us figuring out what&#39;s wrong. Overall, we would like</span>
+<span class="sd">      to improve this function to return for instance all the exponents (Lyapunov spectrum),</span>
+<span class="sd">      implement newer and faster methods (e.g., Balcerzak, 2018, 2020), etc. If you&#39;re interested</span>
+<span class="sd">      in helping out with this, please get in touch!</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    signal : Union[list, np.array, pd.Series]</span>
+<span class="sd">        The signal (i.e., a time series) in the form of a vector of values.</span>
+<span class="sd">    delay : int</span>
+<span class="sd">        Time delay (often denoted *Tau* :math:`\\tau`, sometimes referred to as *lag*) in samples.</span>
+<span class="sd">        See :func:`complexity_delay` to estimate the optimal value for this parameter.</span>
+<span class="sd">    dimension : int</span>
+<span class="sd">        Embedding Dimension (*m*, sometimes referred to as *d* or *order*). See</span>
+<span class="sd">        :func:`complexity_dimension` to estimate the optimal value for this parameter. If method</span>
+<span class="sd">        is ``&quot;eckmann1986&quot;``, larger values for dimension are recommended.</span>
+<span class="sd">    method : str</span>
+<span class="sd">        The method that defines the algorithm for computing LE. Can be one of ``&quot;rosenstein1993&quot;``,</span>
+<span class="sd">        ``&quot;makowski&quot;``, or ``&quot;eckmann1986&quot;``.</span>
+<span class="sd">    len_trajectory : int</span>
+<span class="sd">        Applies when method is ``&quot;rosenstein1993&quot;``. The number of data points in which</span>
+<span class="sd">        neighboring trajectories are followed.</span>
+<span class="sd">    matrix_dim : int</span>
+<span class="sd">        Applies when method is ``&quot;eckmann1986&quot;``. Corresponds to the number of LEs to return.</span>
+<span class="sd">    min_neighbors : int, str</span>
+<span class="sd">        Applies when method is ``&quot;eckmann1986&quot;``. Minimum number of neighbors. If ``&quot;default&quot;``,</span>
+<span class="sd">        ``min(2 * matrix_dim, matrix_dim + 4)`` is used.</span>
+<span class="sd">    **kwargs : optional</span>
+<span class="sd">        Other arguments to be passed to ``signal_psd()`` for calculating the minimum temporal</span>
+<span class="sd">        separation of two neighbors.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------</span>
+<span class="sd">    lle : float</span>
+<span class="sd">        An estimate of the largest Lyapunov exponent (LLE) if method is ``&quot;rosenstein1993&quot;``, and</span>
+<span class="sd">        an array of LEs if ``&quot;eckmann1986&quot;``.</span>
+<span class="sd">    info : dict</span>
+<span class="sd">        A dictionary containing additional information regarding the parameters used</span>
+<span class="sd">        to compute LLE.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import neurokit2 as nk</span>
+
+<span class="sd">      signal = nk.signal_simulate(duration=5, sampling_rate=100, frequency=[5, 8], noise=0.1)</span>
+
+<span class="sd">      # Rosenstein&#39;s method</span>
+<span class="sd">      @savefig p_complexity_lyapunov1.png scale=100%</span>
+<span class="sd">      lle, info = nk.complexity_lyapunov(signal, method=&quot;rosenstein&quot;, show=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">      lle</span>
+
+<span class="sd">      # Makowski&#39;s change-point method</span>
+<span class="sd">      @savefig p_complexity_lyapunov2.png scale=100%</span>
+<span class="sd">      lle, info = nk.complexity_lyapunov(signal, method=&quot;makowski&quot;, show=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">      # Eckman&#39;s method is broken. Please help us fix-it!</span>
+<span class="sd">      # lle, info = nk.complexity_lyapunov(signal, dimension=2, method=&quot;eckmann1986&quot;)</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    * Rosenstein, M. T., Collins, J. J., &amp; De Luca, C. J. (1993). A practical method</span>
+<span class="sd">      for calculating largest Lyapunov exponents from small data sets.</span>
+<span class="sd">      Physica D: Nonlinear Phenomena, 65(1-2), 117-134.</span>
+<span class="sd">    * Eckmann, J. P., Kamphorst, S. O., Ruelle, D., &amp; Ciliberto, S. (1986). Liapunov</span>
+<span class="sd">      exponents from time series. Physical Review A, 34(6), 4971.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sanity checks</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">))</span> <span class="ow">and</span> <span class="n">signal</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Multidimensional inputs (e.g., matrices or multichannel data) are not supported yet.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Compute Minimum temporal separation between two neighbors</span>
+    <span class="c1"># -----------------------------------------------------------</span>
+    <span class="c1"># Rosenstein (1993) finds a suitable value by calculating the mean period of the data,</span>
+    <span class="c1"># obtained by the reciprocal of the mean frequency of the power spectrum.</span>
+
+    <span class="c1"># &quot;We impose the additional constraint that nearest neighbors have a temporal separation</span>
+    <span class="c1"># greater than the mean period of the time series: This allows us to consider each pair of</span>
+    <span class="c1"># neighbors as nearby initial conditions for different trajectories.&quot;</span>
+
+    <span class="c1"># &quot;We estimated the mean period as the reciprocal of the mean frequency of the power spectrum,</span>
+    <span class="c1"># although we expect any comparable estimate, e.g., using the median frequency of the magnitude</span>
+    <span class="c1"># spectrum, to yield equivalent results.&quot;</span>
+    <span class="k">if</span> <span class="n">separation</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+        <span class="c1"># Actual sampling rate does not matter</span>
+        <span class="n">psd</span> <span class="o">=</span> <span class="n">signal_psd</span><span class="p">(</span>
+            <span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fft&quot;</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">mean_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">psd</span><span class="p">[</span><span class="s2">&quot;Power&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">psd</span><span class="p">[</span><span class="s2">&quot;Frequency&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">psd</span><span class="p">[</span><span class="s2">&quot;Power&quot;</span><span class="p">])</span>
+
+        <span class="c1"># 1 / mean_freq = seconds per cycle</span>
+        <span class="n">separation</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">mean_freq</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">separation</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="s2">&quot;&#39;separation&#39; should be an integer.&quot;</span>
+
+    <span class="c1"># Run algorithm</span>
+    <span class="c1"># ----------------</span>
+    <span class="c1"># Method</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rosenstein&quot;</span><span class="p">,</span> <span class="s2">&quot;rosenstein1993&quot;</span><span class="p">]:</span>
+        <span class="n">le</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">=</span> <span class="n">_complexity_lyapunov_rosenstein</span><span class="p">(</span>
+            <span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="p">,</span> <span class="n">dimension</span><span class="p">,</span> <span class="n">separation</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;makowski&quot;</span><span class="p">]:</span>
+        <span class="n">le</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">=</span> <span class="n">_complexity_lyapunov_makowski</span><span class="p">(</span>
+            <span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="p">,</span> <span class="n">dimension</span><span class="p">,</span> <span class="n">separation</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;eckmann&quot;</span><span class="p">,</span> <span class="s2">&quot;eckmann1986&quot;</span><span class="p">,</span> <span class="s2">&quot;eckmann1986&quot;</span><span class="p">]:</span>
+        <span class="n">le</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">=</span> <span class="n">_complexity_lyapunov_eckmann</span><span class="p">(</span>
+            <span class="n">signal</span><span class="p">,</span>
+            <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span>
+            <span class="n">separation</span><span class="o">=</span><span class="n">separation</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;NeuroKit error: complexity_lyapunov(): &#39;method&#39; should be one of &quot;</span>
+            <span class="s2">&quot; &#39;rosenstein1993&#39;, &#39;makowski&#39;, &#39;eckmann1986&#39;.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Store params</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Dimension&quot;</span><span class="p">:</span> <span class="n">dimension</span><span class="p">,</span>
+        <span class="s2">&quot;Delay&quot;</span><span class="p">:</span> <span class="n">delay</span><span class="p">,</span>
+        <span class="s2">&quot;Separation&quot;</span><span class="p">:</span> <span class="n">separation</span><span class="p">,</span>
+        <span class="s2">&quot;Method&quot;</span><span class="p">:</span> <span class="n">method</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">info</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">le</span><span class="p">,</span> <span class="n">info</span></div>
+
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Methods</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_complexity_lyapunov_makowski</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">separation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">max_length</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="c1"># Store parameters</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Dimension&quot;</span><span class="p">:</span> <span class="n">dimension</span><span class="p">,</span>
+        <span class="s2">&quot;Delay&quot;</span><span class="p">:</span> <span class="n">delay</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Embedding</span>
+    <span class="n">embedded</span> <span class="o">=</span> <span class="n">complexity_embedding</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">embedded</span><span class="p">)</span>
+
+    <span class="c1"># Set the maxiimum trajectory length to 10 times the delay</span>
+    <span class="k">if</span> <span class="n">max_length</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+        <span class="n">max_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">delay</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_length</span> <span class="o">&gt;=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">max_length</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="c1"># Create KDTree and query for nearest neighbors</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">neighbors</span><span class="o">.</span><span class="n">KDTree</span><span class="p">(</span><span class="n">embedded</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Query for nearest neighbors. To ensure we get a neighbor outside of the `separation`,</span>
+    <span class="c1"># k=1 is the point itself, k=2 is the nearest neighbor, and k=3 is the second nearest neighbor.</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">embedded</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="n">separation</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># The neighbor outside the `separation` region will be the last one in the returned list.</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Compute the average divergence for each trajectory length</span>
+    <span class="n">trajectories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">max_length</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">idx</span><span class="p">[:</span> <span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">valid</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">trajectories</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+            <span class="k">continue</span>
+
+        <span class="n">divergences</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span>
+            <span class="n">embedded</span><span class="p">[</span><span class="n">valid</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">embedded</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">+</span> <span class="n">k</span><span class="p">],</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">divergences</span> <span class="o">=</span> <span class="n">divergences</span><span class="p">[</span><span class="n">divergences</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">divergences</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">trajectories</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">trajectories</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">divergences</span><span class="p">))</span>
+
+    <span class="c1"># Change point</span>
+    <span class="n">x_axis</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajectories</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">knee</span> <span class="o">=</span> <span class="n">find_knee</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">trajectories</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">info</span><span class="p">[</span><span class="s2">&quot;Divergence_Rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trajectories</span>
+    <span class="n">info</span><span class="p">[</span><span class="s2">&quot;Changepoint&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">knee</span>
+
+    <span class="c1"># Linear fit</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">knee</span><span class="p">],</span> <span class="n">trajectories</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">knee</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajectories</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">trajectories</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">knee</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Changepoint&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axline</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">intercept</span><span class="p">),</span> <span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Least-squares Fit&quot;</span>
+        <span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">trajectories</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Divergence Rate&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Largest Lyapunov Exponent (slope of the line) = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">slope</span><span class="p">,</span> <span class="n">info</span>
+
+
+<span class="k">def</span> <span class="nf">_complexity_lyapunov_rosenstein</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">separation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">len_trajectory</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+    <span class="c1"># 1. Check that sufficient data points are available</span>
+    <span class="c1"># Minimum length required to find single orbit vector</span>
+    <span class="n">min_len</span> <span class="o">=</span> <span class="p">(</span><span class="n">dimension</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">delay</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># We need len_trajectory orbit vectors to follow a complete trajectory</span>
+    <span class="n">min_len</span> <span class="o">+=</span> <span class="n">len_trajectory</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="c1"># we need tolerance * 2 + 1 orbit vectors to find neighbors for each</span>
+    <span class="n">min_len</span> <span class="o">+=</span> <span class="n">separation</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># Sanity check</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_len</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;for dimension=</span><span class="si">{</span><span class="n">dimension</span><span class="si">}</span><span class="s2">, delay=</span><span class="si">{</span><span class="n">delay</span><span class="si">}</span><span class="s2">, separation=</span><span class="si">{</span><span class="n">separation</span><span class="si">}</span><span class="s2"> and &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;len_trajectory=</span><span class="si">{</span><span class="n">len_trajectory</span><span class="si">}</span><span class="s2">, you need at least </span><span class="si">{</span><span class="n">min_len</span><span class="si">}</span><span class="s2"> datapoints in your&quot;</span>
+            <span class="s2">&quot; time series.&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Embedding</span>
+    <span class="n">embedded</span> <span class="o">=</span> <span class="n">complexity_embedding</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">embedded</span><span class="p">)</span>
+
+    <span class="c1"># Construct matrix with pairwise distances between vectors in orbit</span>
+    <span class="n">dists</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">pairwise</span><span class="o">.</span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">embedded</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="c1"># Exclude indices within separation</span>
+        <span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">separation</span><span class="p">)</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">separation</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+    <span class="c1"># Find indices of nearest neighbours</span>
+    <span class="n">ntraj</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="n">len_trajectory</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">min_dist_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span>
+        <span class="n">dists</span><span class="p">[:</span><span class="n">ntraj</span><span class="p">,</span> <span class="p">:</span><span class="n">ntraj</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>  <span class="c1"># exclude last few indices</span>
+    <span class="n">min_dist_indices</span> <span class="o">=</span> <span class="n">min_dist_indices</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Follow trajectories of neighbour pairs for len_trajectory data points</span>
+    <span class="n">trajectories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">len_trajectory</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_trajectory</span><span class="p">):</span>
+        <span class="n">divergence</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ntraj</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span><span class="p">,</span> <span class="n">min_dist_indices</span> <span class="o">+</span> <span class="n">k</span><span class="p">)]</span>
+        <span class="n">dist_nonzero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">divergence</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dist_nonzero</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">trajectories</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Get average distances of neighbour pairs along the trajectory</span>
+            <span class="n">trajectories</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">divergence</span><span class="p">[</span><span class="n">dist_nonzero</span><span class="p">]))</span>
+
+    <span class="n">divergence_rate</span> <span class="o">=</span> <span class="n">trajectories</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">trajectories</span><span class="p">)]</span>
+
+    <span class="c1"># LLE obtained by least-squares fit to average line</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">divergence_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">divergence_rate</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Store info</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Trajectory_Length&quot;</span><span class="p">:</span> <span class="n">len_trajectory</span><span class="p">,</span>
+        <span class="s2">&quot;Divergence_Rate&quot;</span><span class="p">:</span> <span class="n">divergence_rate</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">divergence_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">divergence_rate</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axline</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">intercept</span><span class="p">),</span> <span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Least-squares Fit&quot;</span>
+        <span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Divergence Rate&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Largest Lyapunov Exponent (slope of the line) = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">slope</span><span class="p">,</span> <span class="n">parameters</span>
+
+
+<span class="k">def</span> <span class="nf">_complexity_lyapunov_eckmann</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">separation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">matrix_dim</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_neighbors</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;TODO: check implementation</span>
+
+<span class="sd">    From https://github.com/CSchoel/nolds</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Prepare parameters</span>
+    <span class="k">if</span> <span class="n">min_neighbors</span> <span class="o">==</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span>
+        <span class="n">min_neighbors</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">matrix_dim</span><span class="p">,</span> <span class="n">matrix_dim</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">dimension</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">matrix_dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># minimum length required to find single orbit vector</span>
+    <span class="n">min_len</span> <span class="o">=</span> <span class="n">dimension</span>
+    <span class="c1"># we need to follow each starting point of an orbit vector for m more steps</span>
+    <span class="n">min_len</span> <span class="o">+=</span> <span class="n">m</span>
+    <span class="c1"># we need separation * 2 + 1 orbit vectors to find neighbors for each</span>
+    <span class="n">min_len</span> <span class="o">+=</span> <span class="n">separation</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="c1"># we need at least min_nb neighbors for each orbit vector</span>
+    <span class="n">min_len</span> <span class="o">+=</span> <span class="n">min_neighbors</span>
+    <span class="c1"># Sanity check</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_len</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;for dimension=</span><span class="si">{</span><span class="n">dimension</span><span class="si">}</span><span class="s2">, separation=</span><span class="si">{</span><span class="n">separation</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;matrix_dim=</span><span class="si">{</span><span class="n">matrix_dim</span><span class="si">}</span><span class="s2"> and min_neighbors=</span><span class="si">{</span><span class="n">min_neighbors</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;you need at least </span><span class="si">{</span><span class="n">min_len</span><span class="si">}</span><span class="s2"> datapoints in your time series.&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Storing of LEs</span>
+    <span class="n">lexp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">matrix_dim</span><span class="p">)</span>
+    <span class="n">lexp_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">matrix_dim</span><span class="p">)</span>
+    <span class="n">old_Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">matrix_dim</span><span class="p">)</span>
+
+    <span class="c1"># We need to be able to step m points further for the beta vector</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">signal</span> <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">signal</span><span class="p">[:</span><span class="o">-</span><span class="n">m</span><span class="p">]</span>  <span class="c1"># If m==0, return full signal</span>
+    <span class="c1"># Reconstruction using time-delay method</span>
+    <span class="n">embedded</span> <span class="o">=</span> <span class="n">complexity_embedding</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">)</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">pairwise_distances</span><span class="p">(</span><span class="n">embedded</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;chebyshev&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">embedded</span><span class="p">)):</span>
+        <span class="c1"># exclude difference of vector to itself and those too close in time</span>
+        <span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">separation</span><span class="p">)</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">separation</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+        <span class="c1"># index of furthest nearest neighbour</span>
+        <span class="n">neighbour_furthest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="n">min_neighbors</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># get neighbors within the radius</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">neighbour_furthest</span><span class="p">]</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)[</span>
+            <span class="mi">0</span>
+        <span class="p">]</span>  <span class="c1"># should have length = min_neighbours</span>
+
+        <span class="c1"># Find matrix T_i (matrix_dim * matrix_dim) that sends points from neighbourhood of x(i) to x(i+1)</span>
+        <span class="n">vec_beta</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="n">neighbors</span> <span class="o">+</span> <span class="n">matrix_dim</span> <span class="o">*</span> <span class="n">m</span><span class="p">]</span> <span class="o">-</span> <span class="n">signal</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">matrix_dim</span> <span class="o">*</span> <span class="n">m</span><span class="p">]</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">signal</span><span class="p">[</span><span class="n">j</span> <span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">dimension</span> <span class="p">:</span> <span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">])</span>  <span class="c1"># x(j)</span>
+        <span class="n">matrix</span> <span class="o">-=</span> <span class="n">signal</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">dimension</span> <span class="p">:</span> <span class="n">m</span><span class="p">]</span>  <span class="c1"># x(j) - x(i)</span>
+
+        <span class="c1"># form matrix T_i</span>
+        <span class="n">t_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">matrix_dim</span><span class="p">,</span> <span class="n">matrix_dim</span><span class="p">))</span>
+        <span class="n">t_i</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">matrix_dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">t_i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">vec_beta</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span>
+            <span class="mi">0</span>
+        <span class="p">]</span>  <span class="c1"># least squares solution</span>
+
+        <span class="c1"># QR-decomposition of T * old_Q</span>
+        <span class="n">mat_Q</span><span class="p">,</span> <span class="n">mat_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">t_i</span><span class="p">,</span> <span class="n">old_Q</span><span class="p">))</span>
+
+        <span class="c1"># force diagonal of R to be positive</span>
+        <span class="n">sign_diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">mat_R</span><span class="p">))</span>
+        <span class="n">sign_diag</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sign_diag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">sign_diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sign_diag</span><span class="p">)</span>
+        <span class="n">mat_Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mat_Q</span><span class="p">,</span> <span class="n">sign_diag</span><span class="p">)</span>
+        <span class="n">mat_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sign_diag</span><span class="p">,</span> <span class="n">mat_R</span><span class="p">)</span>
+
+        <span class="n">old_Q</span> <span class="o">=</span> <span class="n">mat_Q</span>
+        <span class="c1"># successively build sum for Lyapunov exponents</span>
+        <span class="n">diag_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">mat_R</span><span class="p">)</span>
+        <span class="c1"># filter zeros in mat_R (would lead to -infs)</span>
+        <span class="n">positive_elements</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diag_R</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">lexp_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diag_R</span><span class="p">))</span>
+        <span class="n">lexp_i</span><span class="p">[</span><span class="n">positive_elements</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">diag_R</span><span class="p">[</span><span class="n">positive_elements</span><span class="p">])</span>
+        <span class="n">lexp_i</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diag_R</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+        <span class="n">lexp</span><span class="p">[</span><span class="n">positive_elements</span><span class="p">]</span> <span class="o">+=</span> <span class="n">lexp_i</span><span class="p">[</span><span class="n">positive_elements</span><span class="p">]</span>
+        <span class="n">lexp_counts</span><span class="p">[</span><span class="n">positive_elements</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># normalize exponents over number of individual mat_Rs</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lexp_counts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">lexp</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">/=</span> <span class="n">lexp_counts</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">lexp</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lexp_counts</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="c1"># normalize with respect to tau</span>
+    <span class="n">lexp</span> <span class="o">/=</span> <span class="n">tau</span>
+    <span class="c1"># take m into account</span>
+    <span class="n">lexp</span> <span class="o">/=</span> <span class="n">m</span>
+
+    <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Minimum_Neighbors&quot;</span><span class="p">:</span> <span class="n">min_neighbors</span><span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">lexp</span><span class="p">,</span> <span class="n">parameters</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

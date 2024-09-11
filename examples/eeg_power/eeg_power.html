@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>EEG Power in Frequency Bands &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/eeg_power/eeg_power';</script>
+    <link rel="icon" href="../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="EEG Complexity Analysis" href="../eeg_complexity/eeg_complexity.html" />
+    <link rel="prev" title="Save Preprocessing Reports" href="../ppg_report/ppg_report.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/edit/dev/docs/examples/eeg_power/eeg_power.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2Fexamples/eeg_power/eeg_power.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/examples/eeg_power/eeg_power.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>EEG Power in Frequency Bands</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-frequency-bands">EEG Frequency Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frontal-alpha-asymmetry-faa">Frontal Alpha Asymmetry (FAA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frontal-midline-theta-fmt">Frontal Midline Theta (FMT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-electrophysiological-noise">1/f Electrophysiological Noise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="eeg-power-in-frequency-bands">
+<h1>EEG Power in Frequency Bands<a class="headerlink" href="#eeg-power-in-frequency-bands" title="Link to this heading">#</a></h1>
+<p>This example can be referenced by <a class="reference external" href="https://github.com/neuropsychology/NeuroKit#citation">citing the package</a>.</p>
+<p><strong>This example is not ready. We need your help to help us create a small example on how to compute do frequency power analysis for EEG data!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section id="eeg-frequency-bands">
+<h2>EEG Frequency Bands<a class="headerlink" href="#eeg-frequency-bands" title="Link to this heading">#</a></h2>
+<p>From fastest to slowest:</p>
+<ul class="simple">
+<li><p><strong>Gamma</strong> (30-80 Hz)</p></li>
+<li><p><strong>Beta</strong> (13-30 Hz): Strongest in the frontocentral regions.</p>
+<ul>
+<li><p><strong>Beta 1</strong> (13–16 Hz)</p></li>
+<li><p><strong>Beta 2</strong> (16–20 Hz)</p></li>
+<li><p><strong>Beta 3</strong> (20–28 Hz)</p></li>
+</ul>
+</li>
+<li><p><strong>SMR</strong> (13-15 Hz): Sensorimotor rhythm over the sensorimotor cortex. SMR typically decreases in amplitude when the corresponding sensory or motor areas are activated.</p></li>
+<li><p><strong>Alpha</strong> (8-13 Hz): Strongest in the occipital areas at the back of the scalp (visual cortex). Alpha power is assumed to be inversely related to cortical activation. Alpha power could be regarded as an index of top-down processing, representing a mechanism for increasing the signal-to-noise ratio.</p></li>
+<li><p><strong>Mu</strong> (9-11 Hz): The mu rhythm can be found in the frontoparietal region: over the motor cortex, in a band approximately from ear to ear.</p></li>
+<li><p><strong>Theta</strong> (4-8 Hz): Midline theta is usually maximal in the frontal or fronto-central regions.</p></li>
+<li><p><strong>Delta</strong> (1-4 Hz): Strongest in frontal areas. Inhibition of the sensory afferences (Harmony, 2013).</p></li>
+</ul>
+<p>Note that the ranges are approximate and artificial, and studies are quite <a class="reference external" href="https://sapienlabs.org/the-remarkable-inconsistency-of-frequency-band-definitions/">inconsistent</a> in their definition.</p>
+</section>
+<section id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the NeuroKit package and other useful packages</span>
+<span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+<span class="kn">import</span> <span class="nn">mne</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;eeg_1min_200hz&quot;</span><span class="p">)</span>
+
+<span class="n">events</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">find_events</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">stim_channel</span><span class="o">=</span><span class="s1">&#39;STI 014&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">event_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;auditory/left&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;auditory/right&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;visual/left&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+              <span class="s1">&#39;visual/right&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;face&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;buttonpress&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">}</span>
+              
+<span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;sfreq&quot;</span><span class="p">]</span>  <span class="c1"># Store the sampling rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectrum</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">compute_psd</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;welch&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">spectrum</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Effective window size : 10.240 (s)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plotting power spectral density (dB=True).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\mne\viz\utils.py:158: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  (fig or plt).show(**kwargs)
+</pre></div>
+</div>
+<img alt="../../_images/710d596fd39571732360ddb82582b9e2ab5394c961c6a47c5346917879758457.png" src="../../_images/710d596fd39571732360ddb82582b9e2ab5394c961c6a47c5346917879758457.png" />
+</div>
+</div>
+</section>
+<section id="frontal-alpha-asymmetry-faa">
+<h2>Frontal Alpha Asymmetry (FAA)<a class="headerlink" href="#frontal-alpha-asymmetry-faa" title="Link to this heading">#</a></h2>
+<p>Frontal Alpha Asymmetry (FAA) is the difference between right and left alpha activity over frontal regions of the brain (Davidson et al., 1990). Relatively higher right to left alpha power has commonly been interpreted as relatively higher left to right brain activity (Reznik and Allen 2018). The laterality quotient (LQ) is calculated by subtracting left alpha power from right alpha power ($log_{right} - log_{left}$).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bandpass filter in the alpha band</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># epoch</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="n">event_id</span><span class="o">=</span><span class="n">event_dict</span><span class="p">,</span> 
+                    <span class="n">tmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">reject</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">eeg</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">,</span> <span class="n">eog</span><span class="o">=</span><span class="mf">200e-6</span><span class="p">),</span>  <span class="c1"># 100 µV, 200 µV</span>
+                    <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># remove evoked response</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">subtract_evoked</span><span class="p">()</span>
+
+<span class="c1"># get analytic signal (envelope)</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">apply_hilbert</span><span class="p">(</span><span class="n">envelope</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Get channels</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">pick</span><span class="p">([</span><span class="s2">&quot;eeg&quot;</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_data_frame</span><span class="p">()</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Subtracting Evoked from Epochs
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    The following channels are not included in the subtraction: EOG 061, STI 001, STI 002, STI 005, STI 003, STI 006, STI 014, STI 004, STI 015, STI 016
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[done]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>condition</th>
+      <th>epoch</th>
+      <th>EEG 001</th>
+      <th>EEG 002</th>
+      <th>EEG 003</th>
+      <th>EEG 004</th>
+      <th>EEG 005</th>
+      <th>EEG 006</th>
+      <th>EEG 007</th>
+      <th>...</th>
+      <th>EEG 051</th>
+      <th>EEG 052</th>
+      <th>EEG 053</th>
+      <th>EEG 054</th>
+      <th>EEG 055</th>
+      <th>EEG 056</th>
+      <th>EEG 057</th>
+      <th>EEG 058</th>
+      <th>EEG 059</th>
+      <th>EEG 060</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.000</td>
+      <td>auditory/left</td>
+      <td>2</td>
+      <td>4.603340</td>
+      <td>5.577354</td>
+      <td>5.549989</td>
+      <td>2.294839</td>
+      <td>1.603964</td>
+      <td>8.190367</td>
+      <td>6.997543</td>
+      <td>...</td>
+      <td>3.343396</td>
+      <td>3.490367</td>
+      <td>0.495476</td>
+      <td>2.107493</td>
+      <td>3.614102</td>
+      <td>4.115371</td>
+      <td>2.246272</td>
+      <td>3.192879</td>
+      <td>3.651536</td>
+      <td>4.649433</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.995</td>
+      <td>auditory/left</td>
+      <td>2</td>
+      <td>4.130175</td>
+      <td>4.795339</td>
+      <td>4.697831</td>
+      <td>3.770529</td>
+      <td>1.905294</td>
+      <td>6.939186</td>
+      <td>5.987536</td>
+      <td>...</td>
+      <td>5.374473</td>
+      <td>5.517775</td>
+      <td>0.415732</td>
+      <td>2.847505</td>
+      <td>5.838453</td>
+      <td>6.378043</td>
+      <td>3.554294</td>
+      <td>5.083503</td>
+      <td>5.887976</td>
+      <td>6.621199</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.990</td>
+      <td>auditory/left</td>
+      <td>2</td>
+      <td>3.757025</td>
+      <td>4.743189</td>
+      <td>4.512835</td>
+      <td>3.853489</td>
+      <td>1.749135</td>
+      <td>6.568133</td>
+      <td>5.846587</td>
+      <td>...</td>
+      <td>5.241180</td>
+      <td>5.575242</td>
+      <td>0.372363</td>
+      <td>2.161122</td>
+      <td>5.567885</td>
+      <td>6.417209</td>
+      <td>3.076908</td>
+      <td>4.609265</td>
+      <td>5.671409</td>
+      <td>6.621751</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.985</td>
+      <td>auditory/left</td>
+      <td>2</td>
+      <td>4.266403</td>
+      <td>5.151007</td>
+      <td>4.877517</td>
+      <td>4.480817</td>
+      <td>2.083486</td>
+      <td>7.107199</td>
+      <td>6.292162</td>
+      <td>...</td>
+      <td>5.946933</td>
+      <td>6.280525</td>
+      <td>0.406884</td>
+      <td>2.435819</td>
+      <td>6.318629</td>
+      <td>7.134714</td>
+      <td>3.336008</td>
+      <td>5.231508</td>
+      <td>6.358379</td>
+      <td>7.110262</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.980</td>
+      <td>auditory/left</td>
+      <td>2</td>
+      <td>4.025493</td>
+      <td>5.072771</td>
+      <td>4.691993</td>
+      <td>4.604783</td>
+      <td>2.055094</td>
+      <td>6.765428</td>
+      <td>6.090766</td>
+      <td>...</td>
+      <td>5.881406</td>
+      <td>6.355397</td>
+      <td>0.373503</td>
+      <td>1.838393</td>
+      <td>6.152002</td>
+      <td>7.161327</td>
+      <td>2.931837</td>
+      <td>4.898243</td>
+      <td>6.209309</td>
+      <td>7.028288</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 63 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">plot_sensors</span><span class="p">(</span><span class="n">show_names</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c802c82f6d602ff6cb747f699cf2b1a9fb536f8a10fe9f96b411180d219f8e9d.png" src="../../_images/c802c82f6d602ff6cb747f699cf2b1a9fb536f8a10fe9f96b411180d219f8e9d.png" />
+</div>
+</div>
+<p>This is work in progress for now. Help is needed to finish this example!</p>
+<p>See https://mne.tools/dev/auto_examples/time_frequency/time_frequency_global_field_power.html</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Left&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s2">&quot;EEG 001&quot;</span><span class="p">,</span> <span class="s2">&quot;EEG 002&quot;</span><span class="p">,</span> <span class="s2">&quot;EEG 004&quot;</span><span class="p">,</span> <span class="s2">&quot;EEG 005&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;Right&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s2">&quot;EEG 003&quot;</span><span class="p">,</span> <span class="s2">&quot;EEG 006&quot;</span><span class="p">,</span> <span class="s2">&quot;EEG 007&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;FAA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Right&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Left&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frontal-midline-theta-fmt">
+<h2>Frontal Midline Theta (FMT)<a class="headerlink" href="#frontal-midline-theta-fmt" title="Link to this heading">#</a></h2>
+<p>Work in Progress. Please help!</p>
+</section>
+<section id="f-electrophysiological-noise">
+<h2>1/f Electrophysiological Noise<a class="headerlink" href="#f-electrophysiological-noise" title="Link to this heading">#</a></h2>
+<p>Electrophysiological signal is not a simple superposition of sinusoids of various frequencies, and its spectrum should not be interpreted as such.</p>
+<p>Individual frequencies are indeed not independent of one another (Milotti, 2002). The EEG power spectrum is dominantly structured by a decreasing function with lower power at higher frequencies that approximates a <strong>1/f pattern</strong> (Pritchard, 1992; Voytek et al., 2015). There is an inverse relationship between frequency and power, and the steepness with which the power drops off as the frequency gets higher is represented by the exponent γ.</p>
+<p>Estimation of the 1/f exponent γ (Voytek et al., 2015) provides a consolidated view of the differences across bands and can be used to compute the difference between any two frequencies if desired. The 1/f decay exponent is best estimated in the range of 2–30 Hz where baseline drifts, line noise and distortions introduced by band pass filters have the least impact (Newson, 2019).</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ppg_report/ppg_report.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Save Preprocessing Reports</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../eeg_complexity/eeg_complexity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">EEG Complexity Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-frequency-bands">EEG Frequency Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frontal-alpha-asymmetry-faa">Frontal Alpha Asymmetry (FAA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frontal-midline-theta-fmt">Frontal Midline Theta (FMT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-electrophysiological-noise">1/f Electrophysiological Noise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

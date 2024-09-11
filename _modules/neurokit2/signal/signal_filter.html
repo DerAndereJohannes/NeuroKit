@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurokit2.signal.signal_filter &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/signal/signal_filter';</script>
+    <link rel="icon" href="../../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2F_modules/neurokit2/signal/signal_filter.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for neurokit2.signal.signal_filter</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span>
+
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">NeuroKitWarning</span>
+<span class="kn">from</span> <span class="nn">.signal_interpolate</span> <span class="kn">import</span> <span class="n">signal_interpolate</span>
+
+
+<div class="viewcode-block" id="signal_filter">
+<a class="viewcode-back" href="../../../functions/signal.html#neurokit2.signal_filter">[docs]</a>
+<span class="k">def</span> <span class="nf">signal_filter</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">lowcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">highcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butterworth&quot;</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">window_size</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+    <span class="n">powerline</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;**Signal filtering**</span>
+
+<span class="sd">    Filter a signal using different methods such as &quot;butterworth&quot;, &quot;fir&quot;, &quot;savgol&quot; or &quot;powerline&quot;</span>
+<span class="sd">    filters.</span>
+
+<span class="sd">    Apply a lowpass (if &quot;highcut&quot; frequency is provided), highpass (if &quot;lowcut&quot; frequency is</span>
+<span class="sd">    provided) or bandpass (if both are provided) filter to the signal.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    signal : Union[list, np.array, pd.Series]</span>
+<span class="sd">        The signal (i.e., a time series) in the form of a vector of values.</span>
+<span class="sd">    sampling_rate : int</span>
+<span class="sd">        The sampling frequency of the signal (in Hz, i.e., samples/second).</span>
+<span class="sd">    lowcut : float</span>
+<span class="sd">        Lower cutoff frequency in Hz. The default is ``None``.</span>
+<span class="sd">    highcut : float</span>
+<span class="sd">        Upper cutoff frequency in Hz. The default is ``None``.</span>
+<span class="sd">    method : str</span>
+<span class="sd">        Can be one of ``&quot;butterworth&quot;``, ``&quot;fir&quot;``, ``&quot;bessel&quot;`` or ``&quot;savgol&quot;``. Note that for</span>
+<span class="sd">        Butterworth, the function uses the SOS method from :func:`.scipy.signal.sosfiltfilt`,</span>
+<span class="sd">        recommended for general purpose filtering. One can also specify ``&quot;butterworth_ba&quot;`` for a</span>
+<span class="sd">        more traditional and legacy method (often implemented in other software).</span>
+<span class="sd">    order : int</span>
+<span class="sd">        Only used if ``method`` is ``&quot;butterworth&quot;`` or ``&quot;savgol&quot;``. Order of the filter (default</span>
+<span class="sd">        is 2).</span>
+<span class="sd">    window_size : int</span>
+<span class="sd">        Only used if ``method`` is ``&quot;savgol&quot;``. The length of the filter window (i.e. the number of</span>
+<span class="sd">        coefficients). Must be an odd integer. If default, will be set to the sampling rate</span>
+<span class="sd">        divided by 10 (101 if the sampling rate is 1000 Hz).</span>
+<span class="sd">    powerline : int</span>
+<span class="sd">        Only used if ``method`` is ``&quot;powerline&quot;``.</span>
+<span class="sd">        The powerline frequency (normally 50 Hz or 60Hz).</span>
+<span class="sd">    show : bool</span>
+<span class="sd">        If ``True``, plot the filtered signal as an overlay of the original.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    signal_detrend, signal_psd</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array</span>
+<span class="sd">        Vector containing the filtered signal.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import numpy as np</span>
+<span class="sd">      import pandas as pd</span>
+<span class="sd">      import neurokit2 as nk</span>
+
+<span class="sd">      signal = nk.signal_simulate(duration=10, frequency=0.5) # Low freq</span>
+<span class="sd">      signal += nk.signal_simulate(duration=10, frequency=5) # High freq</span>
+
+<span class="sd">      # Visualize Lowpass Filtered Signal using Different Methods</span>
+<span class="sd">      @savefig p_signal_filter1.png scale=100%</span>
+<span class="sd">      fig1 = pd.DataFrame({&quot;Raw&quot;: signal,</span>
+<span class="sd">                         &quot;Butter_2&quot;: nk.signal_filter(signal, highcut=3, method=&quot;butterworth&quot;,</span>
+<span class="sd">                          order=2),</span>
+<span class="sd">                         &quot;Butter_2_BA&quot;: nk.signal_filter(signal, highcut=3,</span>
+<span class="sd">                          method=&quot;butterworth_ba&quot;, order=2),</span>
+<span class="sd">                         &quot;Butter_5&quot;: nk.signal_filter(signal, highcut=3, method=&quot;butterworth&quot;,</span>
+<span class="sd">                          order=5),</span>
+<span class="sd">                         &quot;Butter_5_BA&quot;: nk.signal_filter(signal, highcut=3,</span>
+<span class="sd">                          method=&quot;butterworth_ba&quot;, order=5),</span>
+<span class="sd">                         &quot;Bessel_2&quot;: nk.signal_filter(signal, highcut=3, method=&quot;bessel&quot;, order=2),</span>
+<span class="sd">                         &quot;Bessel_5&quot;: nk.signal_filter(signal, highcut=3, method=&quot;bessel&quot;, order=5),</span>
+<span class="sd">                         &quot;FIR&quot;: nk.signal_filter(signal, highcut=3, method=&quot;fir&quot;)}).plot(subplots=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      # Visualize Highpass Filtered Signal using Different Methods</span>
+<span class="sd">      @savefig p_signal_filter2.png scale=100%</span>
+<span class="sd">      fig2 = pd.DataFrame({&quot;Raw&quot;: signal,</span>
+<span class="sd">                          &quot;Butter_2&quot;: nk.signal_filter(signal, lowcut=2, method=&quot;butterworth&quot;,</span>
+<span class="sd">                          order=2),</span>
+<span class="sd">                          &quot;Butter_2_ba&quot;: nk.signal_filter(signal, lowcut=2,</span>
+<span class="sd">                          method=&quot;butterworth_ba&quot;, order=2),</span>
+<span class="sd">                          &quot;Butter_5&quot;: nk.signal_filter(signal, lowcut=2, method=&quot;butterworth&quot;,</span>
+<span class="sd">                          order=5),</span>
+<span class="sd">                          &quot;Butter_5_BA&quot;: nk.signal_filter(signal, lowcut=2,</span>
+<span class="sd">                          method=&quot;butterworth_ba&quot;, order=5),</span>
+<span class="sd">                          &quot;Bessel_2&quot;: nk.signal_filter(signal, lowcut=2, method=&quot;bessel&quot;, order=2),</span>
+<span class="sd">                          &quot;Bessel_5&quot;: nk.signal_filter(signal, lowcut=2, method=&quot;bessel&quot;, order=5),</span>
+<span class="sd">                          &quot;FIR&quot;: nk.signal_filter(signal, lowcut=2, method=&quot;fir&quot;)}).plot(subplots=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      # Using Bandpass Filtering in real-life scenarios</span>
+<span class="sd">      # Simulate noisy respiratory signal</span>
+<span class="sd">      original = nk.rsp_simulate(duration=30, method=&quot;breathmetrics&quot;, noise=0)</span>
+<span class="sd">      signal = nk.signal_distort(original, noise_frequency=[0.1, 2, 10, 100], noise_amplitude=1,</span>
+<span class="sd">                                powerline_amplitude=1)</span>
+
+<span class="sd">      # Bandpass between 10 and 30 breaths per minute (respiratory rate range)</span>
+<span class="sd">      @savefig p_signal_filter3.png scale=100%</span>
+<span class="sd">      fig3 = pd.DataFrame({&quot;Raw&quot;: signal,</span>
+<span class="sd">                           &quot;Butter_2&quot;: nk.signal_filter(signal, lowcut=10/60, highcut=30/60,</span>
+<span class="sd">                                                        method=&quot;butterworth&quot;, order=2),</span>
+<span class="sd">                           &quot;Butter_2_BA&quot;: nk.signal_filter(signal, lowcut=10/60, highcut=30/60,</span>
+<span class="sd">                                                           method=&quot;butterworth_ba&quot;, order=2),</span>
+<span class="sd">                           &quot;Butter_5&quot;: nk.signal_filter(signal, lowcut=10/60, highcut=30/60,</span>
+<span class="sd">                                                        method=&quot;butterworth&quot;, order=5),</span>
+<span class="sd">                           &quot;Butter_5_BA&quot;: nk.signal_filter(signal, lowcut=10/60, highcut=30/60,</span>
+<span class="sd">                                                           method=&quot;butterworth_ba&quot;, order=5),</span>
+<span class="sd">                           &quot;Bessel_2&quot;: nk.signal_filter(signal, lowcut=10/60, highcut=30/60,</span>
+<span class="sd">                                                        method=&quot;bessel&quot;, order=2),</span>
+<span class="sd">                           &quot;Bessel_5&quot;: nk.signal_filter(signal, lowcut=10/60, highcut=30/60,</span>
+<span class="sd">                                                        method=&quot;bessel&quot;, order=5),</span>
+<span class="sd">                           &quot;FIR&quot;: nk.signal_filter(signal, lowcut=10/60, highcut=30/60,</span>
+<span class="sd">                                                   method=&quot;fir&quot;),</span>
+<span class="sd">                           &quot;Savgol&quot;: nk.signal_filter(signal, method=&quot;savgol&quot;)}).plot(subplots=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="n">signal_sanitized</span><span class="p">,</span> <span class="n">missing</span> <span class="o">=</span> <span class="n">_signal_filter_missing</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;sg&quot;</span><span class="p">,</span> <span class="s2">&quot;savgol&quot;</span><span class="p">,</span> <span class="s2">&quot;savitzky-golay&quot;</span><span class="p">]:</span>
+        <span class="n">filtered</span> <span class="o">=</span> <span class="n">_signal_filter_savgol</span><span class="p">(</span><span class="n">signal_sanitized</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;powerline&quot;</span><span class="p">]:</span>
+        <span class="n">filtered</span> <span class="o">=</span> <span class="n">_signal_filter_powerline</span><span class="p">(</span><span class="n">signal_sanitized</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">powerline</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="c1"># Sanity checks</span>
+        <span class="k">if</span> <span class="n">lowcut</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">highcut</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;NeuroKit error: signal_filter(): you need to specify a &#39;lowcut&#39; or a &#39;highcut&#39;.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;butter&quot;</span><span class="p">,</span> <span class="s2">&quot;butterworth&quot;</span><span class="p">]:</span>
+            <span class="n">filtered</span> <span class="o">=</span> <span class="n">_signal_filter_butterworth</span><span class="p">(</span><span class="n">signal_sanitized</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;butter_ba&quot;</span><span class="p">,</span> <span class="s2">&quot;butterworth_ba&quot;</span><span class="p">]:</span>
+            <span class="n">filtered</span> <span class="o">=</span> <span class="n">_signal_filter_butterworth_ba</span><span class="p">(</span><span class="n">signal_sanitized</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;butter_zi&quot;</span><span class="p">,</span> <span class="s2">&quot;butterworth_zi&quot;</span><span class="p">]:</span>
+            <span class="n">filtered</span> <span class="o">=</span> <span class="n">_signal_filter_butterworth_zi</span><span class="p">(</span><span class="n">signal_sanitized</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;bessel&quot;</span><span class="p">]:</span>
+            <span class="n">filtered</span> <span class="o">=</span> <span class="n">_signal_filter_bessel</span><span class="p">(</span><span class="n">signal_sanitized</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fir&quot;</span><span class="p">]:</span>
+            <span class="n">filtered</span> <span class="o">=</span> <span class="n">_signal_filter_fir</span><span class="p">(</span><span class="n">signal_sanitized</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;NeuroKit error: signal_filter(): &#39;method&#39; should be&quot;</span><span class="p">,</span>
+                <span class="s2">&quot; one of &#39;butterworth&#39;, &#39;butterworth_ba&#39;, &#39;butterworth_zi&#39;, &#39;bessel&#39;,&quot;</span><span class="p">,</span>
+                <span class="s2">&quot; &#39;savgol&#39; or &#39;fir&#39;.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="n">filtered</span><span class="p">[</span><span class="n">missing</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgrey&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">filtered</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filtered</span></div>
+
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Savitzky-Golay (savgol)</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_filter_savgol</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter a signal using the Savitzky-Golay method.</span>
+
+<span class="sd">    Default window size is chosen based on `Sadeghi, M., &amp; Behnia, F. (2018). Optimum window length of</span>
+<span class="sd">    Savitzky-Golay filters with arbitrary order. arXiv preprint arXiv:1808.10489.</span>
+<span class="sd">    &lt;https://arxiv.org/ftp/arxiv/papers/1808/1808.10489.pdf&gt;`_.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">window_size</span> <span class="o">=</span> <span class="n">_signal_filter_windowsize</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">window_size</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">window_size</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># Make sure it&#39;s odd</span>
+
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">savgol_filter</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">window_size</span><span class="p">),</span> <span class="n">polyorder</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># FIR</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_signal_filter_fir</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">lowcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter a signal using a FIR filter.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">mne</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+            <span class="s2">&quot;NeuroKit error: signal_filter(): the &#39;mne&#39; module is required for this method to run. &quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please install it first (`pip install mne`).&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">window_size</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">window_size</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>
+
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">filter_data</span><span class="p">(</span>
+        <span class="n">signal</span><span class="p">,</span>
+        <span class="n">sfreq</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">l_freq</span><span class="o">=</span><span class="n">lowcut</span><span class="p">,</span>
+        <span class="n">h_freq</span><span class="o">=</span><span class="n">highcut</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fir&quot;</span><span class="p">,</span>
+        <span class="n">fir_window</span><span class="o">=</span><span class="s2">&quot;hamming&quot;</span><span class="p">,</span>
+        <span class="n">filter_length</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span>
+        <span class="n">l_trans_bandwidth</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">h_trans_bandwidth</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">phase</span><span class="o">=</span><span class="s2">&quot;zero-double&quot;</span><span class="p">,</span>
+        <span class="n">fir_design</span><span class="o">=</span><span class="s2">&quot;firwin&quot;</span><span class="p">,</span>
+        <span class="n">pad</span><span class="o">=</span><span class="s2">&quot;reflect_limited&quot;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Butterworth</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_filter_butterworth</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">lowcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter a signal using IIR Butterworth SOS method.&quot;&quot;&quot;</span>
+    <span class="n">freqs</span><span class="p">,</span> <span class="n">filter_type</span> <span class="o">=</span> <span class="n">_signal_filter_sanitize</span><span class="p">(</span><span class="n">lowcut</span><span class="o">=</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="n">highcut</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="n">sos</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">btype</span><span class="o">=</span><span class="n">filter_type</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;sos&quot;</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">sosfiltfilt</span><span class="p">(</span><span class="n">sos</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_filter_butterworth_ba</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">lowcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter a signal using IIR Butterworth B/A method.&quot;&quot;&quot;</span>
+    <span class="c1"># Get coefficients</span>
+    <span class="n">freqs</span><span class="p">,</span> <span class="n">filter_type</span> <span class="o">=</span> <span class="n">_signal_filter_sanitize</span><span class="p">(</span><span class="n">lowcut</span><span class="o">=</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="n">highcut</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">btype</span><span class="o">=</span><span class="n">filter_type</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;ba&quot;</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">filtered</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;gust&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">filtered</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pad&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filtered</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_filter_butterworth_zi</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">lowcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter a signal using IIR Butterworth SOS method, given initial state (zi).&quot;&quot;&quot;</span>
+
+    <span class="n">freqs</span><span class="p">,</span> <span class="n">filter_type</span> <span class="o">=</span> <span class="n">_signal_filter_sanitize</span><span class="p">(</span><span class="n">lowcut</span><span class="o">=</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="n">highcut</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+
+    <span class="n">sos</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">btype</span><span class="o">=</span><span class="n">filter_type</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;sos&quot;</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+
+    <span class="n">zi_coeff</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">sosfilt_zi</span><span class="p">(</span><span class="n">sos</span><span class="p">)</span>
+    <span class="n">zi</span> <span class="o">=</span> <span class="n">zi_coeff</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="c1"># Filter data along one dimension using cascaded second-order sections.</span>
+    <span class="k">return</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">sosfilt</span><span class="p">(</span><span class="n">sos</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">zi</span><span class="o">=</span><span class="n">zi</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Bessel</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_filter_bessel</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">lowcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">freqs</span><span class="p">,</span> <span class="n">filter_type</span> <span class="o">=</span> <span class="n">_signal_filter_sanitize</span><span class="p">(</span><span class="n">lowcut</span><span class="o">=</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="n">highcut</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+
+    <span class="n">sos</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">bessel</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">btype</span><span class="o">=</span><span class="n">filter_type</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;sos&quot;</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">sosfiltfilt</span><span class="p">(</span><span class="n">sos</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Powerline</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_filter_powerline</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">powerline</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter out 50 Hz powerline noise by smoothing the signal with a moving average kernel with the width of one</span>
+<span class="sd">    period of 50Hz.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">sampling_rate</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">sampling_rate</span> <span class="o">/</span> <span class="n">powerline</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pad&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Utility</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_signal_filter_sanitize</span><span class="p">(</span><span class="n">lowcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+    <span class="c1"># Sanity checks</span>
+    <span class="k">if</span> <span class="n">lowcut</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">highcut</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">sampling_rate</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)):</span>
+            <span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;The sampling rate is too low. Sampling rate&quot;</span>
+                <span class="s2">&quot; must exceed the Nyquist rate to avoid aliasing problem.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; In this analysis, the sampling rate has to be higher than </span><span class="si">{</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">highcut</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="c1"># Replace 0 by none</span>
+    <span class="k">if</span> <span class="n">lowcut</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">lowcut</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">lowcut</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">highcut</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">highcut</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">highcut</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Format</span>
+    <span class="k">if</span> <span class="n">lowcut</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">highcut</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">lowcut</span> <span class="o">&gt;</span> <span class="n">highcut</span><span class="p">:</span>
+            <span class="n">filter_type</span> <span class="o">=</span> <span class="s2">&quot;bandstop&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">filter_type</span> <span class="o">=</span> <span class="s2">&quot;bandpass&quot;</span>
+        <span class="c1"># pass frequencies in order of lowest to highest to the scipy filter</span>
+        <span class="n">freqs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">([</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">]))</span>
+    <span class="k">elif</span> <span class="n">lowcut</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">freqs</span> <span class="o">=</span> <span class="n">lowcut</span>
+        <span class="n">filter_type</span> <span class="o">=</span> <span class="s2">&quot;highpass&quot;</span>
+    <span class="k">elif</span> <span class="n">highcut</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">freqs</span> <span class="o">=</span> <span class="n">highcut</span>
+        <span class="n">filter_type</span> <span class="o">=</span> <span class="s2">&quot;lowpass&quot;</span>
+
+    <span class="c1"># Normalize frequency to Nyquist Frequency (Fs/2).</span>
+    <span class="c1"># However, no need to normalize if `fs` argument is provided to the scipy filter</span>
+    <span class="k">if</span> <span class="n">normalize</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sampling_rate</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">filter_type</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_filter_windowsize</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">window_size</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">window_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sampling_rate</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">window_size</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># pylint: disable=W0104</span>
+    <span class="k">return</span> <span class="n">window_size</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_filter_missing</span><span class="p">(</span><span class="n">signal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Interpolate missing data and save the indices of the missing data.&quot;&quot;&quot;</span>
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">signal</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">signal_interpolate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">),</span> <span class="n">missing</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">signal</span><span class="p">,</span> <span class="n">missing</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

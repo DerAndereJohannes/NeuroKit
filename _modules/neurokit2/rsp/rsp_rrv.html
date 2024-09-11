@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurokit2.rsp.rsp_rrv &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/rsp/rsp_rrv';</script>
+    <link rel="icon" href="../../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2F_modules/neurokit2/rsp/rsp_rrv.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for neurokit2.rsp.rsp_rrv</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..complexity</span> <span class="kn">import</span> <span class="n">entropy_approximate</span><span class="p">,</span> <span class="n">entropy_sample</span><span class="p">,</span> <span class="n">fractal_dfa</span>
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">NeuroKitWarning</span>
+<span class="kn">from</span> <span class="nn">..signal</span> <span class="kn">import</span> <span class="n">signal_power</span><span class="p">,</span> <span class="n">signal_rate</span>
+<span class="kn">from</span> <span class="nn">..signal.signal_formatpeaks</span> <span class="kn">import</span> <span class="n">_signal_formatpeaks_sanitize</span>
+<span class="kn">from</span> <span class="nn">..stats</span> <span class="kn">import</span> <span class="n">mad</span>
+
+
+<div class="viewcode-block" id="rsp_rrv">
+<a class="viewcode-back" href="../../../functions/rsp.html#neurokit2.rsp.rsp_rrv">[docs]</a>
+<span class="k">def</span> <span class="nf">rsp_rrv</span><span class="p">(</span><span class="n">rsp_rate</span><span class="p">,</span> <span class="n">troughs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;**Respiratory Rate Variability (RRV)**</span>
+
+<span class="sd">    Computes time domain and frequency domain features for Respiratory Rate Variability (RRV)</span>
+<span class="sd">    analysis.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    rsp_rate : array</span>
+<span class="sd">        Array containing the respiratory rate, produced by :func:`.signal_rate`.</span>
+<span class="sd">    troughs : dict</span>
+<span class="sd">        The samples at which the inhalation onsets occur.</span>
+<span class="sd">        Dict returned by :func:`rsp_peaks` (Accessible with the key, ``&quot;RSP_Troughs&quot;``).</span>
+<span class="sd">        Defaults to ``None``.</span>
+<span class="sd">    sampling_rate : int</span>
+<span class="sd">        The sampling frequency of the signal (in Hz, i.e., samples/second).</span>
+<span class="sd">    show : bool</span>
+<span class="sd">        If ``True``, will return a Poincaré plot, a scattergram, which plots each breath-to-breath</span>
+<span class="sd">        interval against the next successive one. The ellipse centers around the average</span>
+<span class="sd">        breath-to-breath interval. Defaults to ``False``.</span>
+<span class="sd">    silent : bool</span>
+<span class="sd">        If ``False``, warnings will be printed. Default to ``True``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">        DataFrame consisting of the computed RRV metrics, which includes:</span>
+
+<span class="sd">        .. codebookadd::</span>
+<span class="sd">            RRV_SDBB|The standard deviation of the breath-to-breath intervals.</span>
+<span class="sd">            RRV_RMSSD|The root mean square of successive differences of the breath-to-breath intervals.</span>
+<span class="sd">            RRV_SDSD|The standard deviation of the successive differences between adjacent \</span>
+<span class="sd">                breath-to-breath intervals.</span>
+<span class="sd">            RRV_BBx|The number of successive interval differences that are greater than x seconds.</span>
+<span class="sd">            RRV_pBBx|the proportion of breath-to-breath intervals that are greater than x seconds, \</span>
+<span class="sd">                out of the total number of intervals.</span>
+<span class="sd">            RRV_VLF|Spectral power density pertaining to very low frequency band (i.e., 0 to\</span>
+<span class="sd">                .04 Hz) by default.</span>
+<span class="sd">            RRV_LF|Spectral power density pertaining to low frequency band (i.e., .04 to \</span>
+<span class="sd">                .15 Hz) by default.</span>
+<span class="sd">            RRV_HF|Spectral power density pertaining to high frequency band (i.e., .15 to \</span>
+<span class="sd">                .4 Hz) by default.</span>
+<span class="sd">            RRV_LFHF|The ratio of low frequency power to high frequency power.</span>
+<span class="sd">            RRV_LFn|The normalized low frequency, obtained by dividing the low frequency power by \</span>
+<span class="sd">                the total power.</span>
+<span class="sd">            RRV_HFn|The normalized high frequency, obtained by dividing the low frequency power by \</span>
+<span class="sd">                total power.</span>
+<span class="sd">            RRV_SD1|SD1 is a measure of the spread of breath-to-breath intervals on the Poincaré \</span>
+<span class="sd">                plot perpendicular to the line of identity. It is an index of short-term variability.</span>
+<span class="sd">            RRV_SD2|SD2 is a measure of the spread of breath-to-breath intervals on the Poincaré \</span>
+<span class="sd">                plot along the line of identity. It is an index of long-term variability.</span>
+<span class="sd">            RRV_SD2SD1|The ratio between short and long term fluctuations of the breath-to-breath \</span>
+<span class="sd">                intervals (SD2 divided by SD1).</span>
+<span class="sd">            RRV_DFA_alpha1|The &quot;short-term&quot; fluctuation value generated from Detrended Fluctuation \</span>
+<span class="sd">                Analysis i.e. the root mean square deviation from the fitted trend of the \</span>
+<span class="sd">                breath-to-breath intervals. Will only be computed if mora than 160 breath cycles \</span>
+<span class="sd">                in the signal.</span>
+<span class="sd">            RRV_DFA_alpha2|The long-term fluctuation value. Will only be computed if mora than \</span>
+<span class="sd">                640 breath cycles in the signal.</span>
+<span class="sd">            RRV_ApEn|The approximate entropy of RRV, calculated by :func:`.entropy_approximate`.</span>
+<span class="sd">            RRV_SampEn|The sample entropy of RRV, calculated by :func:`.entropy_sample`.</span>
+
+<span class="sd">        * **MFDFA indices**: Indices related to the :func:`multifractal spectrum &lt;.fractal_dfa()&gt;`.</span>
+
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    signal_rate, rsp_peaks, signal_power, entropy_sample, entropy_approximate</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import neurokit2 as nk</span>
+
+<span class="sd">      rsp = nk.rsp_simulate(duration=90, respiratory_rate=15)</span>
+<span class="sd">      rsp, info = nk.rsp_process(rsp)</span>
+<span class="sd">      nk.rsp_rrv(rsp, show=True)</span>
+
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    * Soni, R., &amp; Muniyandi, M. (2019). Breath rate variability: a novel measure to study the</span>
+<span class="sd">      meditation effects. International Journal of Yoga, 12(1), 45.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sanitize input</span>
+    <span class="n">rsp_rate</span><span class="p">,</span> <span class="n">troughs</span> <span class="o">=</span> <span class="n">_rsp_rrv_formatinput</span><span class="p">(</span><span class="n">rsp_rate</span><span class="p">,</span> <span class="n">troughs</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+
+    <span class="c1"># Get raw and interpolated R-R intervals</span>
+    <span class="n">bbi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">troughs</span><span class="p">)</span> <span class="o">/</span> <span class="n">sampling_rate</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="n">rsp_period</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">sampling_rate</span> <span class="o">/</span> <span class="n">rsp_rate</span>
+
+    <span class="c1"># Get indices</span>
+    <span class="n">rrv</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Initialize empty dict</span>
+    <span class="n">rrv</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_rsp_rrv_time</span><span class="p">(</span><span class="n">bbi</span><span class="p">))</span>
+    <span class="n">rrv</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+        <span class="n">_rsp_rrv_frequency</span><span class="p">(</span><span class="n">rsp_period</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="n">silent</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">rrv</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_rsp_rrv_nonlinear</span><span class="p">(</span><span class="n">bbi</span><span class="p">))</span>
+
+    <span class="n">rrv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">rrv</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">add_prefix</span><span class="p">(</span><span class="s2">&quot;RRV_&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+        <span class="n">_rsp_rrv_plot</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rrv</span></div>
+
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Methods (Domains)</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_rsp_rrv_time</span><span class="p">(</span><span class="n">bbi</span><span class="p">):</span>
+    <span class="n">diff_bbi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Initialize empty dict</span>
+
+    <span class="c1"># Mean based</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;RMSSD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diff_bbi</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MeanBB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SDBB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">bbi</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SDSD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">diff_bbi</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;CVBB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SDBB&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MeanBB&quot;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;CVSD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;RMSSD&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MeanBB&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Robust</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MedianBB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MadBB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mad</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MCVBB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MadBB&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MedianBB&quot;</span><span class="p">]</span>
+
+    <span class="c1">#    # Extreme-based</span>
+    <span class="c1">#    nn50 = np.sum(np.abs(diff_rri) &gt; 50)</span>
+    <span class="c1">#    nn20 = np.sum(np.abs(diff_rri) &gt; 20)</span>
+    <span class="c1">#    out[&quot;pNN50&quot;] = nn50 / len(rri) * 100</span>
+    <span class="c1">#    out[&quot;pNN20&quot;] = nn20 / len(rri) * 100</span>
+    <span class="c1">#</span>
+    <span class="c1">#    # Geometrical domain</span>
+    <span class="c1">#    bar_y, bar_x = np.histogram(rri, bins=range(300, 2000, 8))</span>
+    <span class="c1">#    bar_y, bar_x = np.histogram(rri, bins=&quot;auto&quot;)</span>
+    <span class="c1">#    out[&quot;TINN&quot;] = np.max(bar_x) - np.min(bar_x)  # Triangular Interpolation of the NN Interval Histogram</span>
+    <span class="c1">#    out[&quot;HTI&quot;] = len(rri) / np.max(bar_y)  # HRV Triangular Index</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span> <span class="nf">_rsp_rrv_frequency</span><span class="p">(</span>
+    <span class="n">rsp_period</span><span class="p">,</span>
+    <span class="n">vlf</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">),</span>
+    <span class="n">lf</span><span class="o">=</span><span class="p">(</span><span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span>
+    <span class="n">hf</span><span class="o">=</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
+    <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;welch&quot;</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">signal_power</span><span class="p">(</span>
+        <span class="n">rsp_period</span><span class="p">,</span>
+        <span class="n">frequency_band</span><span class="o">=</span><span class="p">[</span><span class="n">vlf</span><span class="p">,</span> <span class="n">lf</span><span class="p">,</span> <span class="n">hf</span><span class="p">],</span>
+        <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+        <span class="n">max_frequency</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">power</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;VLF&quot;</span><span class="p">,</span> <span class="s2">&quot;LF&quot;</span><span class="p">,</span> <span class="s2">&quot;HF&quot;</span><span class="p">]</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">power</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">silent</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">out</span><span class="p">[</span><span class="n">frequency</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;The duration of recording is too short to allow&quot;</span>
+                    <span class="s2">&quot; reliable computation of signal power in frequency band &quot;</span> <span class="o">+</span> <span class="n">frequency</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span>
+                    <span class="s2">&quot; Its power is returned as zero.&quot;</span><span class="p">,</span>
+                    <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+                <span class="p">)</span>
+
+    <span class="c1"># Normalized</span>
+    <span class="n">total_power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">power</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;LFHF&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;LF&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;HF&quot;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;LFn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;LF&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total_power</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;HFn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;HF&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total_power</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span> <span class="nf">_rsp_rrv_nonlinear</span><span class="p">(</span><span class="n">bbi</span><span class="p">):</span>
+    <span class="n">diff_bbi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Poincaré plot</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">diff_bbi</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">bbi</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">diff_bbi</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2SD1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1&quot;</span><span class="p">]</span>
+
+    <span class="c1"># CSI / CVI</span>
+    <span class="c1">#    T = 4 * out[&quot;SD1&quot;]</span>
+    <span class="c1">#    L = 4 * out[&quot;SD2&quot;]</span>
+    <span class="c1">#    out[&quot;CSI&quot;] = L / T</span>
+    <span class="c1">#    out[&quot;CVI&quot;] = np.log10(L * T)</span>
+    <span class="c1">#    out[&quot;CSI_Modified&quot;] = L ** 2 / T</span>
+
+    <span class="c1"># Entropy</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;ApEn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">entropy_approximate</span><span class="p">(</span><span class="n">bbi</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SampEn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">entropy_sample</span><span class="p">(</span><span class="n">bbi</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">bbi</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># DFA</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">16</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;DFA_alpha1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fractal_dfa</span><span class="p">(</span><span class="n">bbi</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># For multifractal</span>
+        <span class="n">mdfa_alpha1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_dfa</span><span class="p">(</span>
+            <span class="n">bbi</span><span class="p">,</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mdfa_alpha1</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MFDFA_alpha1_&quot;</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">mdfa_alpha1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">65</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;DFA_alpha2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fractal_dfa</span><span class="p">(</span><span class="n">bbi</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># For multifractal</span>
+        <span class="n">mdfa_alpha2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_dfa</span><span class="p">(</span>
+            <span class="n">bbi</span><span class="p">,</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mdfa_alpha2</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MFDFA_alpha2_&quot;</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">mdfa_alpha2</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Internals</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_rsp_rrv_formatinput</span><span class="p">(</span><span class="n">rsp_rate</span><span class="p">,</span> <span class="n">troughs</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rsp_rate</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="n">rsp_rate</span> <span class="o">=</span> <span class="n">rsp_rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">troughs</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rsp_rate</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">rsp_rate</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s2">&quot;RSP_Rate&quot;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s2">&quot;RSP_Troughs&quot;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;NeuroKit error: _rsp_rrv_formatinput(): Wrong input, &quot;</span>
+                    <span class="s2">&quot;we couldn&#39;t extract rsp_rate and respiratory troughs indices.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rsp_rate</span> <span class="o">=</span> <span class="n">signal_rate</span><span class="p">(</span>
+                    <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">],</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">desired_length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rsp_rate</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="k">if</span> <span class="n">troughs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">troughs</span> <span class="o">=</span> <span class="n">_signal_formatpeaks_sanitize</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;RSP_Troughs&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;NeuroKit error: _rsp_rrv_formatinput(): &quot;</span>
+                <span class="s2">&quot;Wrong input, we couldn&#39;t extract &quot;</span>
+                <span class="s2">&quot;respiratory troughs indices.&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">troughs</span> <span class="o">=</span> <span class="n">_signal_formatpeaks_sanitize</span><span class="p">(</span><span class="n">troughs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;RSP_Troughs&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rsp_rate</span><span class="p">,</span> <span class="n">troughs</span>
+
+
+<span class="k">def</span> <span class="nf">_rsp_rrv_plot</span><span class="p">(</span><span class="n">bbi</span><span class="p">):</span>
+    <span class="c1"># Axes</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">bbi</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">bbi</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="c1"># Compute features</span>
+    <span class="n">poincare_features</span> <span class="o">=</span> <span class="n">_rsp_rrv_nonlinear</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span>
+    <span class="n">sd1</span> <span class="o">=</span> <span class="n">poincare_features</span><span class="p">[</span><span class="s2">&quot;SD1&quot;</span><span class="p">]</span>
+    <span class="n">sd2</span> <span class="o">=</span> <span class="n">poincare_features</span><span class="p">[</span><span class="s2">&quot;SD2&quot;</span><span class="p">]</span>
+    <span class="n">mean_bbi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span>
+
+    <span class="c1"># Plot</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Poincaré Plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;BB_n (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;BB_n+1 (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">bbi</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="c1"># Ellipse plot feature</span>
+    <span class="n">ellipse</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span>
+        <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">mean_bbi</span><span class="p">,</span> <span class="n">mean_bbi</span><span class="p">),</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sd2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sd1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">ellipse</span><span class="p">)</span>
+    <span class="n">ellipse</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span>
+        <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">mean_bbi</span><span class="p">,</span> <span class="n">mean_bbi</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sd2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sd1</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">45</span>
+    <span class="p">)</span>
+    <span class="n">ellipse</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.02</span><span class="p">)</span>
+    <span class="n">ellipse</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">ellipse</span><span class="p">)</span>
+
+    <span class="c1"># Arrow plot feature</span>
+    <span class="n">sd1_arrow</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span>
+        <span class="n">mean_bbi</span><span class="p">,</span>
+        <span class="n">mean_bbi</span><span class="p">,</span>
+        <span class="o">-</span><span class="n">sd1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">sd1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+        <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SD1&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">sd2_arrow</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span>
+        <span class="n">mean_bbi</span><span class="p">,</span>
+        <span class="n">mean_bbi</span><span class="p">,</span>
+        <span class="n">sd2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">sd2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SD2&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">sd1_arrow</span><span class="p">,</span> <span class="n">sd2_arrow</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

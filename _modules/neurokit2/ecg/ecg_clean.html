@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurokit2.ecg.ecg_clean &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/ecg/ecg_clean';</script>
+    <link rel="icon" href="../../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2F_modules/neurokit2/ecg/ecg_clean.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for neurokit2.ecg.ecg_clean</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span>
+
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">NeuroKitWarning</span><span class="p">,</span> <span class="n">as_vector</span>
+<span class="kn">from</span> <span class="nn">..signal</span> <span class="kn">import</span> <span class="n">signal_filter</span>
+
+
+<div class="viewcode-block" id="ecg_clean">
+<a class="viewcode-back" href="../../../functions/ecg.html#neurokit2.ecg.ecg_clean">[docs]</a>
+<span class="k">def</span> <span class="nf">ecg_clean</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;neurokit&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;**ECG Signal Cleaning**</span>
+
+<span class="sd">    Clean an ECG signal to remove noise and improve peak-detection accuracy. Different cleaning</span>
+<span class="sd">    methods are implemented.</span>
+
+<span class="sd">    * ``&#39;neurokit&#39;`` (default): 0.5 Hz high-pass butterworth filter (order = 5), followed by</span>
+<span class="sd">      powerline filtering (see ``signal_filter()``). By default, ``powerline = 50``.</span>
+<span class="sd">    * ``&#39;biosppy&#39;``: Method used in the BioSPPy package. A FIR filter ([0.67, 45] Hz; order = 1.5 *</span>
+<span class="sd">      SR). The 0.67 Hz cutoff value was selected based on the fact that there are no morphological</span>
+<span class="sd">      features below the heartrate (assuming a minimum heart rate of 40 bpm).</span>
+<span class="sd">    * ``&#39;pantompkins1985&#39;``: Method used in Pan &amp; Tompkins (1985). **Please help providing a better</span>
+<span class="sd">      description!**</span>
+<span class="sd">    * ``&#39;hamilton2002&#39;``: Method used in Hamilton (2002). **Please help providing a better</span>
+<span class="sd">      description!**</span>
+<span class="sd">    * ``&#39;elgendi2010&#39;``: Method used in Elgendi et al. (2010). **Please help providing a better</span>
+<span class="sd">      description!**</span>
+<span class="sd">    * ``&#39;engzeemod2012&#39;``: Method used in Engelse &amp; Zeelenberg (1979). **Please help providing a</span>
+<span class="sd">      better description!**</span>
+<span class="sd">    * ``&#39;vg&#39;``: Method used in Visibility Graph Based Detection Emrich et al. (2023)</span>
+<span class="sd">      and Koka et al. (2022). A 4.0 Hz high-pass butterworth filter (order = 2).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ecg_signal : Union[list, np.array, pd.Series]</span>
+<span class="sd">        The raw ECG channel.</span>
+<span class="sd">    sampling_rate : int</span>
+<span class="sd">        The sampling frequency of ``ecg_signal`` (in Hz, i.e., samples/second). Defaults to 1000.</span>
+<span class="sd">    method : str</span>
+<span class="sd">        The processing pipeline to apply. Can be one of ``&quot;neurokit&quot;`` (default),</span>
+<span class="sd">        ``&quot;biosppy&quot;``, ``&quot;pantompkins1985&quot;``, ``&quot;hamilton2002&quot;``, ``&quot;elgendi2010&quot;``,</span>
+<span class="sd">        ``&quot;engzeemod2012&quot;``, ``&#39;vg&#39;``.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Other arguments to be passed to specific methods.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array</span>
+<span class="sd">        Vector containing the cleaned ECG signal.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    ecg_peaks, ecg_process, ecg_plot, .signal_rate, .signal_filter</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import pandas as pd</span>
+<span class="sd">      import numpy as np</span>
+<span class="sd">      import neurokit2 as nk</span>
+
+<span class="sd">      ecg = nk.ecg_simulate(duration=10, sampling_rate=250, noise=0.2)</span>
+<span class="sd">      ecg += np.random.normal(0, 0.1, len(ecg))  # Add Gaussian noise</span>
+
+<span class="sd">      signals = pd.DataFrame({</span>
+<span class="sd">          &quot;ECG_Raw&quot; : ecg,</span>
+<span class="sd">          &quot;ECG_NeuroKit&quot; : nk.ecg_clean(ecg, sampling_rate=250, method=&quot;neurokit&quot;),</span>
+<span class="sd">          &quot;ECG_BioSPPy&quot; : nk.ecg_clean(ecg, sampling_rate=250, method=&quot;biosppy&quot;),</span>
+<span class="sd">          &quot;ECG_PanTompkins&quot; : nk.ecg_clean(ecg, sampling_rate=250, method=&quot;pantompkins1985&quot;),</span>
+<span class="sd">          &quot;ECG_Hamilton&quot; : nk.ecg_clean(ecg, sampling_rate=250, method=&quot;hamilton2002&quot;),</span>
+<span class="sd">          &quot;ECG_Elgendi&quot; : nk.ecg_clean(ecg, sampling_rate=250, method=&quot;elgendi2010&quot;),</span>
+<span class="sd">          &quot;ECG_EngZeeMod&quot; : nk.ecg_clean(ecg, sampling_rate=250, method=&quot;engzeemod2012&quot;),</span>
+<span class="sd">          &quot;ECG_VG&quot; : nk.ecg_clean(ecg, sampling_rate=250, method=&quot;vg&quot;),</span>
+<span class="sd">          &quot;ECG_TC&quot; : nk.ecg_clean(ecg, sampling_rate=250, method=&quot;templateconvolution&quot;)</span>
+<span class="sd">      })</span>
+
+<span class="sd">      @savefig p_ecg_clean.png scale=100%</span>
+<span class="sd">      signals.plot(subplots=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+
+<span class="sd">    References</span>
+<span class="sd">    --------------</span>
+<span class="sd">    * Engelse, W. A., &amp; Zeelenberg, C. (1979). A single scan algorithm for QRS-detection and</span>
+<span class="sd">      feature extraction. Computers in cardiology, 6(1979), 37-42.</span>
+<span class="sd">    * Pan, J., &amp; Tompkins, W. J. (1985). A real-time QRS detection algorithm. IEEE transactions</span>
+<span class="sd">      on biomedical engineering, (3), 230-236.</span>
+<span class="sd">    * Hamilton, P. (2002). Open source ECG analysis. In Computers in cardiology (pp. 101-104).</span>
+<span class="sd">      IEEE.</span>
+<span class="sd">    * Elgendi, M., Jonkman, M., &amp; De Boer, F. (2010). Frequency Bands Effects on QRS Detection.</span>
+<span class="sd">      Biosignals, Proceedings of the Third International Conference on Bio-inspired Systems and</span>
+<span class="sd">      Signal Processing, 428-431.</span>
+<span class="sd">    * Emrich, J., Koka, T., Wirth, S., &amp; Muma, M. (2023), Accelerated Sample-Accurate R-Peak</span>
+<span class="sd">      Detectors Based on Visibility Graphs. 31st European Signal Processing Conference</span>
+<span class="sd">      (EUSIPCO), 1090-1094, doi: 10.23919/EUSIPCO58844.2023.10290007</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ecg_signal</span> <span class="o">=</span> <span class="n">as_vector</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">)</span>
+
+    <span class="c1"># Missing data</span>
+    <span class="n">n_missing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">n_missing</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;There are &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_missing</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; missing data points in your signal.&quot;</span>
+            <span class="s2">&quot; Filling missing values by using the forward filling method.&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ecg_signal</span> <span class="o">=</span> <span class="n">_ecg_clean_missing</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">)</span>
+
+    <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1"># remove capitalised letters</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;nk&quot;</span><span class="p">,</span> <span class="s2">&quot;nk2&quot;</span><span class="p">,</span> <span class="s2">&quot;neurokit&quot;</span><span class="p">,</span> <span class="s2">&quot;neurokit2&quot;</span><span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_nk</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;biosppy&quot;</span><span class="p">,</span> <span class="s2">&quot;gamboa2008&quot;</span><span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_biosppy</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;pantompkins&quot;</span><span class="p">,</span> <span class="s2">&quot;pantompkins1985&quot;</span><span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_pantompkins</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;hamilton&quot;</span><span class="p">,</span> <span class="s2">&quot;hamilton2002&quot;</span><span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_hamilton</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;elgendi&quot;</span><span class="p">,</span> <span class="s2">&quot;elgendi2010&quot;</span><span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_elgendi</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;engzee&quot;</span><span class="p">,</span> <span class="s2">&quot;engzee2012&quot;</span><span class="p">,</span> <span class="s2">&quot;engzeemod&quot;</span><span class="p">,</span> <span class="s2">&quot;engzeemod2012&quot;</span><span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_engzee</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vg&quot;</span><span class="p">,</span> <span class="s2">&quot;vgraph&quot;</span><span class="p">,</span> <span class="s2">&quot;fastnvg&quot;</span><span class="p">,</span> <span class="s2">&quot;emrich&quot;</span><span class="p">,</span> <span class="s2">&quot;emrich2023&quot;</span><span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_vgraph</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;koka2022&quot;</span><span class="p">,</span> <span class="s2">&quot;koka&quot;</span><span class="p">]:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;The &#39;koka2022&#39; method has been replaced by &#39;emrich2023&#39;.&quot;</span>
+            <span class="s2">&quot; Please replace method=&#39;koka2022&#39; by method=&#39;emrich2023&#39;.&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_vgraph</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;templateconvolution&quot;</span><span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">_ecg_clean_templateconvolution</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="s2">&quot;christov&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;christov2004&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ssf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;slopesumfunction&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;zong&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;zong2003&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kalidas2017&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;swt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kalidas&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kalidastamil&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kalidastamil2017&quot;</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">ecg_signal</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;NeuroKit error: ecg_clean(): &#39;method&#39; should be &quot;</span>
+            <span class="s2">&quot;one of &#39;neurokit&#39;, &#39;biosppy&#39;, &#39;pantompkins1985&#39;,&quot;</span>
+            <span class="s2">&quot; &#39;hamilton2002&#39;, &#39;elgendi2010&#39;, &#39;engzeemod2012&#39;,&quot;</span>
+            <span class="s2">&quot; &#39;templateconvolution&#39;, &#39;vg&#39;.&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">clean</span></div>
+
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Handle missing data</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_missing</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">):</span>
+    <span class="n">ecg_signal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">ecg_signal</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># NeuroKit</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_nk</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># Remove slow drift and dc offset with highpass Butterworth.</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">signal_filter</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">ecg_signal</span><span class="p">,</span>
+        <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">lowcut</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butterworth&quot;</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">signal_filter</span><span class="p">(</span><span class="n">signal</span><span class="o">=</span><span class="n">clean</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;powerline&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clean</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Biosppy</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_biosppy</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adapted from https://github.com/PIA-</span>
+<span class="sd">    Group/BioSPPy/blob/e65da30f6379852ecb98f8e2e0c9b4b5175416c3/biosppy/signals/ecg.py#L69.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># The order and frequency was recently changed</span>
+    <span class="c1"># (see https://github.com/scientisst/BioSPPy/pull/12)</span>
+
+    <span class="n">order</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">order</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">order</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># Enforce odd number</span>
+
+    <span class="c1"># -&gt; filter_signal()</span>
+    <span class="n">frequency</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.67</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+
+    <span class="c1">#   -&gt; get_filter()</span>
+    <span class="c1">#     -&gt; _norm_freq()</span>
+    <span class="n">frequency</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span> <span class="o">/</span> <span class="n">sampling_rate</span>  <span class="c1"># Normalize frequency to Nyquist Frequency (Fs/2).</span>
+
+    <span class="c1">#     -&gt; get coeffs</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">firwin</span><span class="p">(</span><span class="n">numtaps</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span> <span class="n">pass_zero</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># _filter_signal()</span>
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ecg_signal</span><span class="p">)</span>
+
+    <span class="c1"># DC offset</span>
+    <span class="n">filtered</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">filtered</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Pan &amp; Tompkins (1985)</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_pantompkins</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adapted from https://github.com/PIA-</span>
+<span class="sd">    Group/BioSPPy/blob/e65da30f6379852ecb98f8e2e0c9b4b5175416c3/biosppy/signals/ecg.py#L69.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">order</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">signal_filter</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">ecg_signal</span><span class="p">,</span>
+        <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">lowcut</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">highcut</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butterworth_zi&quot;</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">clean</span>  <span class="c1"># Return filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Hamilton (2002)</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_hamilton</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adapted from https://github.com/PIA-</span>
+<span class="sd">    Group/BioSPPy/blob/e65da30f6379852ecb98f8e2e0c9b4b5175416c3/biosppy/signals/ecg.py#L69.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">order</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">signal_filter</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">ecg_signal</span><span class="p">,</span>
+        <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">lowcut</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">highcut</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butterworth_zi&quot;</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">clean</span>  <span class="c1"># Return filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Elgendi et al. (2010)</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_elgendi</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;From https://github.com/berndporr/py-ecg-detectors/</span>
+
+<span class="sd">    - Elgendi, Mohamed &amp; Jonkman, Mirjam &amp; De Boer, Friso. (2010). Frequency Bands Effects on QRS</span>
+<span class="sd">      Detection. The 3rd International Conference on Bio-inspired Systems and Signal Processing</span>
+<span class="sd">      (BIOSIGNALS2010). 428-431.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">order</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">signal_filter</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">ecg_signal</span><span class="p">,</span>
+        <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">lowcut</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">highcut</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butterworth_zi&quot;</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">clean</span>  <span class="c1"># Return filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Engzee Modified (2012)</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_engzee</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;From https://github.com/berndporr/py-ecg-detectors/</span>
+
+<span class="sd">    - C. Zeelenberg, A single scan algorithm for QRS detection and feature extraction, IEEE Comp.</span>
+<span class="sd">      in Cardiology, vol. 6, pp. 37-42, 1979.</span>
+<span class="sd">    - A. Lourenco, H. Silva, P. Leite, R. Lourenco and A. Fred, &quot;Real Time Electrocardiogram</span>
+<span class="sd">      Segmentation for Finger Based ECG Biometrics&quot;, BIOSIGNALS 2012, pp. 49-54, 2012.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">order</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">signal_filter</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">ecg_signal</span><span class="p">,</span>
+        <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">lowcut</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span>
+        <span class="n">highcut</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butterworth_zi&quot;</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">clean</span>  <span class="c1"># Return filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Visibility-Graph Detector - Emrich et al. (2023) &amp; Koka et al. (2022)</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_vgraph</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filtering used for Visibility-Graph Detectors Emrich et al. (2023) and Koka et al. (2022).</span>
+
+<span class="sd">    - J. Emrich, T. Koka, S. Wirth and M. Muma, &quot;Accelerated Sample-Accurate R-Peak</span>
+<span class="sd">      Detectors Based on Visibility Graphs,&quot; 31st European Signal Processing</span>
+<span class="sd">      Conference (EUSIPCO), 2023, pp. 1090-1094, doi: 10.23919/EUSIPCO58844.2023.10290007,</span>
+<span class="sd">      https://ieeexplore.ieee.org/document/10290007</span>
+
+<span class="sd">    - T. Koka and M. Muma (2022), Fast and Sample Accurate R-Peak Detection for Noisy ECG Using</span>
+<span class="sd">      Visibility Graphs. In: 2022 44th Annual International Conference of the IEEE Engineering</span>
+<span class="sd">      in Medicine &amp; Biology Society (EMBC). Uses the Pan and Tompkins thresholding.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">order</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">signal_filter</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">ecg_signal</span><span class="p">,</span>
+        <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">lowcut</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butterworth&quot;</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">clean</span>  <span class="c1"># Return filtered</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Template Convolution (Exploratory)</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_ecg_clean_templateconvolution</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter and Convolve ECG signal with QRS complex template. Totally exploratory method by Dominique Makowski, use</span>
+<span class="sd">    at your own risks.</span>
+
+<span class="sd">    The idea is to use a QRS template to convolve the signal with, in order to magnify the QRS features. However,</span>
+<span class="sd">    it doens&#39;t work well and creates a lot of artifacts. If you have ideas for improvement please let me know!</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">window_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sampling_rate</span> <span class="o">/</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">window_size</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Filter out slow drifts and high freq noises</span>
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">signal_filter</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">ecg_signal</span><span class="p">,</span>
+        <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">lowcut</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">highcut</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butterworth&quot;</span><span class="p">,</span>
+        <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Detect peaks</span>
+    <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">filtered</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">sampling_rate</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">filtered</span><span class="p">))</span>
+    <span class="n">peaks</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="n">peaks</span> <span class="o">+</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">sampling_rate</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">)]</span>
+
+    <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">sampling_rate</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">p</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">sampling_rate</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">peaks</span><span class="p">]</span>
+    <span class="n">epochs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">filtered</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">])</span>
+    <span class="n">qrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># # Create base QRS template using wavelets</span>
+    <span class="c1"># qrs = scipy.signal.ricker(600, a=16)</span>
+
+    <span class="c1"># # Adjust template</span>
+    <span class="c1"># qrs[100:220] = qrs[100:220] + 0.03 * np.sin(np.linspace(0, 1 * np.pi, 120))</span>
+    <span class="c1"># qrs[284:316] = qrs[284:316] + 0.2 * qrs[284:316]</span>
+    <span class="c1"># qrs[316:380] = qrs[316:380] + 0.5 * qrs[316:380]</span>
+    <span class="c1"># qrs[380:500] = qrs[380:500] + 0.05 * np.sin(np.linspace(0, 1 * np.pi, 120))</span>
+
+    <span class="c1"># # Resample</span>
+    <span class="c1"># qrs = signal_resample(qrs, desired_length=sampling_rate)</span>
+
+    <span class="k">return</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">ecg_signal</span><span class="p">,</span> <span class="n">qrs</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

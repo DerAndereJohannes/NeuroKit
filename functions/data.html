@@ -1,0 +1,1046 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'functions/data';</script>
+    <link rel="icon" href="../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Complexity, Fractals, and Entropy" href="complexity.html" />
+    <link rel="prev" title="Epochs" href="epochs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Functions</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epochs.html">Epochs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/edit/dev/docs/functions/data.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2Ffunctions/data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/functions/data.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">Datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><em>data()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.data"><code class="docutils literal notranslate"><span class="pre">data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o">I/O</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-acqknowledge"><em>read_acqknowledge()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.read_acqknowledge"><code class="docutils literal notranslate"><span class="pre">read_acqknowledge()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-bitalino"><em>read_bitalino()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.read_bitalino"><code class="docutils literal notranslate"><span class="pre">read_bitalino()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-video"><em>read_video()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.read_video"><code class="docutils literal notranslate"><span class="pre">read_video()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-csv"><em>write_csv()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.write_csv"><code class="docutils literal notranslate"><span class="pre">write_csv()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-neurokit2.data"><em>Other</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.download_from_url"><code class="docutils literal notranslate"><span class="pre">download_from_url()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.download_zip"><code class="docutils literal notranslate"><span class="pre">download_zip()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.read_xdf"><code class="docutils literal notranslate"><span class="pre">read_xdf()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="data">
+<h1>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h1>
+<section id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3><em>data()</em><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="neurokit2.data.data">
+<span class="sig-name descname"><span class="pre">data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bio_eventrelated_100hz'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neurokit2/data/data.html#data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neurokit2.data.data" title="Link to this definition">#</a></dt>
+<dd><p><strong>NeuroKit Datasets</strong></p>
+<p>NeuroKit includes datasets that can be used for testing. These datasets are not downloaded
+automatically with the package (to avoid increasing its weight), but can be downloaded via the
+<code class="docutils literal notranslate"><span class="pre">nk.data()</span></code> function (note that an internet connection is necessary). See the examples below.</p>
+<p><strong>Signals</strong>: The following signals (that will return an array) are available:</p>
+<ul class="simple">
+<li><p><strong>ecg_1000hz</strong>: Returns a vector containing ECG signal (<code class="docutils literal notranslate"><span class="pre">sampling_rate=1000</span></code>).</p></li>
+<li><p><strong>ecg_3000hz</strong>: Returns a vector containing ECG signal (<code class="docutils literal notranslate"><span class="pre">sampling_rate=3000</span></code>).</p></li>
+<li><p><strong>rsp_1000hz</strong>: Returns a vector containing RSP signal (<code class="docutils literal notranslate"><span class="pre">sampling_rate=1000</span></code>).</p></li>
+<li><p><strong>eeg_150hz</strong>: Returns a vector containing EEG signal (<code class="docutils literal notranslate"><span class="pre">sampling_rate=150</span></code>).</p></li>
+<li><p><strong>eog_100hz</strong>: Returns a vector containing vEOG signal (<code class="docutils literal notranslate"><span class="pre">sampling_rate=100</span></code>).</p></li>
+</ul>
+<p><strong>DataFrames</strong>: The following datasets (that will return a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>) are available:</p>
+<ul class="simple">
+<li><p><strong>iris</strong>: Convenient access to the Iris dataset in a DataFrame, exactly how it is in R.</p></li>
+<li><p><strong>eogs_200hz</strong>: Returns a DataFrame with <code class="docutils literal notranslate"><span class="pre">hEOG</span></code>, <code class="docutils literal notranslate"><span class="pre">vEOG</span></code>.</p>
+<ul>
+<li><p>Single subject</p></li>
+<li><p>Visual and horizontal electrooculagraphy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling_rate=200</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>bio_resting_5min_100hz</strong>: Returns a DataFrame with <code class="docutils literal notranslate"><span class="pre">ECG</span></code>, <code class="docutils literal notranslate"><span class="pre">PPG</span></code>, <code class="docutils literal notranslate"><span class="pre">RSP</span></code>.</p>
+<ul>
+<li><p>Single subject</p></li>
+<li><p>Resting-state of 5 min (pre-cropped, with some ECG noise towards the end)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling_rate=100</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>bio_resting_8min_100hz</strong>: Returns a DataFrame with <code class="docutils literal notranslate"><span class="pre">ECG</span></code>, <code class="docutils literal notranslate"><span class="pre">RSP</span></code>, <code class="docutils literal notranslate"><span class="pre">EDA</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PhotoSensor</span></code>.</p>
+<ul>
+<li><p>Single subject</p></li>
+<li><p>Resting-state of 8 min when the photosensor is low (need to crop the data)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling_rate=100</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>bio_resting_8min_200hz</strong>: Returns a dictionary with four subjects (<code class="docutils literal notranslate"><span class="pre">S01</span></code>, <code class="docutils literal notranslate"><span class="pre">S02</span></code>,
+<code class="docutils literal notranslate"><span class="pre">S03</span></code>, <code class="docutils literal notranslate"><span class="pre">S04</span></code>).</p>
+<ul>
+<li><p>Resting-state recordings</p></li>
+<li><p>8 min (<code class="docutils literal notranslate"><span class="pre">sampling_rate=200</span></code>)</p></li>
+<li><p>Each subject is DataFrame  with <code class="docutils literal notranslate"><span class="pre">ECG</span></code>, <code class="docutils literal notranslate"><span class="pre">RSP`,</span> <span class="pre">``PhotoSensor</span></code>, <code class="docutils literal notranslate"><span class="pre">Participant</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>bio_eventrelated_100hz</strong>: Returns a DataFrame with <code class="docutils literal notranslate"><span class="pre">ECG</span></code>, <code class="docutils literal notranslate"><span class="pre">EDA</span></code>, <code class="docutils literal notranslate"><span class="pre">Photosensor</span></code>,
+<code class="docutils literal notranslate"><span class="pre">RSP</span></code>.</p>
+<ul>
+<li><p>Single subject</p></li>
+<li><p>Event-related recording of a participant watching 4 images for 3 seconds (the condition
+order was: <code class="docutils literal notranslate"><span class="pre">[&quot;Negative&quot;,</span> <span class="pre">&quot;Neutral&quot;,</span> <span class="pre">&quot;Neutral&quot;,</span> <span class="pre">&quot;Negative&quot;]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling_rate=100</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>eeg_1min_200hz</strong>: Returns an MNE raw object containing 1 min of EEG
+data (from the MNE-sample dataset).</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dataset</strong> (<em>str</em>) – The name of the dataset.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em> – The data.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p><strong>Single signals and vectors</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+
+<span class="gp">In [2]: </span><span class="n">ecg</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;ecg_1000hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">nk</span><span class="o">.</span><span class="n">signal_plot</span><span class="p">(</span><span class="n">ecg</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10000</span><span class="p">],</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_datasets1.png"><img alt="../_images/p_datasets1.png" src="../_images/p_datasets1.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">rsp</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;rsp_1000hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [5]: </span><span class="n">nk</span><span class="o">.</span><span class="n">signal_plot</span><span class="p">(</span><span class="n">rsp</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20000</span><span class="p">],</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_datasets2.png"><img alt="../_images/p_datasets2.png" src="../_images/p_datasets2.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">eeg</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;eeg_150hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [7]: </span><span class="n">nk</span><span class="o">.</span><span class="n">signal_plot</span><span class="p">(</span><span class="n">eeg</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_data3.png"><img alt="../_images/p_data3.png" src="../_images/p_data3.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">eog</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;eog_100hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [9]: </span><span class="n">nk</span><span class="o">.</span><span class="n">signal_plot</span><span class="p">(</span><span class="n">eog</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2000</span><span class="p">],</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_data4.png"><img alt="../_images/p_data4.png" src="../_images/p_data4.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<p><strong>DataFrames</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="p">)</span>
+
+<span class="gp">In [11]: </span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[11]: </span>
+<span class="go">   Sepal.Length  Sepal.Width  Petal.Length  Petal.Width Species</span>
+<span class="go">0           5.1          3.5           1.4          0.2  setosa</span>
+<span class="go">1           4.9          3.0           1.4          0.2  setosa</span>
+<span class="go">2           4.7          3.2           1.3          0.2  setosa</span>
+<span class="go">3           4.6          3.1           1.5          0.2  setosa</span>
+<span class="go">4           5.0          3.6           1.4          0.2  setosa</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;eogs_200hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [13]: </span><span class="n">nk</span><span class="o">.</span><span class="n">signal_plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4000</span><span class="p">],</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_datasets5.png"><img alt="../_images/p_datasets5.png" src="../_images/p_datasets5.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;bio_resting_5min_100hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [15]: </span><span class="n">nk</span><span class="o">.</span><span class="n">standardize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gh">Out[15]: </span><span class="go">&lt;Axes: &gt;</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_datasets6.png"><img alt="../_images/p_datasets6.png" src="../_images/p_datasets6.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;bio_resting_8min_100hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [17]: </span><span class="n">nk</span><span class="o">.</span><span class="n">standardize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gh">Out[17]: </span><span class="go">&lt;Axes: &gt;</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_datasets7.png"><img alt="../_images/p_datasets7.png" src="../_images/p_datasets7.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;bio_resting_8min_200hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [19]: </span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="gh">Out[19]: </span><span class="go">dict_keys([&#39;S01&#39;, &#39;S02&#39;, &#39;S03&#39;, &#39;S04&#39;])</span>
+
+<span class="gp">In [20]: </span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;S01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[20]: </span>
+<span class="go">            ECG       RSP  PhotoSensor Participant</span>
+<span class="go">0  2.394536e-19  5.010681          5.0         S01</span>
+<span class="go">1  1.281743e-02  5.011291          5.0         S01</span>
+<span class="go">2  1.129138e-02  5.010376          5.0         S01</span>
+<span class="go">3  7.629118e-04  5.010681          5.0         S01</span>
+<span class="go">4 -4.119742e-03  5.010986          5.0         S01</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;bio_eventrelated_100hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [22]: </span><span class="n">nk</span><span class="o">.</span><span class="n">standardize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gh">Out[22]: </span><span class="go">&lt;Axes: &gt;</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_data8.png"><img alt="../_images/p_data8.png" src="../_images/p_data8.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">raw</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;eeg_1min_200hz&quot;</span><span class="p">)</span>
+
+<span class="gp">In [24]: </span><span class="n">nk</span><span class="o">.</span><span class="n">signal_plot</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2000</span><span class="p">],</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/p_data9.png"><img alt="../_images/p_data9.png" src="../_images/p_data9.png" style="width: 640.0px; height: 480.0px;" />
+</a>
+</dd></dl>
+
+</section>
+</section>
+<section id="i-o">
+<h2>I/O<a class="headerlink" href="#i-o" title="Link to this heading">#</a></h2>
+<section id="read-acqknowledge">
+<h3><em>read_acqknowledge()</em><a class="headerlink" href="#read-acqknowledge" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="neurokit2.data.read_acqknowledge">
+<span class="sig-name descname"><span class="pre">read_acqknowledge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interpolation'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">impute_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neurokit2/data/read_acqknowledge.html#read_acqknowledge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neurokit2.data.read_acqknowledge" title="Link to this definition">#</a></dt>
+<dd><p><strong>Read and format a BIOPAC’s AcqKnowledge file into a pandas’ dataframe</strong></p>
+<p>The function outputs both the dataframe and the sampling rate (retrieved from the
+AcqKnowledge file).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Filename (with or without the extension) of a BIOPAC’s AcqKnowledge file (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;data.acq&quot;</span></code>).</p></li>
+<li><p><strong>sampling_rate</strong> (<em>int</em>) – Sampling rate (in Hz, i.e., samples/second). Since an AcqKnowledge file can contain
+signals recorded at different rates, harmonization is necessary in order to convert it
+to a DataFrame. Thus, if <cite>sampling_rate</cite> is set to <code class="docutils literal notranslate"><span class="pre">max</span></code> (default), will keep the maximum
+recorded sampling rate and upsample the channels with lower rate if necessary (using the
+<a class="reference internal" href="signal.html#neurokit2.signal_resample" title="neurokit2.signal_resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">signal_resample()</span></code></a> function). If the sampling rate is set to a given value, will
+resample the signals to the desired value. Note that the value of the sampling rate is
+outputted along with the data.</p></li>
+<li><p><strong>resample_method</strong> (<em>str</em>) – Method of resampling (see <a class="reference internal" href="signal.html#neurokit2.signal_resample" title="neurokit2.signal_resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">signal_resample()</span></code></a>).</p></li>
+<li><p><strong>impute_missing</strong> (<em>bool</em>) – Sometimes, due to connections issues, there are lapses in the recorded signal (short
+periods without signal). If <code class="docutils literal notranslate"><span class="pre">impute_missing</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, will automatically fill the
+signal interruptions using padding.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – The AcqKnowledge file as a pandas dataframe.</p></li>
+<li><p><strong>sampling rate</strong> (<em>int</em>) – The sampling rate at which the data is sampled.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="signal.html#neurokit2.signal_resample" title="neurokit2.signal_resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal_resample</span></code></a></p>
+</div>
+<p class="rubric">Example</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+
+<span class="go"># data, sampling_rate = nk.read_acqknowledge(&#39;file.acq&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="read-bitalino">
+<h3><em>read_bitalino()</em><a class="headerlink" href="#read-bitalino" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="neurokit2.data.read_bitalino">
+<span class="sig-name descname"><span class="pre">read_bitalino</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neurokit2/data/read_bitalino.html#read_bitalino"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neurokit2.data.read_bitalino" title="Link to this definition">#</a></dt>
+<dd><p><strong>Read an OpenSignals file (from BITalino)</strong></p>
+<p>Reads and loads a BITalino file into a Pandas DataFrame.
+The function outputs both the dataframe and the information (such as the sampling rate)
+retrieved from the OpenSignals file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Path (with or without the extension) of an OpenSignals file (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;data.txt&quot;</span></code>).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame, dict</em>) – The BITalino file as a pandas dataframe if one device was read, or a dictionary
+of pandas dataframes (one dataframe per device) if multiple devices are read.</p></li>
+<li><p><strong>info</strong> (<em>dict</em>) – The metadata information containing the sensors, corresponding channel names, sampling
+rate, and the events annotation timings if <code class="docutils literal notranslate"><span class="pre">events_annotation</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neurokit2.data.read_acqknowledge" title="neurokit2.data.read_acqknowledge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_acqknowledge</span></code></a>, <a class="reference internal" href="signal.html#neurokit2.signal_resample" title="neurokit2.signal_resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal_resample</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+
+<span class="go"># data, info = nk.read_bitalino(&quot;data.txt&quot;)</span>
+<span class="go"># sampling_rate = info[&quot;sampling_rate&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="read-video">
+<h3><em>read_video()</em><a class="headerlink" href="#read-video" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="neurokit2.data.read_video">
+<span class="sig-name descname"><span class="pre">read_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'video.mp4'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neurokit2/data/read_video.html#read_video"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neurokit2.data.read_video" title="Link to this definition">#</a></dt>
+<dd><p><strong>Reads a video file into an array</strong></p>
+<p>Reads a video file (e.g., .mp4) into a numpy array of shape. This function requires OpenCV to
+be installed via the <code class="docutils literal notranslate"><span class="pre">opencv-python</span></code> package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – The path of a video file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>array</em> – numpy array of shape (frame, RGB-channel, height, width).</p></li>
+<li><p><em>int</em> – Sampling rate in frames per second.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+
+<span class="go"># video, sampling_rate = nk.read_video(&quot;video.mp4&quot;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="write-csv">
+<h3><em>write_csv()</em><a class="headerlink" href="#write-csv" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="neurokit2.data.write_csv">
+<span class="sig-name descname"><span class="pre">write_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neurokit2/data/write_csv.html#write_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neurokit2.data.write_csv" title="Link to this definition">#</a></dt>
+<dd><p><strong>Write data to multiple csv files</strong></p>
+<p>Split the data into multiple CSV files. You can then re-create them as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em>) – List of dictionaries.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the CSV file (without the extension).</p></li>
+<li><p><strong>parts</strong> (<em>int</em>) – Number of parts to split the data into.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>None</em></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Save big file in parts</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+
+<span class="go"># Split data into multiple files</span>
+<span class="go"># nk.write_csv(data, &#39;C:/Users/.../data&#39;, parts=6)</span>
+</pre></div>
+</div>
+<p>Read the files back</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iterate through 6-parts and concatenate the pieces</span>
+<span class="c1"># data_all = pd.concat(</span>
+<span class="c1">#     [pd.read_csv(f&quot;data_part{i}.csv&quot;) for i in range(1, 7)],</span>
+<span class="c1">#     axis=0,</span>
+<span class="c1"># )</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-neurokit2.data">
+<span id="other"></span><h2><em>Other</em><a class="headerlink" href="#module-neurokit2.data" title="Link to this heading">#</a></h2>
+<p>Submodule for NeuroKit.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="neurokit2.data.download_from_url">
+<span class="sig-name descname"><span class="pre">download_from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neurokit2/data/database.html#download_from_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neurokit2.data.download_from_url" title="Link to this definition">#</a></dt>
+<dd><p><strong>Download Files from URLs</strong></p>
+<p>Download a file from the given URL and save it to the destination path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL of the file to download.</p></li>
+<li><p><strong>destination_path</strong> (<em>str, Path</em>) – The path to which the file will be downloaded. If None, the file name will be taken
+from the last part of the URL path and downloaded to the current working directory.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>bool</em> – True if the file was downloaded successfully, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="neurokit2.data.download_zip">
+<span class="sig-name descname"><span class="pre">download_zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unzip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neurokit2/data/database.html#download_zip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neurokit2.data.download_zip" title="Link to this definition">#</a></dt>
+<dd><p><strong>Download ZIP files</strong></p>
+<p>Download a ZIP file from a URL and extract it to a destination directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL of the ZIP file to download.</p></li>
+<li><p><strong>destination_path</strong> (<em>str, Path</em>) – The path to which the ZIP file will be extracted. If None, the folder name will be taken
+from the last part of the URL path and downloaded to the current working directory.</p></li>
+<li><p><strong>unzip</strong> (<em>bool</em>) – Whether to unzip the file or not. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>bool</em> – True if the ZIP file was downloaded successfully, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="neurokit2.data.read_xdf">
+<span class="sig-name descname"><span class="pre">read_xdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upsample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillmissing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neurokit2/data/read_xdf.html#read_xdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neurokit2.data.read_xdf" title="Link to this definition">#</a></dt>
+<dd><p><strong>Read and tidy an XDF file</strong></p>
+<p>Reads and tidies an XDF file with multiple streams into a Pandas DataFrame.
+The function outputs both the dataframe and the information (such as the sampling rate).</p>
+<p>Note that, as XDF can store streams with different sampling rates and different time stamps,
+<strong>the function will resample all streams to 2 times (default) the highest sampling rate</strong> (to
+minimize aliasing). The final sampling rate can be found in the <code class="docutils literal notranslate"><span class="pre">info</span></code> dictionary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function requires the <em>pyxdf</em> module to be installed. You can install it with
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyxdf</span></code>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Path (with the extension) of an XDF file (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;data.xdf&quot;</span></code>).</p></li>
+<li><p><strong>upsample</strong> (<em>float</em>) – Factor by which to upsample the data. Default is 2, which means that the data will be
+resampled to 2 times the highest sampling rate. You can increase that to further reduce
+edge-distortion, especially for high frequency signals like EEG.</p></li>
+<li><p><strong>fillmissing</strong> (<em>float</em>) – The maximum duration in seconds of missing data to fill. <code class="docutils literal notranslate"><span class="pre">None</span></code> (default) will
+interpolate all missing values and prevent issues with NaNs. However, it might be important
+to keep the missing intervals (e.g., <code class="docutils literal notranslate"><span class="pre">fillmissing=1</span></code> to keep interruptions of more than
+1 s) typically corresponding to signal loss or streaming interruptions and exclude them
+from further analysis.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame, dict</em>) – The BITalino file as a pandas dataframe if one device was read, or a dictionary
+of pandas dataframes (one dataframe per device) if multiple devices are read.</p></li>
+<li><p><strong>info</strong> (<em>dict</em>) – The metadata information containing the sampling rate(s).</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neurokit2.data.read_bitalino" title="neurokit2.data.read_bitalino"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_bitalino</span></code></a>, <a class="reference internal" href="signal.html#neurokit2.signal_resample" title="neurokit2.signal_resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal_resample</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+
+<span class="go"># data, info = nk.read_xdf(&quot;data.xdf&quot;)</span>
+<span class="go"># sampling_rate = info[&quot;sampling_rate&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="epochs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Epochs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="complexity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complexity, Fractals, and Entropy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">Datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><em>data()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.data"><code class="docutils literal notranslate"><span class="pre">data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o">I/O</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-acqknowledge"><em>read_acqknowledge()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.read_acqknowledge"><code class="docutils literal notranslate"><span class="pre">read_acqknowledge()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-bitalino"><em>read_bitalino()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.read_bitalino"><code class="docutils literal notranslate"><span class="pre">read_bitalino()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-video"><em>read_video()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.read_video"><code class="docutils literal notranslate"><span class="pre">read_video()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-csv"><em>write_csv()</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.write_csv"><code class="docutils literal notranslate"><span class="pre">write_csv()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-neurokit2.data"><em>Other</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.download_from_url"><code class="docutils literal notranslate"><span class="pre">download_from_url()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.download_zip"><code class="docutils literal notranslate"><span class="pre">download_zip()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit2.data.read_xdf"><code class="docutils literal notranslate"><span class="pre">read_xdf()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

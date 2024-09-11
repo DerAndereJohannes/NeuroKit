@@ -1,0 +1,1132 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurokit2.hrv.hrv_nonlinear &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/hrv/hrv_nonlinear';</script>
+    <link rel="icon" href="../../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2F_modules/neurokit2/hrv/hrv_nonlinear.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for neurokit2.hrv.hrv_nonlinear</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+
+<span class="kn">from</span> <span class="nn">..complexity</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">complexity_lempelziv</span><span class="p">,</span>
+    <span class="n">entropy_approximate</span><span class="p">,</span>
+    <span class="n">entropy_fuzzy</span><span class="p">,</span>
+    <span class="n">entropy_multiscale</span><span class="p">,</span>
+    <span class="n">entropy_sample</span><span class="p">,</span>
+    <span class="n">entropy_shannon</span><span class="p">,</span>
+    <span class="n">fractal_correlation</span><span class="p">,</span>
+    <span class="n">fractal_dfa</span><span class="p">,</span>
+    <span class="n">fractal_higuchi</span><span class="p">,</span>
+    <span class="n">fractal_katz</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">NeuroKitWarning</span><span class="p">,</span> <span class="n">find_consecutive</span>
+<span class="kn">from</span> <span class="nn">..signal</span> <span class="kn">import</span> <span class="n">signal_zerocrossings</span>
+<span class="kn">from</span> <span class="nn">.hrv_utils</span> <span class="kn">import</span> <span class="n">_hrv_format_input</span>
+<span class="kn">from</span> <span class="nn">.intervals_utils</span> <span class="kn">import</span> <span class="n">_intervals_successive</span>
+
+
+<div class="viewcode-block" id="hrv_nonlinear">
+<a class="viewcode-back" href="../../../functions/hrv.html#neurokit2.hrv.hrv_nonlinear">[docs]</a>
+<span class="k">def</span> <span class="nf">hrv_nonlinear</span><span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;**Nonlinear indices of Heart Rate Variability (HRV)**</span>
+
+<span class="sd">    This function computes non-linear indices, which include features derived from the *Poincaré</span>
+<span class="sd">    plot*, as well as other :func:`.complexity` indices corresponding to entropy or fractal</span>
+<span class="sd">    dimension.</span>
+
+<span class="sd">    .. hint::</span>
+<span class="sd">        There exist many more complexity indices available in NeuroKit2, that could be applied to</span>
+<span class="sd">        HRV. The :func:`.hrv_nonlinear` function only includes the most commonly used indices.</span>
+<span class="sd">        Please see the documentation page for all the func:`.complexity` features.</span>
+
+<span class="sd">    The **Poincaré plot** is a graphical representation of each NN interval plotted against its</span>
+<span class="sd">    preceding NN interval. The ellipse that emerges is a visual quantification of the correlation</span>
+<span class="sd">    between successive NN intervals.</span>
+
+<span class="sd">    Basic indices derived from the Poincaré plot analysis include:</span>
+
+<span class="sd">    * **SD1**: Standard deviation perpendicular to the line of identity. It is an index of</span>
+<span class="sd">      short-term RR interval fluctuations, i.e., beat-to-beat variability. It is equivalent</span>
+<span class="sd">      (although on another scale) to RMSSD, and therefore it is redundant to report correlation</span>
+<span class="sd">      with both.</span>
+<span class="sd">    * **SD2**: Standard deviation along the identity line. Index of long-term HRV changes.</span>
+<span class="sd">    * **SD1/SD2**: ratio of *SD1* to *SD2*. Describes the ratio of short term to long term</span>
+<span class="sd">      variations in HRV.</span>
+<span class="sd">    * **S**: Area of ellipse described by *SD1* and *SD2* (``pi * SD1 * SD2``). It is</span>
+<span class="sd">      proportional to *SD1SD2*.</span>
+<span class="sd">    * **CSI**: The Cardiac Sympathetic Index (Toichi, 1997) is a measure of cardiac sympathetic</span>
+<span class="sd">      function independent of vagal activity, calculated by dividing the longitudinal variability of</span>
+<span class="sd">      the Poincaré plot (``4*SD2``) by its transverse variability (``4*SD1``).</span>
+<span class="sd">    * **CVI**: The Cardiac Vagal Index (Toichi, 1997) is an index of cardiac parasympathetic</span>
+<span class="sd">      function (vagal activity unaffected by sympathetic activity), and is equal equal to the</span>
+<span class="sd">      logarithm of the product of longitudinal (``4*SD2``) and transverse variability (``4*SD1``).</span>
+<span class="sd">    * **CSI_Modified**: The modified CSI (Jeppesen, 2014) obtained by dividing the square of the</span>
+<span class="sd">      longitudinal variability by its transverse variability.</span>
+
+<span class="sd">    Indices of **Heart Rate Asymmetry** (HRA), i.e., asymmetry of the Poincaré plot (Yan, 2017),</span>
+<span class="sd">    include:</span>
+
+<span class="sd">    * **GI**: Guzik&#39;s Index, defined as the distance of points above line of identity (LI) to LI</span>
+<span class="sd">      divided by the distance of all points in Poincaré plot to LI except those that are located on</span>
+<span class="sd">      LI.</span>
+<span class="sd">    * **SI**: Slope Index, defined as the phase angle of points above LI divided by the phase angle</span>
+<span class="sd">      of all points in Poincaré plot except those that are located on LI.</span>
+<span class="sd">    * **AI**: Area Index, defined as the cumulative area of the sectors corresponding to the points</span>
+<span class="sd">      that are located above LI divided by the cumulative area of sectors corresponding to all</span>
+<span class="sd">      points in the Poincaré plot except those that are located on LI.</span>
+<span class="sd">    * **PI**: Porta&#39;s Index, defined as the number of points below LI divided by the total number</span>
+<span class="sd">      of points in Poincaré plot except those that are located on LI.</span>
+<span class="sd">    * **SD1d** and **SD1a**: short-term variance of contributions of decelerations (prolongations</span>
+<span class="sd">      of RR intervals) and accelerations (shortenings of RR intervals), respectively (Piskorski,</span>
+<span class="sd">      2011)</span>
+<span class="sd">    * **C1d** and **C1a**: the contributions of heart rate decelerations and accelerations to</span>
+<span class="sd">      short-term HRV, respectively (Piskorski,  2011).</span>
+<span class="sd">    * **SD2d** and **SD2a**: long-term variance of contributions of decelerations (prolongations of</span>
+<span class="sd">      RR intervals) and accelerations (shortenings of RR intervals), respectively (Piskorski, 2011).</span>
+<span class="sd">    * **C2d** and **C2a**: the contributions of heart rate decelerations and accelerations to</span>
+<span class="sd">      long-term HRV, respectively (Piskorski,  2011).</span>
+<span class="sd">    * **SDNNd** and **SDNNa**: total variance of contributions of decelerations (prolongations of</span>
+<span class="sd">      RR intervals) and accelerations (shortenings of RR intervals), respectively (Piskorski, 2011).</span>
+<span class="sd">    * **Cd** and **Ca**: the total contributions of heart rate decelerations and accelerations to</span>
+<span class="sd">      HRV.</span>
+
+<span class="sd">    Indices of **Heart Rate Fragmentation** (Costa, 2017) include:</span>
+
+<span class="sd">    * **PIP**: Percentage of inflection points of the RR intervals series.</span>
+<span class="sd">    * **IALS**: Inverse of the average length of the acceleration/deceleration segments.</span>
+<span class="sd">    * **PSS**: Percentage of short segments.</span>
+<span class="sd">    * **PAS**: Percentage of NN intervals in alternation segments.</span>
+
+<span class="sd">    Indices of **Complexity** and **Fractal Physiology** include:</span>
+
+<span class="sd">    * **ApEn**: See :func:`.entropy_approximate`.</span>
+<span class="sd">    * **SampEn**: See :func:`.entropy_sample`.</span>
+<span class="sd">    * **ShanEn**: See :func:`.entropy_shannon`.</span>
+<span class="sd">    * **FuzzyEn**: See :func:`.entropy_fuzzy`.</span>
+<span class="sd">    * **MSEn**: See :func:`.entropy_multiscale`.</span>
+<span class="sd">    * **CMSEn**: See :func:`.entropy_multiscale`.</span>
+<span class="sd">    * **RCMSEn**: See :func:`.entropy_multiscale`.</span>
+<span class="sd">    * **CD**: See :func:`.fractal_correlation`.</span>
+<span class="sd">    * **HFD**: See :func:`.fractal_higuchi` (with ``kmax`` set to ``&quot;default&quot;``).</span>
+<span class="sd">    * **KFD**: See :func:`.fractal_katz`.</span>
+<span class="sd">    * **LZC**: See :func:`.complexity_lempelziv`.</span>
+<span class="sd">    * **DFA_alpha1**: The monofractal detrended fluctuation analysis of the HR signal,</span>
+<span class="sd">      corresponding to short-term correlations. See :func:`.fractal_dfa`.</span>
+<span class="sd">    * **DFA_alpha2**: The monofractal detrended fluctuation analysis of the HR signal,</span>
+<span class="sd">      corresponding to long-term correlations. See :func:`.fractal_dfa`.</span>
+<span class="sd">    * **MFDFA indices**: Indices related to the :func:`multifractal spectrum &lt;.fractal_dfa()&gt;`.</span>
+
+<span class="sd">    Other non-linear indices include those based on Recurrence Quantification Analysis (RQA), but</span>
+<span class="sd">    are not implemented yet (but soon).</span>
+
+<span class="sd">    .. tip::</span>
+<span class="sd">        We strongly recommend checking our open-access paper `Pham et al. (2021)</span>
+<span class="sd">        &lt;https://doi.org/10.3390/s21123998&gt;`_ on HRV indices, as well as `Lau et al. (2021)</span>
+<span class="sd">        &lt;https://psyarxiv.com/f8k3x/&gt;`_ on complexity, for more information.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    peaks : dict</span>
+<span class="sd">        Samples at which cardiac extrema (i.e., R-peaks, systolic peaks) occur.</span>
+<span class="sd">        Can be a list of indices or the output(s) of other functions such as :func:`.ecg_peaks`,</span>
+<span class="sd">        :func:`.ppg_peaks`, :func:`.ecg_process` or :func:`.bio_process`.</span>
+<span class="sd">        Can also be a dict containing the keys `RRI` and `RRI_Time`</span>
+<span class="sd">        to directly pass the R-R intervals and their timestamps, respectively.</span>
+<span class="sd">    sampling_rate : int, optional</span>
+<span class="sd">        Sampling rate (Hz) of the continuous cardiac signal in which the peaks occur. Should be at</span>
+<span class="sd">        least twice as high as the highest frequency in vhf. By default 1000.</span>
+<span class="sd">    show : bool, optional</span>
+<span class="sd">        If ``True``, will return a Poincaré plot, a scattergram, which plots each RR interval</span>
+<span class="sd">        against the next successive one. The ellipse centers around the average RR interval. By</span>
+<span class="sd">        default ``False``.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Other arguments to be passed into :func:`.fractal_dfa` and :func:`.fractal_correlation`.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">        DataFrame consisting of the computed non-linear HRV metrics, which includes:</span>
+
+<span class="sd">        .. codebookadd::</span>
+<span class="sd">            HRV_SD1|Standard deviation perpendicular to the line of identity. It is an index of \</span>
+<span class="sd">                short-term RR interval fluctuations, i.e., beat-to-beat variability. It is \</span>
+<span class="sd">                equivalent (although on another scale) to RMSSD, and therefore it is redundant to \</span>
+<span class="sd">                report correlation with both.</span>
+<span class="sd">            HRV_SD2|Standard deviation along the identity line. Index of long-term HRV changes.</span>
+<span class="sd">            HRV_SD1SD2|Ratio of SD1 to SD2. Describes the ratio of short term to long term \</span>
+<span class="sd">                variations in HRV.</span>
+<span class="sd">            HRV_S|Area of ellipse described by *SD1* and *SD2* (``pi * SD1 * SD2``). It is \</span>
+<span class="sd">                proportional to *SD1SD2*.</span>
+<span class="sd">            HRV_CSI|The Cardiac Sympathetic Index (Toichi, 1997) is a measure of cardiac \</span>
+<span class="sd">                sympathetic function independent of vagal activity, calculated by dividing the \</span>
+<span class="sd">                longitudinal variability of the Poincaré plot (``4*SD2``) by its transverse \</span>
+<span class="sd">                variability (``4*SD1``).</span>
+<span class="sd">            HRV_CVI|The Cardiac Vagal Index (Toichi, 1997) is an index of cardiac parasympathetic \</span>
+<span class="sd">                function (vagal activity unaffected by sympathetic activity), and is equal equal \</span>
+<span class="sd">                to the logarithm of the product of longitudinal (``4*SD2``) and transverse \</span>
+<span class="sd">                variability (``4*SD1``).</span>
+<span class="sd">            HRV_CSI_Modified|The modified CSI (Jeppesen, 2014) obtained by dividing the square of \</span>
+<span class="sd">                the longitudinal variability by its transverse variability.</span>
+<span class="sd">            HRV_GI|Guzik&#39;s Index, defined as the distance of points above line of identity (LI) to \</span>
+<span class="sd">                LI divided by the distance of all points in Poincaré plot to LI except those that \</span>
+<span class="sd">                are located on LI.</span>
+<span class="sd">            HRV_SI|Slope Index, defined as the phase angle of points above LI divided by the phase \</span>
+<span class="sd">                angle of all points in Poincaré plot except those that are located on LI.</span>
+<span class="sd">            HRV_AI|Area Index, defined as the cumulative area of the sectors corresponding to the \</span>
+<span class="sd">                points that are located above LI divided by the cumulative area of sectors \</span>
+<span class="sd">                corresponding to all points in the Poincaré plot except those that are located \</span>
+<span class="sd">                on LI.</span>
+<span class="sd">            HRV_PI|Porta&#39;s Index, defined as the number of points below LI divided by the total \</span>
+<span class="sd">                number of points in Poincaré plot except those that are located on LI.</span>
+<span class="sd">            HRV_SD1a|Short-term variance of contributions of decelerations (prolongations of RR \</span>
+<span class="sd">                intervals), (Piskorski, 2011).</span>
+<span class="sd">            HRV_SD1d|Short-term variance of contributions of accelerations (shortenings of RR \</span>
+<span class="sd">                intervals), (Piskorski, 2011).</span>
+<span class="sd">            HRV_C1a|The contributions of heart rate accelerations to short-term HRV, (Piskorski, 2011).</span>
+<span class="sd">            HRV_C1d|The contributions of heart rate decelerations to short-term HRV, (Piskorski, 2011).</span>
+<span class="sd">            HRV_SD2a|Long-term variance of contributions of accelerations (shortenings of RR \</span>
+<span class="sd">                intervals), (Piskorski, 2011).</span>
+<span class="sd">            HRV_SD2d|Long-term variance of contributions of decelerations (prolongations of RR \</span>
+<span class="sd">                intervals),  (Piskorski, 2011).</span>
+<span class="sd">            HRV_C2a|The contributions of heart rate accelerations to long-term HRV, (Piskorski, 2011).</span>
+<span class="sd">            HRV_C2d|The contributions of heart rate decelerations to long-term HRV, (Piskorski, 2011).</span>
+<span class="sd">            HRV_SDNNa|Total variance of contributions of accelerations (shortenings of RR \</span>
+<span class="sd">                intervals), (Piskorski, 2011).</span>
+<span class="sd">            HRV_SDNNd|Total variance of contributions of decelerations (prolongations of RR \</span>
+<span class="sd">                intervals), (Piskorski, 2011).</span>
+<span class="sd">            HRV_Ca|The total contributions of heart rate accelerations to HRV.</span>
+<span class="sd">            HRV_Cd|The total contributions of heart rate decelerations to HRV.</span>
+<span class="sd">            HRV_PIP|Percentage of inflection points of the RR intervals series.</span>
+<span class="sd">            HRV_IALS|Inverse of the average length of the acceleration/deceleration segments.</span>
+<span class="sd">            HRV_PSS|Percentage of short segments.</span>
+<span class="sd">            HRV_PAS|Percentage of NN intervals in alternation segments.</span>
+
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    ecg_peaks, ppg_peaks, hrv_frequency, hrv_time, hrv_summary</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import neurokit2 as nk</span>
+
+<span class="sd">      # Download data</span>
+<span class="sd">      data = nk.data(&quot;bio_resting_5min_100hz&quot;)</span>
+
+<span class="sd">      # Find peaks</span>
+<span class="sd">      peaks, info = nk.ecg_peaks(data[&quot;ECG&quot;], sampling_rate=100)</span>
+
+<span class="sd">      # Compute HRV indices</span>
+<span class="sd">      @savefig p_hrv_nonlinear1.png scale=100%</span>
+<span class="sd">      hrv = nk.hrv_nonlinear(peaks, sampling_rate=100, show=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      hrv</span>
+
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    * Pham, T., Lau, Z. J., Chen, S. H., &amp; Makowski, D. (2021). Heart Rate Variability in</span>
+<span class="sd">      Psychology: A Review of HRV Indices and an Analysis Tutorial. Sensors, 21(12), 3998.</span>
+<span class="sd">      https://doi.org/10.3390/s21123998</span>
+<span class="sd">    * Yan, C., Li, P., Ji, L., Yao, L., Karmakar, C., &amp; Liu, C. (2017). Area asymmetry of heart</span>
+<span class="sd">      rate variability signal. Biomedical engineering online, 16(1), 112.</span>
+<span class="sd">    * Ciccone, A. B., Siedlik, J. A., Wecht, J. M., Deckert, J. A., Nguyen, N. D., &amp; Weir, J. P.\</span>
+<span class="sd">      (2017). Reminder: RMSSD and SD1 are identical heart rate variability metrics. Muscle &amp; nerve,</span>
+<span class="sd">      56 (4), 674-678.</span>
+<span class="sd">    * Shaffer, F., &amp; Ginsberg, J. P. (2017). An overview of heart rate variability metrics and</span>
+<span class="sd">      norms. Frontiers in public health, 5, 258.</span>
+<span class="sd">    * Costa, M. D., Davis, R. B., &amp; Goldberger, A. L. (2017). Heart rate fragmentation: a new</span>
+<span class="sd">      approach to the analysis of cardiac interbeat interval dynamics. Front. Physiol. 8, 255.</span>
+<span class="sd">    * Jeppesen, J., Beniczky, S., Johansen, P., Sidenius, P., &amp; Fuglsang-Frederiksen, A. (2014).</span>
+<span class="sd">      Using Lorenz plot and Cardiac Sympathetic Index of heart rate variability for detecting</span>
+<span class="sd">      seizures for patients with epilepsy. In 2014 36th Annual International Conference of the IEE</span>
+<span class="sd">      Engineering in Medicine and Biology Society (pp. 4563-4566). IEEE.</span>
+<span class="sd">    * Piskorski, J., &amp; Guzik, P. (2011). Asymmetric properties of long-term and total heart rate</span>
+<span class="sd">      variability. Medical &amp; biological engineering &amp; computing, 49(11), 1289-1297.</span>
+<span class="sd">    * Stein, P. K. (2002). Assessing heart rate variability from real-world Holter reports. Cardiac</span>
+<span class="sd">      electrophysiology review, 6(3), 239-244.</span>
+<span class="sd">    * Brennan, M. et al. (2001). Do Existing Measures of Poincaré Plot Geometry Reflect Nonlinear</span>
+<span class="sd">      Features of Heart Rate Variability?. IEEE Transactions on Biomedical Engineering, 48(11),</span>
+<span class="sd">      1342-1347.</span>
+<span class="sd">    * Toichi, M., Sugiura, T., Murai, T., &amp; Sengoku, A. (1997). A new method of assessing cardiac</span>
+<span class="sd">      autonomic function and its comparison with spectral analysis and coefficient of variation of</span>
+<span class="sd">      R-R interval. Journal of the autonomic nervous system, 62(1-2), 79-84.</span>
+<span class="sd">    * Acharya, R. U., Lim, C. M., &amp; Joseph, P. (2002). Heart rate variability analysis using</span>
+<span class="sd">      correlation dimension and detrended fluctuation analysis. Itbm-Rbm, 23(6), 333-339.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sanitize input</span>
+    <span class="c1"># If given peaks, compute R-R intervals (also referred to as NN) in milliseconds</span>
+    <span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="p">,</span> <span class="n">rri_missing</span> <span class="o">=</span> <span class="n">_hrv_format_input</span><span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">rri_missing</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;Missing interbeat intervals have been detected. &quot;</span>
+            <span class="s2">&quot;Note that missing intervals can distort some HRV features, in particular &quot;</span>
+            <span class="s2">&quot;nonlinear indices.&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="c1"># Initialize empty container for results</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Poincaré features (SD1, SD2, etc.)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">_hrv_nonlinear_poincare</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">,</span> <span class="n">rri_missing</span><span class="o">=</span><span class="n">rri_missing</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+    <span class="c1"># Heart Rate Fragmentation</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">_hrv_nonlinear_fragmentation</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">,</span> <span class="n">rri_missing</span><span class="o">=</span><span class="n">rri_missing</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+    <span class="c1"># Heart Rate Asymmetry</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">_hrv_nonlinear_poincare_hra</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">,</span> <span class="n">rri_missing</span><span class="o">=</span><span class="n">rri_missing</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+    <span class="c1"># DFA</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">_hrv_dfa</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Complexity</span>
+    <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;ApEn&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entropy_approximate</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SampEn&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entropy_sample</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;ShanEn&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entropy_shannon</span><span class="p">(</span><span class="n">rri</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;FuzzyEn&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entropy_fuzzy</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MSEn&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entropy_multiscale</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;MSEn&quot;</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;CMSEn&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entropy_multiscale</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;CMSEn&quot;</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;RCMSEn&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entropy_multiscale</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;RCMSEn&quot;</span><span class="p">)</span>
+
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;CD&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_correlation</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;HFD&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_higuchi</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">k_max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;KFD&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_katz</span><span class="p">(</span><span class="n">rri</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;LZC&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">complexity_lempelziv</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+        <span class="n">_hrv_nonlinear_show</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">,</span> <span class="n">rri_missing</span><span class="o">=</span><span class="n">rri_missing</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">add_prefix</span><span class="p">(</span><span class="s2">&quot;HRV_&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Get SD1 and SD2</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_hrv_nonlinear_poincare</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rri_missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="p">{}):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute SD1 and SD2.</span>
+
+<span class="sd">    - Brennan (2001). Do existing measures of Poincare plot geometry reflect nonlinear features of</span>
+<span class="sd">      heart rate variability?</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># HRV and hrvanalysis</span>
+    <span class="n">rri_n</span> <span class="o">=</span> <span class="n">rri</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">rri_plus</span> <span class="o">=</span> <span class="n">rri</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">if</span> <span class="n">rri_missing</span><span class="p">:</span>
+        <span class="c1"># Only include successive differences</span>
+        <span class="n">rri_plus</span> <span class="o">=</span> <span class="n">rri_plus</span><span class="p">[</span><span class="n">_intervals_successive</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">intervals_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">)]</span>
+        <span class="n">rri_n</span> <span class="o">=</span> <span class="n">rri_n</span><span class="p">[</span><span class="n">_intervals_successive</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">intervals_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">)]</span>
+
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="n">rri_n</span> <span class="o">-</span> <span class="n">rri_plus</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Eq.7</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="n">rri_n</span> <span class="o">+</span> <span class="n">rri_plus</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">sd1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sd2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sd1</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sd2</span>
+
+    <span class="c1"># SD1 / SD2</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1SD2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sd1</span> <span class="o">/</span> <span class="n">sd2</span>
+
+    <span class="c1"># Area of ellipse described by SD1 and SD2</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2&quot;</span><span class="p">]</span>
+
+    <span class="c1"># CSI / CVI</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1&quot;</span><span class="p">]</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2&quot;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;CSI&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="n">T</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;CVI&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;CSI_Modified&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">T</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span> <span class="nf">_hrv_nonlinear_poincare_hra</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rri_missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="p">{}):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Heart Rate Asymmetry Indices.</span>
+
+<span class="sd">    - Asymmetry of Poincaré plot (or termed as heart rate asymmetry, HRA) - Yan (2017)</span>
+<span class="sd">    - Asymmetric properties of long-term and total heart rate variability - Piskorski (2011)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rri</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">rri</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># rri_n, x-axis</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">rri</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># rri_plus, y-axis</span>
+
+    <span class="k">if</span> <span class="n">rri_missing</span><span class="p">:</span>
+        <span class="c1"># Only include successive differences</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">_intervals_successive</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">intervals_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">)]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">_intervals_successive</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">intervals_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">)]</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">x</span>
+    <span class="n">decelerate_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># set of points above IL where y &gt; x</span>
+    <span class="n">accelerate_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># set of points below IL where y &lt; x</span>
+    <span class="n">nochange_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Distances to centroid line l2</span>
+    <span class="n">centroid_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">centroid_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">dist_l2_all</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">centroid_x</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">centroid_y</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Distances to LI</span>
+    <span class="n">dist_all</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the angles</span>
+    <span class="n">theta_all</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">y</span> <span class="o">/</span> <span class="n">x</span><span class="p">))</span>  <span class="c1"># phase angle LI - phase angle of i-th point</span>
+    <span class="c1"># Calculate the radius</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># Sector areas</span>
+    <span class="n">S_all</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">theta_all</span> <span class="o">*</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># Guzik&#39;s Index (GI)</span>
+    <span class="n">den_GI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dist_all</span><span class="p">)</span>
+    <span class="n">num_GI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dist_all</span><span class="p">[</span><span class="n">decelerate_indices</span><span class="p">])</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;GI&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_GI</span> <span class="o">/</span> <span class="n">den_GI</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="c1"># Slope Index (SI)</span>
+    <span class="n">den_SI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">theta_all</span><span class="p">)</span>
+    <span class="n">num_SI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">theta_all</span><span class="p">[</span><span class="n">decelerate_indices</span><span class="p">])</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SI&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_SI</span> <span class="o">/</span> <span class="n">den_SI</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="c1"># Area Index (AI)</span>
+    <span class="n">den_AI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">S_all</span><span class="p">)</span>
+    <span class="n">num_AI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">S_all</span><span class="p">[</span><span class="n">decelerate_indices</span><span class="p">])</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;AI&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_AI</span> <span class="o">/</span> <span class="n">den_AI</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="c1"># Porta&#39;s Index (PI)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">nochange_indices</span><span class="p">)</span>  <span class="c1"># all points except those on LI</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">accelerate_indices</span><span class="p">)</span>  <span class="c1"># number of points below LI</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;PI&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="c1"># Short-term asymmetry (SD1)</span>
+    <span class="n">sd1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dist_all</span><span class="p">[</span><span class="n">decelerate_indices</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">sd1a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dist_all</span><span class="p">[</span><span class="n">accelerate_indices</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">sd1I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sd1d</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sd1a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;C1d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sd1d</span> <span class="o">/</span> <span class="n">sd1I</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;C1a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sd1a</span> <span class="o">/</span> <span class="n">sd1I</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sd1d</span>  <span class="c1"># SD1 deceleration</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sd1a</span>  <span class="c1"># SD1 acceleration</span>
+    <span class="c1"># out[&quot;SD1I&quot;] = sd1I  # SD1 based on LI, whereas SD1 is based on centroid line l1</span>
+
+    <span class="c1"># Long-term asymmetry (SD2)</span>
+    <span class="n">longterm_dec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dist_l2_all</span><span class="p">[</span><span class="n">decelerate_indices</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">longterm_acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dist_l2_all</span><span class="p">[</span><span class="n">accelerate_indices</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">longterm_nodiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dist_l2_all</span><span class="p">[</span><span class="n">nochange_indices</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">sd2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">longterm_dec</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">longterm_nodiff</span><span class="p">)</span>
+    <span class="n">sd2a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">longterm_acc</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">longterm_nodiff</span><span class="p">)</span>
+
+    <span class="n">sd2I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sd2d</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sd2a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;C2d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sd2d</span> <span class="o">/</span> <span class="n">sd2I</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;C2a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sd2a</span> <span class="o">/</span> <span class="n">sd2I</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sd2d</span>  <span class="c1"># SD2 deceleration</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sd2a</span>  <span class="c1"># SD2 acceleration</span>
+    <span class="c1"># out[&quot;SD2I&quot;] = sd2I  # identical with SD2</span>
+
+    <span class="c1"># Total asymmerty (SDNN)</span>
+    <span class="n">sdnnd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sd1d</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sd2d</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># SDNN deceleration</span>
+    <span class="n">sdnna</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sd1a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sd2a</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># SDNN acceleration</span>
+    <span class="n">sdnn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sdnnd</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sdnna</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># should be similar to sdnn in hrv_time</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Cd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sdnnd</span> <span class="o">/</span> <span class="n">sdnn</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Ca&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sdnna</span> <span class="o">/</span> <span class="n">sdnn</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SDNNd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sdnnd</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SDNNa&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sdnna</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span> <span class="nf">_hrv_nonlinear_fragmentation</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rri_missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="p">{}):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Heart Rate Fragmentation Indices - Costa (2017)</span>
+
+<span class="sd">    The more fragmented a time series is, the higher the PIP, IALS, PSS, and PAS indices will be.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">diff_rri</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">rri</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rri_missing</span><span class="p">:</span>
+        <span class="c1"># Only include successive differences</span>
+        <span class="n">diff_rri</span> <span class="o">=</span> <span class="n">diff_rri</span><span class="p">[</span><span class="n">_intervals_successive</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">intervals_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">)]</span>
+
+    <span class="n">zerocrossings</span> <span class="o">=</span> <span class="n">signal_zerocrossings</span><span class="p">(</span><span class="n">diff_rri</span><span class="p">)</span>
+
+    <span class="c1"># Percentage of inflection points (PIP)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">diff_rri</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;PIP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">zerocrossings</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
+
+    <span class="c1"># Inverse of the average length of the acceleration/deceleration segments (IALS)</span>
+    <span class="n">accelerations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff_rri</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">decelerations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff_rri</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">consecutive</span> <span class="o">=</span> <span class="n">find_consecutive</span><span class="p">(</span><span class="n">accelerations</span><span class="p">)</span> <span class="o">+</span> <span class="n">find_consecutive</span><span class="p">(</span><span class="n">decelerations</span><span class="p">)</span>
+    <span class="n">lengths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">consecutive</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;IALS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+
+    <span class="c1"># Percentage of short segments (PSS) - The complement of the percentage of NN intervals in</span>
+    <span class="c1"># acceleration and deceleration segments with three or more NN intervals</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;PSS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+
+    <span class="c1"># Percentage of NN intervals in alternation segments (PAS). An alternation segment is a sequence</span>
+    <span class="c1"># of at least four NN intervals, for which heart rate acceleration changes sign every beat. We note</span>
+    <span class="c1"># that PAS quantifies the amount of a particular sub-type of fragmentation (alternation). A time</span>
+    <span class="c1"># series may be highly fragmented and have a small amount of alternation. However, all time series</span>
+    <span class="c1"># with large amount of alternation are highly fragmented.</span>
+    <span class="n">alternations</span> <span class="o">=</span> <span class="n">find_consecutive</span><span class="p">(</span><span class="n">zerocrossings</span><span class="p">)</span>
+    <span class="n">lengths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">alternations</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;PAS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># DFA</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_hrv_dfa</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">n_windows</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="c1"># if &quot;dfa_windows&quot; in kwargs:</span>
+    <span class="c1">#    dfa_windows = kwargs[&quot;dfa_windows&quot;]</span>
+    <span class="c1"># else:</span>
+    <span class="c1"># dfa_windows = [(4, 11), (12, None)]</span>
+    <span class="c1"># consider using dict.get() mthd directly</span>
+    <span class="n">dfa_windows</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dfa_windows&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="kc">None</span><span class="p">)])</span>
+
+    <span class="c1"># Determine max beats</span>
+    <span class="k">if</span> <span class="n">dfa_windows</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_beats</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rri</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>  <span class="c1"># Number of peaks divided by 10</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">max_beats</span> <span class="o">=</span> <span class="n">dfa_windows</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># No. of windows to compute for short and long term</span>
+    <span class="k">if</span> <span class="n">n_windows</span> <span class="o">==</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span>
+        <span class="n">n_windows_short</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dfa_windows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dfa_windows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">n_windows_long</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_beats</span> <span class="o">-</span> <span class="n">dfa_windows</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n_windows</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">n_windows_short</span> <span class="o">=</span> <span class="n">n_windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">n_windows_long</span> <span class="o">=</span> <span class="n">n_windows</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Compute DFA alpha1</span>
+    <span class="n">short_window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">dfa_windows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfa_windows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">n_windows_short</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="c1"># For monofractal</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;DFA_alpha1&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_dfa</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">short_window</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="c1"># For multifractal</span>
+    <span class="n">mdfa_alpha1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_dfa</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">short_window</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mdfa_alpha1</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MFDFA_alpha1_&quot;</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">mdfa_alpha1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Compute DFA alpha2</span>
+    <span class="c1"># sanatize max_beats</span>
+    <span class="k">if</span> <span class="n">max_beats</span> <span class="o">&lt;</span> <span class="n">dfa_windows</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;DFA_alpha2 related indices will not be calculated. &quot;</span>
+            <span class="s2">&quot;The maximum duration of the windows provided for the long-term correlation is smaller &quot;</span>
+            <span class="s2">&quot;than the minimum duration of windows. Refer to the `scale` argument in `nk.fractal_dfa()` &quot;</span>
+            <span class="s2">&quot;for more information.&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">long_window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">dfa_windows</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_beats</span><span class="p">),</span> <span class="n">n_windows_long</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="c1"># For monofractal</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;DFA_alpha2&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_dfa</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">long_window</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># For multifractal</span>
+        <span class="n">mdfa_alpha2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fractal_dfa</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">multifractal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">long_window</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mdfa_alpha2</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;MFDFA_alpha2_&quot;</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">mdfa_alpha2</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Plot</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_hrv_nonlinear_show</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">rri_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rri_missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="p">{},</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax_marg_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax_marg_y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="n">mean_heart_period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">rri</span><span class="p">)</span>
+    <span class="n">sd1</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD1&quot;</span><span class="p">]</span>
+    <span class="n">sd2</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;SD2&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sd1</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="n">sd1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sd1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sd2</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="n">sd2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sd2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Poincare values</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">rri</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">rri</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">if</span> <span class="n">rri_missing</span><span class="p">:</span>
+        <span class="c1"># Only include successive differences</span>
+        <span class="n">ax1</span> <span class="o">=</span> <span class="n">ax1</span><span class="p">[</span><span class="n">_intervals_successive</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">intervals_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">)]</span>
+        <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax2</span><span class="p">[</span><span class="n">_intervals_successive</span><span class="p">(</span><span class="n">rri</span><span class="p">,</span> <span class="n">intervals_time</span><span class="o">=</span><span class="n">rri_time</span><span class="p">)]</span>
+
+    <span class="c1"># Set grid boundaries</span>
+    <span class="n">ax1_lim</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">ax1</span><span class="p">))</span> <span class="o">/</span> <span class="mi">10</span>
+    <span class="n">ax2_lim</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">ax2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">10</span>
+    <span class="n">ax1_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span> <span class="o">-</span> <span class="n">ax1_lim</span>
+    <span class="n">ax1_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ax1_lim</span>
+    <span class="n">ax2_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span> <span class="o">-</span> <span class="n">ax2_lim</span>
+    <span class="n">ax2_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span> <span class="o">+</span> <span class="n">ax2_lim</span>
+
+    <span class="c1"># Prepare figure</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ax_marg_x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ax_marg_y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">gs</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">ax_marg_x</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+        <span class="n">ax_marg_y</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+        <span class="n">gs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>  <span class="c1"># Reduce spaces</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Poincaré Plot&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Create meshgrid</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="n">ax1_min</span><span class="p">:</span><span class="n">ax1_max</span><span class="p">:</span><span class="mi">100</span><span class="n">j</span><span class="p">,</span> <span class="n">ax2_min</span><span class="p">:</span><span class="n">ax2_max</span><span class="p">:</span><span class="mi">100</span><span class="n">j</span><span class="p">]</span>
+
+    <span class="c1"># Fit Gaussian Kernel</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">])</span>
+    <span class="n">kernel</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">kernel</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resampled</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">ax1_min</span><span class="p">,</span> <span class="n">ax1_max</span><span class="p">,</span> <span class="n">ax2_min</span><span class="p">,</span> <span class="n">ax2_max</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Marginal densities</span>
+    <span class="n">ax_marg_x</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ccdff0&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+    <span class="n">ax_marg_y</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+        <span class="n">ax2</span><span class="p">,</span>
+        <span class="n">bins</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">),</span>
+        <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ccdff0&quot;</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">kde1</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+    <span class="n">x1_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ax1_min</span><span class="p">,</span> <span class="n">ax1_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ax1</span><span class="p">))</span>
+    <span class="n">x1_dens</span> <span class="o">=</span> <span class="n">kde1</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x1_plot</span><span class="p">)</span>
+
+    <span class="n">ax_marg_x</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">x1_plot</span><span class="p">,</span> <span class="n">x1_dens</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;#1b6aaf&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">kde2</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span>
+    <span class="n">x2_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ax2_min</span><span class="p">,</span> <span class="n">ax2_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ax2</span><span class="p">))</span>
+    <span class="n">x2_dens</span> <span class="o">=</span> <span class="n">kde2</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x2_plot</span><span class="p">)</span>
+    <span class="n">ax_marg_y</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">x2_plot</span><span class="p">,</span> <span class="n">x2_dens</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;#1b6aaf&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Turn off marginal axes labels</span>
+    <span class="n">ax_marg_x</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax_marg_y</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot ellipse</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="mi">45</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sd2</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sd1</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean_heart_period</span><span class="p">,</span> <span class="n">mean_heart_period</span><span class="p">)</span>
+    <span class="n">ellipse</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">xy</span><span class="o">=</span><span class="n">xy</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">angle</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ellipse</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ellipse</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;#2196F3&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">ellipse</span><span class="p">)</span>
+
+    <span class="c1"># Plot points only outside ellipse</span>
+    <span class="n">cos_angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mf">180.0</span> <span class="o">-</span> <span class="n">angle</span><span class="p">))</span>
+    <span class="n">sin_angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mf">180.0</span> <span class="o">-</span> <span class="n">angle</span><span class="p">))</span>
+    <span class="n">xc</span> <span class="o">=</span> <span class="n">ax1</span> <span class="o">-</span> <span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">yc</span> <span class="o">=</span> <span class="n">ax2</span> <span class="o">-</span> <span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">xct</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">*</span> <span class="n">cos_angle</span> <span class="o">-</span> <span class="n">yc</span> <span class="o">*</span> <span class="n">sin_angle</span>
+    <span class="n">yct</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">*</span> <span class="n">sin_angle</span> <span class="o">+</span> <span class="n">yc</span> <span class="o">*</span> <span class="n">cos_angle</span>
+    <span class="n">rad_cc</span> <span class="o">=</span> <span class="p">(</span><span class="n">xct</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">yct</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">rad_cc</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">[</span><span class="n">points</span><span class="p">],</span> <span class="n">ax2</span><span class="p">[</span><span class="n">points</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="c1"># SD1 and SD2 arrow</span>
+    <span class="n">sd1_arrow</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span>
+        <span class="n">mean_heart_period</span><span class="p">,</span>
+        <span class="n">mean_heart_period</span><span class="p">,</span>
+        <span class="nb">float</span><span class="p">(</span><span class="o">-</span><span class="n">sd1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">sd1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;#E91E63&quot;</span><span class="p">,</span>
+        <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;#E91E63&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SD1&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">sd2_arrow</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span>
+        <span class="n">mean_heart_period</span><span class="p">,</span>
+        <span class="n">mean_heart_period</span><span class="p">,</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">sd2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">sd2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;#FF9800&quot;</span><span class="p">,</span>
+        <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;#FF9800&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SD2&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$RR_</span><span class="si">{n}</span><span class="s2"> (ms)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$RR_{n+1} (ms)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">sd1_arrow</span><span class="p">,</span> <span class="n">sd2_arrow</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

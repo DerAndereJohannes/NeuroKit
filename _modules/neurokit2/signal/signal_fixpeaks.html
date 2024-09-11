@@ -1,0 +1,1158 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurokit2.signal.signal_fixpeaks &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/signal/signal_fixpeaks';</script>
+    <link rel="icon" href="../../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2F_modules/neurokit2/signal/signal_fixpeaks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for neurokit2.signal.signal_fixpeaks</h1><div class="highlight"><pre>
+<span></span><span class="c1"># - * - coding: utf-8 - * -</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">NeuroKitWarning</span>
+<span class="kn">from</span> <span class="nn">..stats</span> <span class="kn">import</span> <span class="n">standardize</span>
+<span class="kn">from</span> <span class="nn">.signal_formatpeaks</span> <span class="kn">import</span> <span class="n">_signal_formatpeaks_sanitize</span>
+<span class="kn">from</span> <span class="nn">.signal_period</span> <span class="kn">import</span> <span class="n">signal_period</span>
+
+
+<div class="viewcode-block" id="signal_fixpeaks">
+<a class="viewcode-back" href="../../../functions/signal.html#neurokit2.signal_fixpeaks">[docs]</a>
+<span class="k">def</span> <span class="nf">signal_fixpeaks</span><span class="p">(</span>
+    <span class="n">peaks</span><span class="p">,</span>
+    <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">iterative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">interval_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">interval_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_interval_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_interval_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">robust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;Kubios&quot;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;**Correct Erroneous Peak Placements**</span>
+
+<span class="sd">    Identify and correct erroneous peak placements based on outliers in peak-to-peak differences</span>
+<span class="sd">    (period).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    peaks : list or array or DataFrame or Series or dict</span>
+<span class="sd">        The samples at which the peaks occur. If an array is passed in, it is assumed that it was</span>
+<span class="sd">        obtained with :func:`.signal_findpeaks`. If a DataFrame is passed in, it is assumed to be</span>
+<span class="sd">        obtained with :func:`.ecg_findpeaks` or :func:`.ppg_findpeaks` and to be of the same length</span>
+<span class="sd">        as the input signal.</span>
+<span class="sd">    sampling_rate : int</span>
+<span class="sd">        The sampling frequency of the signal that contains the peaks (in Hz, i.e., samples/second).</span>
+<span class="sd">    iterative : bool</span>
+<span class="sd">        Whether or not to apply the artifact correction repeatedly (results in superior artifact</span>
+<span class="sd">        correction).</span>
+<span class="sd">    show : bool</span>
+<span class="sd">        Whether or not to visualize artifacts and artifact thresholds.</span>
+<span class="sd">    interval_min : float</span>
+<span class="sd">        Only when ``method = &quot;neurokit&quot;``. The minimum interval between the peaks (in seconds).</span>
+<span class="sd">    interval_max : float</span>
+<span class="sd">        Only when ``method = &quot;neurokit&quot;``. The maximum interval between the peaks (in seconds).</span>
+<span class="sd">    relative_interval_min : float</span>
+<span class="sd">        Only when ``method = &quot;neurokit&quot;``. The minimum interval between the peaks as relative to</span>
+<span class="sd">        the sample (expressed in standard deviation from the mean).</span>
+<span class="sd">    relative_interval_max : float</span>
+<span class="sd">        Only when ``method = &quot;neurokit&quot;``. The maximum interval between the peaks as relative to</span>
+<span class="sd">        the sample (expressed in standard deviation from the mean).</span>
+<span class="sd">    robust : bool</span>
+<span class="sd">        Only when ``method = &quot;neurokit&quot;``. Use a robust method of standardization (see</span>
+<span class="sd">        :func:`.standardize`) for the relative thresholds.</span>
+<span class="sd">    method : str</span>
+<span class="sd">        Either ``&quot;Kubios&quot;`` or ``&quot;neurokit&quot;``. ``&quot;Kubios&quot;`` uses the artifact detection and</span>
+<span class="sd">        correction described in Lipponen, J. A., &amp; Tarvainen, M. P. (2019). Note that ``&quot;Kubios&quot;``</span>
+<span class="sd">        is only meant for peaks in ECG or PPG. ``&quot;neurokit&quot;`` can be used with peaks in ECG, PPG,</span>
+<span class="sd">        or respiratory data.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Other keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    peaks_clean : array</span>
+<span class="sd">        The corrected peak locations.</span>
+<span class="sd">    artifacts : dict</span>
+<span class="sd">        Only if ``method=&quot;Kubios&quot;``. A dictionary containing the indices of artifacts, accessible</span>
+<span class="sd">        with the keys ``&quot;ectopic&quot;``, ``&quot;missed&quot;``, ``&quot;extra&quot;``, and ``&quot;longshort&quot;``.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    signal_findpeaks, ecg_findpeaks, ecg_peaks, ppg_findpeaks, ppg_peaks</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import neurokit2 as nk</span>
+
+<span class="sd">      # Simulate ECG data and add noisy period</span>
+<span class="sd">      ecg = nk.ecg_simulate(duration=240, sampling_rate=250, noise=2, random_state=42)</span>
+<span class="sd">      ecg[20000:30000] += np.random.uniform(size=10000)</span>
+<span class="sd">      ecg[40000:43000] = 0</span>
+
+<span class="sd">      # Identify and Correct Peaks using &quot;Kubios&quot; Method</span>
+<span class="sd">      rpeaks_uncorrected = nk.ecg_findpeaks(ecg, method=&quot;pantompkins&quot;, sampling_rate=250)</span>
+
+<span class="sd">      @savefig p_signal_fixpeaks1.png scale=100%</span>
+<span class="sd">      info, rpeaks_corrected = nk.signal_fixpeaks(</span>
+<span class="sd">          rpeaks_uncorrected, sampling_rate=250, iterative=True, method=&quot;Kubios&quot;, show=True</span>
+<span class="sd">      )</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      # Visualize Artifact Correction</span>
+<span class="sd">      rate_corrected = nk.signal_rate(rpeaks_corrected, desired_length=len(ecg))</span>
+<span class="sd">      rate_uncorrected = nk.signal_rate(rpeaks_uncorrected, desired_length=len(ecg))</span>
+
+<span class="sd">      @savefig p_signal_fixpeaks2.png scale=100%</span>
+<span class="sd">      nk.signal_plot(</span>
+<span class="sd">          [rate_uncorrected, rate_corrected],</span>
+<span class="sd">          labels=[&quot;Heart Rate Uncorrected&quot;, &quot;Heart Rate Corrected&quot;]</span>
+<span class="sd">      )</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import numpy as np</span>
+
+<span class="sd">      # Simulate Abnormal Signals</span>
+<span class="sd">      signal = nk.signal_simulate(duration=4, sampling_rate=1000, frequency=1)</span>
+<span class="sd">      peaks_true = nk.signal_findpeaks(signal)[&quot;Peaks&quot;]</span>
+<span class="sd">      peaks = np.delete(peaks_true, [1])  # create gaps due to missing peaks</span>
+
+<span class="sd">      signal = nk.signal_simulate(duration=20, sampling_rate=1000, frequency=1)</span>
+<span class="sd">      peaks_true = nk.signal_findpeaks(signal)[&quot;Peaks&quot;]</span>
+<span class="sd">      peaks = np.delete(peaks_true, [5, 15])  # create gaps</span>
+<span class="sd">      peaks = np.sort(np.append(peaks, [1350, 11350, 18350]))  # add artifacts</span>
+
+<span class="sd">      # Identify and Correct Peaks using &#39;NeuroKit&#39; Method</span>
+<span class="sd">      info, peaks_corrected = nk.signal_fixpeaks(</span>
+<span class="sd">          peaks=peaks, interval_min=0.5, interval_max=1.5, method=&quot;neurokit&quot;</span>
+<span class="sd">      )</span>
+
+<span class="sd">      # Plot and shift original peaks to the right to see the difference.</span>
+<span class="sd">      @savefig p_signal_fixpeaks3.png scale=100%</span>
+<span class="sd">      nk.events_plot([peaks + 50, peaks_corrected], signal)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    * Lipponen, J. A., &amp; Tarvainen, M. P. (2019). A robust algorithm for heart rate variability time</span>
+<span class="sd">      series artefact correction using novel beat classification. Journal of medical engineering &amp;</span>
+<span class="sd">      technology, 43(3), 173-181. 10.1080/03091902.2019.1640306</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Format input</span>
+    <span class="n">peaks</span> <span class="o">=</span> <span class="n">_signal_formatpeaks_sanitize</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span>
+
+    <span class="c1"># If method Kubios</span>
+    <span class="k">if</span> <span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;kubios&quot;</span><span class="p">:</span>
+        <span class="n">info</span><span class="p">,</span> <span class="n">peaks_clean</span> <span class="o">=</span> <span class="n">_signal_fixpeaks_kubios</span><span class="p">(</span>
+            <span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">iterative</span><span class="o">=</span><span class="n">iterative</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Else method is NeuroKit</span>
+        <span class="n">info</span><span class="p">,</span> <span class="n">peaks_clean</span> <span class="o">=</span> <span class="n">_signal_fixpeaks_neurokit</span><span class="p">(</span>
+            <span class="n">peaks</span><span class="p">,</span>
+            <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+            <span class="n">interval_min</span><span class="o">=</span><span class="n">interval_min</span><span class="p">,</span>
+            <span class="n">interval_max</span><span class="o">=</span><span class="n">interval_max</span><span class="p">,</span>
+            <span class="n">relative_interval_min</span><span class="o">=</span><span class="n">relative_interval_min</span><span class="p">,</span>
+            <span class="n">relative_interval_max</span><span class="o">=</span><span class="n">relative_interval_max</span><span class="p">,</span>
+            <span class="n">robust</span><span class="o">=</span><span class="n">robust</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">info</span><span class="p">,</span> <span class="n">peaks_clean</span></div>
+
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Methods</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_signal_fixpeaks_neurokit</span><span class="p">(</span>
+    <span class="n">peaks</span><span class="p">,</span>
+    <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">interval_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">interval_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_interval_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_interval_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">robust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;NeuroKit method.&quot;&quot;&quot;</span>
+
+    <span class="n">peaks_clean</span> <span class="o">=</span> <span class="n">_remove_small</span><span class="p">(</span>
+        <span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">interval_min</span><span class="p">,</span> <span class="n">relative_interval_min</span><span class="p">,</span> <span class="n">robust</span>
+    <span class="p">)</span>
+    <span class="n">peaks_clean</span> <span class="o">=</span> <span class="n">_interpolate_big</span><span class="p">(</span>
+        <span class="n">peaks_clean</span><span class="p">,</span>
+        <span class="n">sampling_rate</span><span class="p">,</span>
+        <span class="n">interval_max</span><span class="p">,</span>
+        <span class="n">relative_interval_max</span><span class="p">,</span>
+        <span class="n">robust</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">valid_peaks</span> <span class="o">=</span> <span class="n">peaks_clean</span><span class="p">[</span><span class="n">peaks_clean</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_invalid_idcs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">peaks_clean</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_peaks</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_invalid_idcs</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot; Negative peak indices detected in output. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; Removing </span><span class="si">{</span><span class="n">n_invalid_idcs</span><span class="si">}</span><span class="s2"> invalid peaks. &quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">peaks_clean</span> <span class="o">=</span> <span class="n">valid_peaks</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;neurokit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">peaks</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">peaks_clean</span><span class="p">],</span>
+        <span class="s2">&quot;missed&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">peaks_clean</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">peaks</span><span class="p">],</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">info</span><span class="p">,</span> <span class="n">peaks_clean</span>
+
+
+<span class="k">def</span> <span class="nf">_signal_fixpeaks_kubios</span><span class="p">(</span>
+    <span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">iterative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;kubios method.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Get corrected peaks and normal-to-normal intervals.</span>
+    <span class="n">artifacts</span><span class="p">,</span> <span class="n">subspaces</span> <span class="o">=</span> <span class="n">_find_artifacts</span><span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">peaks_clean</span> <span class="o">=</span> <span class="n">_correct_artifacts</span><span class="p">(</span><span class="n">artifacts</span><span class="p">,</span> <span class="n">peaks</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">iterative</span><span class="p">:</span>
+        <span class="c1"># Iteratively apply the artifact correction until the number</span>
+        <span class="c1"># of artifacts stops decreasing.</span>
+        <span class="n">n_artifacts_current</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">artifacts</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">new_artifacts</span><span class="p">,</span> <span class="n">new_subspaces</span> <span class="o">=</span> <span class="n">_find_artifacts</span><span class="p">(</span>
+                <span class="n">peaks_clean</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+            <span class="p">)</span>
+
+            <span class="n">n_artifacts_previous</span> <span class="o">=</span> <span class="n">n_artifacts_current</span>
+            <span class="n">n_artifacts_current</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">new_artifacts</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+            <span class="k">if</span> <span class="n">n_artifacts_current</span> <span class="o">&gt;=</span> <span class="n">n_artifacts_previous</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">artifacts</span> <span class="o">=</span> <span class="n">new_artifacts</span>
+            <span class="n">subspaces</span> <span class="o">=</span> <span class="n">new_subspaces</span>
+            <span class="n">peaks_clean</span> <span class="o">=</span> <span class="n">_correct_artifacts</span><span class="p">(</span><span class="n">artifacts</span><span class="p">,</span> <span class="n">peaks_clean</span><span class="p">)</span>
+
+    <span class="n">artifacts</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;kubios&quot;</span>
+    <span class="n">artifacts</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">subspaces</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+        <span class="n">_plot_artifacts_lipponen2019</span><span class="p">(</span><span class="n">artifacts</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">artifacts</span><span class="p">,</span> <span class="n">peaks_clean</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Kubios: Lipponen &amp; Tarvainen (2019).</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_find_artifacts</span><span class="p">(</span>
+    <span class="n">peaks</span><span class="p">,</span>
+    <span class="n">c1</span><span class="o">=</span><span class="mf">0.13</span><span class="p">,</span>
+    <span class="n">c2</span><span class="o">=</span><span class="mf">0.17</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">5.2</span><span class="p">,</span>
+    <span class="n">window_width</span><span class="o">=</span><span class="mi">91</span><span class="p">,</span>
+    <span class="n">medfilt_order</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+    <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="c1"># Compute period series (make sure it has same numer of elements as peaks);</span>
+    <span class="c1"># peaks are in samples, convert to seconds.</span>
+    <span class="n">rr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ediff1d</span><span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">to_begin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">sampling_rate</span>
+    <span class="c1"># For subsequent analysis it is important that the first element has</span>
+    <span class="c1"># a value in a realistic range (e.g., for median filtering).</span>
+    <span class="n">rr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rr</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+    <span class="c1"># Artifact identification #################################################</span>
+    <span class="c1">###########################################################################</span>
+
+    <span class="c1"># Compute dRRs: time series of differences of consecutive periods (dRRs).</span>
+    <span class="n">drrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ediff1d</span><span class="p">(</span><span class="n">rr</span><span class="p">,</span> <span class="n">to_begin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">drrs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">drrs</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="c1"># Normalize by threshold.</span>
+    <span class="n">th1</span> <span class="o">=</span> <span class="n">_compute_threshold</span><span class="p">(</span><span class="n">drrs</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">window_width</span><span class="p">)</span>
+    <span class="c1"># ignore division by 0 warning</span>
+    <span class="n">old_setting</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="n">drrs</span> <span class="o">/=</span> <span class="n">th1</span>
+    <span class="c1"># return old setting</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="o">**</span><span class="n">old_setting</span><span class="p">)</span>
+
+    <span class="c1"># Cast dRRs to subspace s12.</span>
+    <span class="c1"># Pad drrs with one element.</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">drrs_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">drrs</span><span class="p">,</span> <span class="n">padding</span><span class="p">,</span> <span class="s2">&quot;reflect&quot;</span><span class="p">)</span>
+
+    <span class="n">s12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">drrs</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">padding</span><span class="p">,</span> <span class="n">padding</span> <span class="o">+</span> <span class="n">drrs</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">s12</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="n">padding</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]])</span>
+        <span class="k">elif</span> <span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">s12</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="n">padding</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]])</span>
+    <span class="c1"># Cast dRRs to subspace s22.</span>
+    <span class="n">s22</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">drrs</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">padding</span><span class="p">,</span> <span class="n">padding</span> <span class="o">+</span> <span class="n">drrs</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">s22</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="n">padding</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]])</span>
+        <span class="k">elif</span> <span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">s22</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="n">padding</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">drrs_pad</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]])</span>
+    <span class="c1"># Compute mRRs: time series of deviation of RRs from median.</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;signal&quot;</span><span class="p">:</span> <span class="n">rr</span><span class="p">})</span>
+    <span class="n">medrr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">medfilt_order</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">mrrs</span> <span class="o">=</span> <span class="n">rr</span> <span class="o">-</span> <span class="n">medrr</span>
+    <span class="n">mrrs</span><span class="p">[</span><span class="n">mrrs</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">mrrs</span><span class="p">[</span><span class="n">mrrs</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="c1"># Normalize by threshold.</span>
+    <span class="n">th2</span> <span class="o">=</span> <span class="n">_compute_threshold</span><span class="p">(</span><span class="n">mrrs</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">window_width</span><span class="p">)</span>
+    <span class="n">mrrs</span> <span class="o">/=</span> <span class="n">th2</span>
+
+    <span class="c1"># Artifact classification #################################################</span>
+    <span class="c1">###########################################################################</span>
+
+    <span class="c1"># Artifact classes.</span>
+    <span class="n">extra_idcs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">missed_idcs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ectopic_idcs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">longshort_idcs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">rr</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># The flow control is implemented based on Figure 1</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">drrs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Figure 1</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="n">eq1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span>
+            <span class="n">drrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">s12</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="o">-</span><span class="n">c1</span> <span class="o">*</span> <span class="n">drrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">c2</span><span class="p">)</span>
+        <span class="p">)</span>  <span class="c1"># pylint: disable=E1111</span>
+        <span class="n">eq2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span>
+            <span class="n">drrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">s12</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="p">(</span><span class="o">-</span><span class="n">c1</span> <span class="o">*</span> <span class="n">drrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">c2</span><span class="p">)</span>
+        <span class="p">)</span>  <span class="c1"># pylint: disable=E1111</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">]):</span>
+            <span class="c1"># If any of the two equations is true.</span>
+            <span class="n">ectopic_idcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="c1"># If none of the two equations is true.</span>
+        <span class="k">if</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">drrs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mrrs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]):</span>  <span class="c1"># Figure 1</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="n">longshort_candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># Check if the following beat also needs to be evaluated.</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">drrs</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">drrs</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]):</span>
+            <span class="n">longshort_candidates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">longshort_candidates</span><span class="p">:</span>
+            <span class="c1"># Long beat.</span>
+            <span class="n">eq3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">drrs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">s22</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># pylint: disable=E1111</span>
+            <span class="c1"># Long or short.</span>
+            <span class="n">eq4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mrrs</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">3</span>  <span class="c1"># Figure 1</span>
+            <span class="c1"># Short beat.</span>
+            <span class="n">eq5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">drrs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">s22</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># pylint: disable=E1111</span>
+
+            <span class="k">if</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">]):</span>
+                <span class="c1"># If none of the three equations is true: normal beat.</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            <span class="c1"># If any of the three equations is true: check for missing or extra</span>
+            <span class="c1"># peaks.</span>
+
+            <span class="c1"># Missing.</span>
+            <span class="n">eq6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">medrr</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">th2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>  <span class="c1"># Figure 1</span>
+            <span class="c1"># Extra.</span>
+            <span class="n">eq7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">rr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">medrr</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">th2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>  <span class="c1"># Figure 1</span>
+
+            <span class="c1"># Check if extra.</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="n">eq5</span><span class="p">,</span> <span class="n">eq7</span><span class="p">]):</span>
+                <span class="n">extra_idcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            <span class="c1"># Check if missing.</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="n">eq3</span><span class="p">,</span> <span class="n">eq6</span><span class="p">]):</span>
+                <span class="n">missed_idcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            <span class="c1"># If neither classified as extra or missing, classify as &quot;long or</span>
+            <span class="c1"># short&quot;.</span>
+            <span class="n">longshort_idcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># Prepare output</span>
+    <span class="n">artifacts</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;ectopic&quot;</span><span class="p">:</span> <span class="n">ectopic_idcs</span><span class="p">,</span>
+        <span class="s2">&quot;missed&quot;</span><span class="p">:</span> <span class="n">missed_idcs</span><span class="p">,</span>
+        <span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="n">extra_idcs</span><span class="p">,</span>
+        <span class="s2">&quot;longshort&quot;</span><span class="p">:</span> <span class="n">longshort_idcs</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">subspaces</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;rr&quot;</span><span class="p">:</span> <span class="n">rr</span><span class="p">,</span>
+        <span class="s2">&quot;drrs&quot;</span><span class="p">:</span> <span class="n">drrs</span><span class="p">,</span>
+        <span class="s2">&quot;mrrs&quot;</span><span class="p">:</span> <span class="n">mrrs</span><span class="p">,</span>
+        <span class="s2">&quot;s12&quot;</span><span class="p">:</span> <span class="n">s12</span><span class="p">,</span>
+        <span class="s2">&quot;s22&quot;</span><span class="p">:</span> <span class="n">s22</span><span class="p">,</span>
+        <span class="s2">&quot;c1&quot;</span><span class="p">:</span> <span class="n">c1</span><span class="p">,</span>
+        <span class="s2">&quot;c2&quot;</span><span class="p">:</span> <span class="n">c2</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">artifacts</span><span class="p">,</span> <span class="n">subspaces</span>
+
+
+<span class="k">def</span> <span class="nf">_compute_threshold</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">window_width</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;signal&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">signal</span><span class="p">)})</span>
+    <span class="n">q1</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window_width</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">values</span>
+    <span class="p">)</span>
+    <span class="n">q3</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window_width</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">values</span>
+    <span class="p">)</span>
+    <span class="n">th</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">((</span><span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">th</span>
+
+
+<span class="k">def</span> <span class="nf">_correct_artifacts</span><span class="p">(</span><span class="n">artifacts</span><span class="p">,</span> <span class="n">peaks</span><span class="p">):</span>
+    <span class="c1"># Artifact correction</span>
+    <span class="c1">#####################</span>
+    <span class="c1"># The integrity of indices must be maintained if peaks are inserted or</span>
+    <span class="c1"># deleted: for each deleted beat, decrease indices following that beat in</span>
+    <span class="c1"># all other index lists by 1. Likewise, for each added beat, increment the</span>
+    <span class="c1"># indices following that beat in all other lists by 1.</span>
+    <span class="n">extra_idcs</span> <span class="o">=</span> <span class="n">artifacts</span><span class="p">[</span><span class="s2">&quot;extra&quot;</span><span class="p">]</span>
+    <span class="n">missed_idcs</span> <span class="o">=</span> <span class="n">artifacts</span><span class="p">[</span><span class="s2">&quot;missed&quot;</span><span class="p">]</span>
+    <span class="n">ectopic_idcs</span> <span class="o">=</span> <span class="n">artifacts</span><span class="p">[</span><span class="s2">&quot;ectopic&quot;</span><span class="p">]</span>
+    <span class="n">longshort_idcs</span> <span class="o">=</span> <span class="n">artifacts</span><span class="p">[</span><span class="s2">&quot;longshort&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Delete extra peaks.</span>
+    <span class="k">if</span> <span class="n">extra_idcs</span><span class="p">:</span>
+        <span class="n">peaks</span> <span class="o">=</span> <span class="n">_correct_extra</span><span class="p">(</span><span class="n">extra_idcs</span><span class="p">,</span> <span class="n">peaks</span><span class="p">)</span>
+        <span class="c1"># Update remaining indices.</span>
+        <span class="n">missed_idcs</span> <span class="o">=</span> <span class="n">_update_indices</span><span class="p">(</span><span class="n">extra_idcs</span><span class="p">,</span> <span class="n">missed_idcs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ectopic_idcs</span> <span class="o">=</span> <span class="n">_update_indices</span><span class="p">(</span><span class="n">extra_idcs</span><span class="p">,</span> <span class="n">ectopic_idcs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">longshort_idcs</span> <span class="o">=</span> <span class="n">_update_indices</span><span class="p">(</span><span class="n">extra_idcs</span><span class="p">,</span> <span class="n">longshort_idcs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Add missing peaks.</span>
+    <span class="k">if</span> <span class="n">missed_idcs</span><span class="p">:</span>
+        <span class="n">peaks</span> <span class="o">=</span> <span class="n">_correct_missed</span><span class="p">(</span><span class="n">missed_idcs</span><span class="p">,</span> <span class="n">peaks</span><span class="p">)</span>
+        <span class="c1"># Update remaining indices.</span>
+        <span class="n">ectopic_idcs</span> <span class="o">=</span> <span class="n">_update_indices</span><span class="p">(</span><span class="n">missed_idcs</span><span class="p">,</span> <span class="n">ectopic_idcs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">longshort_idcs</span> <span class="o">=</span> <span class="n">_update_indices</span><span class="p">(</span><span class="n">missed_idcs</span><span class="p">,</span> <span class="n">longshort_idcs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ectopic_idcs</span><span class="p">:</span>
+        <span class="n">peaks</span> <span class="o">=</span> <span class="n">_correct_misaligned</span><span class="p">(</span><span class="n">ectopic_idcs</span><span class="p">,</span> <span class="n">peaks</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">longshort_idcs</span><span class="p">:</span>
+        <span class="n">peaks</span> <span class="o">=</span> <span class="n">_correct_misaligned</span><span class="p">(</span><span class="n">longshort_idcs</span><span class="p">,</span> <span class="n">peaks</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">peaks</span>
+
+
+<span class="k">def</span> <span class="nf">_correct_extra</span><span class="p">(</span><span class="n">extra_idcs</span><span class="p">,</span> <span class="n">peaks</span><span class="p">):</span>
+    <span class="n">corrected_peaks</span> <span class="o">=</span> <span class="n">peaks</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">corrected_peaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">corrected_peaks</span><span class="p">,</span> <span class="n">extra_idcs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">corrected_peaks</span>
+
+
+<span class="k">def</span> <span class="nf">_correct_missed</span><span class="p">(</span><span class="n">missed_idcs</span><span class="p">,</span> <span class="n">peaks</span><span class="p">):</span>
+    <span class="n">corrected_peaks</span> <span class="o">=</span> <span class="n">peaks</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">missed_idcs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">missed_idcs</span><span class="p">)</span>
+    <span class="c1"># Calculate the position(s) of new beat(s). Make sure to not generate</span>
+    <span class="c1"># negative indices. prev_peaks and next_peaks must have the same</span>
+    <span class="c1"># number of elements.</span>
+    <span class="n">valid_idcs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span>
+        <span class="n">missed_idcs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">missed_idcs</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">corrected_peaks</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># pylint: disable=E1111</span>
+    <span class="n">missed_idcs</span> <span class="o">=</span> <span class="n">missed_idcs</span><span class="p">[</span><span class="n">valid_idcs</span><span class="p">]</span>
+    <span class="n">prev_peaks</span> <span class="o">=</span> <span class="n">corrected_peaks</span><span class="p">[[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">missed_idcs</span><span class="p">]]</span>
+    <span class="n">next_peaks</span> <span class="o">=</span> <span class="n">corrected_peaks</span><span class="p">[</span><span class="n">missed_idcs</span><span class="p">]</span>
+    <span class="n">added_peaks</span> <span class="o">=</span> <span class="n">prev_peaks</span> <span class="o">+</span> <span class="p">(</span><span class="n">next_peaks</span> <span class="o">-</span> <span class="n">prev_peaks</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="c1"># Add the new peaks before the missed indices (see numpy docs).</span>
+    <span class="n">corrected_peaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">corrected_peaks</span><span class="p">,</span> <span class="n">missed_idcs</span><span class="p">,</span> <span class="n">added_peaks</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">corrected_peaks</span>
+
+
+<span class="k">def</span> <span class="nf">_correct_misaligned</span><span class="p">(</span><span class="n">misaligned_idcs</span><span class="p">,</span> <span class="n">peaks</span><span class="p">):</span>
+    <span class="n">corrected_peaks</span> <span class="o">=</span> <span class="n">peaks</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">misaligned_idcs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">misaligned_idcs</span><span class="p">)</span>
+    <span class="c1"># Make sure to not generate negative indices, or indices that exceed</span>
+    <span class="c1"># the total number of peaks. prev_peaks and next_peaks must have the</span>
+    <span class="c1"># same number of elements.</span>
+    <span class="n">valid_idcs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span>
+        <span class="n">misaligned_idcs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">misaligned_idcs</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">corrected_peaks</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># pylint: disable=E1111</span>
+    <span class="p">)</span>
+    <span class="n">misaligned_idcs</span> <span class="o">=</span> <span class="n">misaligned_idcs</span><span class="p">[</span><span class="n">valid_idcs</span><span class="p">]</span>
+    <span class="n">prev_peaks</span> <span class="o">=</span> <span class="n">corrected_peaks</span><span class="p">[[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">misaligned_idcs</span><span class="p">]]</span>
+    <span class="n">next_peaks</span> <span class="o">=</span> <span class="n">corrected_peaks</span><span class="p">[[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">misaligned_idcs</span><span class="p">]]</span>
+
+    <span class="n">half_ibi</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_peaks</span> <span class="o">-</span> <span class="n">prev_peaks</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">peaks_interp</span> <span class="o">=</span> <span class="n">prev_peaks</span> <span class="o">+</span> <span class="n">half_ibi</span>
+    <span class="c1"># Shift the R-peaks from the old to the new position.</span>
+    <span class="n">corrected_peaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">corrected_peaks</span><span class="p">,</span> <span class="n">misaligned_idcs</span><span class="p">)</span>
+    <span class="n">corrected_peaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">corrected_peaks</span><span class="p">,</span> <span class="n">peaks_interp</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">corrected_peaks</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mergesort&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">corrected_peaks</span>
+
+
+<span class="k">def</span> <span class="nf">_update_indices</span><span class="p">(</span><span class="n">source_idcs</span><span class="p">,</span> <span class="n">update_idcs</span><span class="p">,</span> <span class="n">update</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;For every element s in source_idcs, change every element u in update_idcs according to update, if u is larger</span>
+<span class="sd">    than s.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">update_idcs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">update_idcs</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">source_idcs</span><span class="p">:</span>
+        <span class="n">update_idcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span> <span class="o">+</span> <span class="n">update</span> <span class="k">if</span> <span class="n">u</span> <span class="o">&gt;</span> <span class="n">s</span> <span class="k">else</span> <span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">update_idcs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">update_idcs</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_plot_artifacts_lipponen2019</span><span class="p">(</span><span class="n">info</span><span class="p">):</span>
+    <span class="c1"># Covnenience function to extract relevant stuff.</span>
+    <span class="k">def</span> <span class="nf">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">string</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Extract parameters</span>
+    <span class="n">longshort_idcs</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;longshort&quot;</span><span class="p">)</span>
+    <span class="n">ectopic_idcs</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;ectopic&quot;</span><span class="p">)</span>
+    <span class="n">extra_idcs</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">)</span>
+    <span class="n">missed_idcs</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;missed&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Extract subspace info</span>
+    <span class="n">rr</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;rr&quot;</span><span class="p">)</span>
+    <span class="n">drrs</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;drrs&quot;</span><span class="p">)</span>
+    <span class="n">mrrs</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;mrrs&quot;</span><span class="p">)</span>
+    <span class="n">s12</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;s12&quot;</span><span class="p">)</span>
+    <span class="n">s22</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;s22&quot;</span><span class="p">)</span>
+    <span class="n">c1</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;c1&quot;</span><span class="p">)</span>
+    <span class="n">c2</span> <span class="o">=</span> <span class="n">_get_which_endswith</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;c2&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Visualize artifact type indices.</span>
+
+    <span class="c1"># Set grids</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Peak Correction&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Artifact types&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heart period&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">longshort_idcs</span><span class="p">,</span>
+        <span class="n">rr</span><span class="p">[</span><span class="n">longshort_idcs</span><span class="p">],</span>
+        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;long/short&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">ectopic_idcs</span><span class="p">,</span>
+        <span class="n">rr</span><span class="p">[</span><span class="n">ectopic_idcs</span><span class="p">],</span>
+        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+        <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ectopic&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">extra_idcs</span><span class="p">,</span>
+        <span class="n">rr</span><span class="p">[</span><span class="n">extra_idcs</span><span class="p">],</span>
+        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;false positive&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">missed_idcs</span><span class="p">,</span>
+        <span class="n">rr</span><span class="p">[</span><span class="n">missed_idcs</span><span class="p">],</span>
+        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+        <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;false negative&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Visualize first threshold.</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Consecutive-difference criterion&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">drrs</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;normalized difference consecutive heart periods&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;artifact threshold&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Visualize second threshold.</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Difference-from-median criterion&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mrrs</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;difference from median over 11 periods&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;artifact threshold&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Visualize subspaces.</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Subspace 1&quot;</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;S11&quot;</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;S12&quot;</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">drrs</span><span class="p">,</span> <span class="n">s12</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heart periods&quot;</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">verts0</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="n">c1</span> <span class="o">*</span> <span class="o">-</span><span class="mi">10</span> <span class="o">+</span> <span class="n">c2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">c1</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+    <span class="n">poly0</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span>
+        <span class="n">verts0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ectopic periods&quot;</span>
+    <span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly0</span><span class="p">)</span>
+    <span class="n">verts1</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">c1</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">c2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="n">c1</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">-</span> <span class="n">c2</span><span class="p">)]</span>
+    <span class="n">poly1</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="n">verts1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly1</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Subspace 2&quot;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;S21&quot;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;S22&quot;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">drrs</span><span class="p">,</span> <span class="n">s22</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heart periods&quot;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">verts2</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+    <span class="n">poly2</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span>
+        <span class="n">verts2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;short periods&quot;</span>
+    <span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly2</span><span class="p">)</span>
+    <span class="n">verts3</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">poly3</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span>
+        <span class="n">verts3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;long periods&quot;</span>
+    <span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly3</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># NeuroKit</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_remove_small</span><span class="p">(</span>
+    <span class="n">peaks</span><span class="p">,</span>
+    <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">interval_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_interval_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">robust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">interval_min</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">relative_interval_min</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">peaks</span>
+    <span class="k">if</span> <span class="n">interval_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">signal_period</span><span class="p">(</span>
+            <span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">desired_length</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="n">peaks</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="n">interval</span> <span class="o">&gt;</span> <span class="n">interval_min</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">relative_interval_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">signal_period</span><span class="p">(</span>
+            <span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">desired_length</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="n">peaks</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="n">standardize</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="n">robust</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">relative_interval_min</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">peaks</span>
+
+
+<span class="k">def</span> <span class="nf">_interpolate_big</span><span class="p">(</span>
+    <span class="n">peaks</span><span class="p">,</span>
+    <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">interval_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_interval_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">robust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">interval_max</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">relative_interval_max</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">peaks</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">signal_period</span><span class="p">(</span>
+            <span class="n">peaks</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">desired_length</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">relative_interval_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">outliers</span> <span class="o">=</span> <span class="n">standardize</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="n">robust</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">relative_interval_max</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">outliers</span> <span class="o">=</span> <span class="n">interval</span> <span class="o">&gt;</span> <span class="n">interval_max</span>
+        <span class="n">outliers_loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">outliers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># interval returned by signal_period at index 0 is the mean of the intervals</span>
+        <span class="c1"># so it does not actually correspond to whether the first peak is an outlier</span>
+        <span class="n">outliers_loc</span> <span class="o">=</span> <span class="n">outliers_loc</span><span class="p">[</span><span class="n">outliers_loc</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">peaks</span>
+        <span class="n">peaks_to_correct</span> <span class="o">=</span> <span class="n">peaks</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+        <span class="n">interval_without_outliers</span> <span class="o">=</span> <span class="n">interval</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">outliers</span><span class="p">)]</span>
+        <span class="n">mean_interval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">interval_without_outliers</span><span class="p">)</span>
+
+        <span class="c1"># go through the outliers starting with the highest indices</span>
+        <span class="c1"># so that the indices of the other outliers are not moved when</span>
+        <span class="c1"># unknown intervas are inserted</span>
+        <span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">outliers_loc</span><span class="p">):</span>
+            <span class="c1"># compute number of NaNs to insert based on the mean interval</span>
+            <span class="n">n_nan</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">interval</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">/</span> <span class="n">mean_interval</span><span class="p">)</span>
+
+            <span class="c1"># Delete peak corresponding to large interval and replace by N NaNs</span>
+            <span class="n">peaks_to_correct</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="n">peaks_to_correct</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">peaks_to_correct</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_nan</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="c1"># Interpolate values</span>
+        <span class="n">interpolated_peaks</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">peaks_to_correct</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">limit_area</span><span class="o">=</span><span class="s2">&quot;inside&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        <span class="p">)</span>
+        <span class="c1"># If there are missing values remaining, remove</span>
+        <span class="n">peaks</span> <span class="o">=</span> <span class="n">interpolated_peaks</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">interpolated_peaks</span><span class="p">))]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+            <span class="n">peaks</span><span class="o">.</span><span class="n">dtype</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">peaks</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

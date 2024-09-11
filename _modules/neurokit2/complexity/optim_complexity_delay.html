@@ -1,0 +1,1235 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurokit2.complexity.optim_complexity_delay &#8212; NeuroKit2 0.2.10 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=1db4c2ab"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/complexity/optim_complexity_delay';</script>
+    <link rel="icon" href="../../../_static/icon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.10 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.10 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codebook.html">Codebook</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_generate_12leads/ecg_generate_12leads.html">Generating Abnormal 12-leads ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eda_peaks/eda_peaks.html">Analyze Electrodermal Activity (EDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/rsp_rrv/rsp_rrv.html">Respiratory Rate Variability (RRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eog_analyze/eog_analyze.html">Analyze Electrooculography (EOG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/signal_simulation/signal_simulation.html">Simulate Artificial Physiological Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ppg_report/ppg_report.html">Save Preprocessing Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_power/eeg_power.html">EEG Power in Frequency Bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_complexity/eeg_complexity.html">EEG Complexity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/eeg_microstates/eeg_microstates.html">EEG Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/hrv.html">HRV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/rsp.html">RSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eda.html">EDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/emg.html">EMG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eog.html">EOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/eeg.html">EEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/microstates.html">Microstates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/signal.html">Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/epochs.html">Epochs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/complexity.html">Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/markov.html">Markov Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/ejn.15800">Complexity Review</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1099-4300/24/8/1036">Complexity Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/complexity_eeg.html">EEG Complexity: Parameters Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/erp_gam.html">EEG Analysis with GAMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/neuropsychology/NeuroKit/issues/new?title=Issue%20on%20page%20%2F_modules/neurokit2/complexity/optim_complexity_delay.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for neurokit2.complexity.optim_complexity_delay</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.collections</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span>
+<span class="kn">import</span> <span class="nn">scipy.spatial</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">NeuroKitWarning</span><span class="p">,</span> <span class="n">find_closest</span>
+<span class="kn">from</span> <span class="nn">..signal</span> <span class="kn">import</span> <span class="p">(</span><span class="n">signal_autocor</span><span class="p">,</span> <span class="n">signal_findpeaks</span><span class="p">,</span> <span class="n">signal_psd</span><span class="p">,</span>
+                      <span class="n">signal_surrogate</span><span class="p">,</span> <span class="n">signal_zerocrossings</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.entropy_kl</span> <span class="kn">import</span> <span class="n">entropy_kl</span>
+<span class="kn">from</span> <span class="nn">.information_mutual</span> <span class="kn">import</span> <span class="n">mutual_information</span>
+<span class="kn">from</span> <span class="nn">.utils_complexity_embedding</span> <span class="kn">import</span> <span class="n">complexity_embedding</span>
+
+
+<div class="viewcode-block" id="complexity_delay">
+<a class="viewcode-back" href="../../../functions/complexity.html#neurokit2.complexity.complexity_delay">[docs]</a>
+<span class="k">def</span> <span class="nf">complexity_delay</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span> <span class="n">delay_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fraser1986&quot;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;**Automated selection of the optimal Delay (Tau)**</span>
+
+<span class="sd">    The time delay (Tau :math:`\\tau`, also referred to as *Lag*) is one of the two critical</span>
+<span class="sd">    parameters (the other being the :func:`Dimension &lt;complexity_dimension&gt;` *m*) involved in the</span>
+<span class="sd">    construction of the time-delay embedding of a signal. It corresponds to the delay in samples</span>
+<span class="sd">    between the original signal and its delayed version(s). In other words, how many samples do we</span>
+<span class="sd">    consider between a given state of the signal and its closest past state.</span>
+
+<span class="sd">    When :math:`\\tau` is smaller than the optimal theoretical value, consecutive coordinates of the</span>
+<span class="sd">    system&#39;s state are correlated and the attractor is not sufficiently unfolded. Conversely, when</span>
+<span class="sd">    :math:`\\tau` is larger than it should be, successive coordinates are almost independent,</span>
+<span class="sd">    resulting in an uncorrelated and unstructured cloud of points.</span>
+
+<span class="sd">    The selection of the parameters *delay* and :func:`*dimension* &lt;complexity_dimension&gt;` is a</span>
+<span class="sd">    challenge. One approach is to select them (semi) independently (as dimension selection often</span>
+<span class="sd">    requires the delay), using :func:`complexity_delay` and :func:`complexity_dimension`. However,</span>
+<span class="sd">    some joint-estimation methods do exist, that attempt at finding the optimal delay and dimension</span>
+<span class="sd">    at the same time.</span>
+
+<span class="sd">    Note also that some authors (e.g., Rosenstein, 1994) suggest identifying the</span>
+<span class="sd">    optimal embedding dimension first, and that the optimal delay value should then be considered</span>
+<span class="sd">    as the optimal delay between the first and last delay coordinates (in other words, the actual</span>
+<span class="sd">    delay should be the optimal delay divided by the optimal embedding dimension minus 1).</span>
+
+<span class="sd">    Several authors suggested different methods to guide the choice of the delay:</span>
+
+<span class="sd">    * **Fraser and Swinney (1986)** suggest using the first local minimum of the mutual information</span>
+<span class="sd">      between the delayed and non-delayed time series, effectively identifying a value of Tau for</span>
+<span class="sd">      which they share the least information (and where the attractor is the least redundant).</span>
+<span class="sd">      Unlike autocorrelation, mutual information takes into account also nonlinear correlations.</span>
+<span class="sd">    * **Theiler (1990)** suggested to select Tau where the autocorrelation between the signal and</span>
+<span class="sd">      its lagged version at Tau first crosses the value :math:`1/e`. The autocorrelation-based</span>
+<span class="sd">      methods have the advantage of short computation times when calculated via the fast Fourier</span>
+<span class="sd">      transform (FFT) algorithm.</span>
+<span class="sd">    * **Casdagli (1991)** suggests instead taking the first zero-crossing of the autocorrelation.</span>
+<span class="sd">    * **Rosenstein (1993)** suggests to approximate the point where the autocorrelation function</span>
+<span class="sd">      drops to :math:`(1 - 1/e)` of its maximum value.</span>
+<span class="sd">    * **Rosenstein (1994)** suggests to the point close to 40% of the slope of the average</span>
+<span class="sd">      displacement from the diagonal (ADFD).</span>
+<span class="sd">    * **Kim (1999)** suggests estimating Tau using the correlation integral, called the C-C method,</span>
+<span class="sd">      which has shown to agree with those obtained using the Mutual Information. This method</span>
+<span class="sd">      makes use of a statistic within the reconstructed phase space, rather than analyzing the</span>
+<span class="sd">      temporal evolution of the time series. However, computation times are significantly long for</span>
+<span class="sd">      this method due to the need to compare every unique pair of pairwise vectors within the</span>
+<span class="sd">      embedded signal per delay.</span>
+<span class="sd">    * **Lyle (2021)** describes the &quot;Symmetric Projection Attractor Reconstruction&quot; (SPAR), where</span>
+<span class="sd">      :math:`1/3` of the the dominant frequency (i.e., of the length of the average &quot;cycle&quot;) can be</span>
+<span class="sd">      a suitable value for approximately periodic data, and makes the attractor sensitive to</span>
+<span class="sd">      morphological changes. See also `Aston&#39;s talk &lt;https://youtu.be/GGrOJtcTcHA?t=730&gt;`_. This</span>
+<span class="sd">      method is also the fastest but might not be suitable for aperiodic signals.</span>
+<span class="sd">      The ``algorithm`` argument (default to ``&quot;fft&quot;``) and will be passed as the ``method``</span>
+<span class="sd">      argument of  ``signal_psd()``.</span>
+
+<span class="sd">    **Joint-Methods for Delay and Dimension**</span>
+
+<span class="sd">    * **Gautama (2003)** mentions that in practice, it is common to have a fixed time lag and to</span>
+<span class="sd">      adjust the embedding dimension accordingly. As this can lead to large *m* values (and thus to</span>
+<span class="sd">      embedded data of a large size) and thus, slow processing, they describe an optimisation</span>
+<span class="sd">      method to jointly determine *m* and :math:`\\tau`, based on the **entropy ratio**.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">      We would like to implement the joint-estimation by `Matilla-García et al. (2021)</span>
+<span class="sd">      &lt;https://www.mdpi.com/1099-4300/23/2/221&gt;`_, please get in touch if you can help us!</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    signal : Union[list, np.array, pd.Series]</span>
+<span class="sd">        The signal (i.e., a time series) in the form of a vector of values.</span>
+<span class="sd">    delay_max : int</span>
+<span class="sd">        The maximum time delay (Tau or lag) to test.</span>
+<span class="sd">    method : str</span>
+<span class="sd">        The method that defines what to compute for each tested value of Tau. Can be one of</span>
+<span class="sd">        ``&quot;fraser1986&quot;``, ``&quot;theiler1990&quot;``, ``&quot;casdagli1991&quot;``, ``&quot;rosenstein1993&quot;``,</span>
+<span class="sd">        ``&quot;rosenstein1994&quot;``, ``&quot;kim1999&quot;``, or ``&quot;lyle2021&quot;``.</span>
+<span class="sd">    algorithm : str</span>
+<span class="sd">        The method used to find the optimal value of Tau given the values computed by the method.</span>
+<span class="sd">        If ``None`` (default), will select the algorithm according to the method. Modify only if you</span>
+<span class="sd">        know what you are doing.</span>
+<span class="sd">    show : bool</span>
+<span class="sd">        If ``True``, will plot the metric values for each value of tau.</span>
+<span class="sd">    **kwargs : optional</span>
+<span class="sd">        Additional arguments to be passed for C-C method.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    delay : int</span>
+<span class="sd">        Optimal time delay.</span>
+<span class="sd">    parameters : dict</span>
+<span class="sd">        A dictionary containing additional information regarding the parameters used</span>
+<span class="sd">        to compute optimal time-delay embedding.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    ---------</span>
+<span class="sd">    complexity, complexity_dimension, complexity_embedding, complexity_tolerance</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    * **Example 1**: Comparison of different methods for estimating the optimal delay of an simple</span>
+<span class="sd">      artificial signal.</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      import neurokit2 as nk</span>
+
+<span class="sd">      signal = nk.signal_simulate(duration=10, sampling_rate=100, frequency=[1, 1.5], noise=0.02)</span>
+
+<span class="sd">      @savefig p_complexity_delay1.png scale=100%</span>
+<span class="sd">      nk.signal_plot(signal)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_complexity_delay2.png scale=100%</span>
+<span class="sd">      delay, parameters = nk.complexity_delay(signal, delay_max=100, show=True,</span>
+<span class="sd">                                              method=&quot;fraser1986&quot;)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_complexity_delay3.png scale=100%</span>
+<span class="sd">      delay, parameters = nk.complexity_delay(signal, delay_max=100, show=True,</span>
+<span class="sd">                                              method=&quot;theiler1990&quot;)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_complexity_delay4.png scale=100%</span>
+<span class="sd">      delay, parameters = nk.complexity_delay(signal, delay_max=100, show=True,</span>
+<span class="sd">                                              method=&quot;casdagli1991&quot;)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_complexity_delay5.png scale=100%</span>
+<span class="sd">      delay, parameters = nk.complexity_delay(signal, delay_max=100, show=True,</span>
+<span class="sd">                                              method=&quot;rosenstein1993&quot;)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_complexity_delay6.png scale=100%</span>
+<span class="sd">      delay, parameters = nk.complexity_delay(signal, delay_max=100, show=True,</span>
+<span class="sd">                                              method=&quot;rosenstein1994&quot;)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_complexity_delay7.png scale=100%</span>
+<span class="sd">      delay, parameters = nk.complexity_delay(signal, delay_max=100, show=True,</span>
+<span class="sd">                                              method=&quot;lyle2021&quot;)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    * **Example 2**: Optimizing the delay and the dimension using joint-estimation methods.</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_complexity_delay8.png scale=100%</span>
+<span class="sd">      delay, parameters = nk.complexity_delay(</span>
+<span class="sd">          signal,</span>
+<span class="sd">          delay_max=np.arange(1, 30, 1),  # Can be an int or a list</span>
+<span class="sd">          dimension_max=20,  # Can be an int or a list</span>
+<span class="sd">          method=&quot;gautama2003&quot;,</span>
+<span class="sd">          surrogate_n=5,  # Number of surrogate signals to generate</span>
+<span class="sd">          surrogate_method=&quot;random&quot;,  # can be IAAFT, see nk.signal_surrogate()</span>
+<span class="sd">          show=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      # Optimal dimension</span>
+<span class="sd">      dimension = parameters[&quot;Dimension&quot;]</span>
+<span class="sd">      dimension</span>
+
+<span class="sd">    **Note**: A double-checking of that method would be appreciated! Please help us improve.</span>
+
+<span class="sd">    * **Example 3**: Using a realistic signal.</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      ecg = nk.ecg_simulate(duration=60*6, sampling_rate=200)</span>
+<span class="sd">      signal = nk.ecg_rate(nk.ecg_peaks(ecg, sampling_rate=200),</span>
+<span class="sd">                           sampling_rate=200,</span>
+<span class="sd">                           desired_length=len(ecg))</span>
+<span class="sd">      @savefig p_complexity_delay9.png scale=100%</span>
+<span class="sd">      nk.signal_plot(signal)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">      @savefig p_complexity_delay10.png scale=100%</span>
+<span class="sd">      delay, parameters = nk.complexity_delay(signal, delay_max=1000, show=True)</span>
+<span class="sd">      @suppress</span>
+<span class="sd">      plt.close()</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ------------</span>
+<span class="sd">    * Lyle, J. V., Nandi, M., &amp; Aston, P. J. (2021). Symmetric Projection Attractor Reconstruction:</span>
+<span class="sd">      Sex Differences in the ECG. Frontiers in cardiovascular medicine, 1034.</span>
+<span class="sd">    * Gautama, T., Mandic, D. P., &amp; Van Hulle, M. M. (2003, April). A differential entropy based</span>
+<span class="sd">      method for determining the optimal embedding parameters of a signal. In 2003 IEEE</span>
+<span class="sd">      International Conference on Acoustics, Speech, and Signal Processing, 2003. Proceedings.</span>
+<span class="sd">      (ICASSP&#39;03). (Vol. 6, pp. VI-29). IEEE.</span>
+<span class="sd">    * Camplani, M., &amp; Cannas, B. (2009). The role of the embedding dimension and time delay in time</span>
+<span class="sd">      series forecasting. IFAC Proceedings Volumes, 42(7), 316-320.</span>
+<span class="sd">    * Rosenstein, M. T., Collins, J. J., &amp; De Luca, C. J. (1993). A practical method for calculating</span>
+<span class="sd">      largest Lyapunov exponents from small data sets. Physica D: Nonlinear Phenomena, 65(1-2),</span>
+<span class="sd">      117-134.</span>
+<span class="sd">    * Rosenstein, M. T., Collins, J. J., &amp; De Luca, C. J. (1994). Reconstruction expansion as a</span>
+<span class="sd">      geometry-based framework for choosing proper delay times. Physica-Section D, 73(1), 82-98.</span>
+<span class="sd">    * Kim, H., Eykholt, R., &amp; Salas, J. D. (1999). Nonlinear dynamics, delay times, and embedding</span>
+<span class="sd">      windows. Physica D: Nonlinear Phenomena, 127(1-2), 48-60.</span>
+<span class="sd">    * Gautama, T., Mandic, D. P., &amp; Van Hulle, M. M. (2003, April). A differential entropy based</span>
+<span class="sd">      method for determining the optimal embedding parameters of a signal. In 2003 IEEE</span>
+<span class="sd">      International Conference on Acoustics, Speech, and Signal Processing, 2003. Proceedings.</span>
+<span class="sd">      (ICASSP&#39;03). (Vol. 6, pp. VI-29). IEEE.</span>
+<span class="sd">    * Camplani, M., &amp; Cannas, B. (2009). The role of the embedding dimension and time delay in time</span>
+<span class="sd">      series forecasting. IFAC Proceedings Volumes, 42(7), 316-320.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Initalize vectors</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delay_max</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">tau_sequence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">delay_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tau_sequence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">delay_max</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Method</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fraser&quot;</span><span class="p">,</span> <span class="s2">&quot;fraser1986&quot;</span><span class="p">,</span> <span class="s2">&quot;tdmi&quot;</span><span class="p">]:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;Mutual Information&quot;</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;first local minimum&quot;</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;mi2&quot;</span><span class="p">]:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;Mutual Information 2&quot;</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;first local minimum&quot;</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;theiler&quot;</span><span class="p">,</span> <span class="s2">&quot;theiler1990&quot;</span><span class="p">]:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;Autocorrelation&quot;</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;first 1/e crossing&quot;</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;casdagli&quot;</span><span class="p">,</span> <span class="s2">&quot;casdagli1991&quot;</span><span class="p">]:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;Autocorrelation&quot;</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;first zero crossing&quot;</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rosenstein&quot;</span><span class="p">,</span> <span class="s2">&quot;rosenstein1994&quot;</span><span class="p">,</span> <span class="s2">&quot;adfd&quot;</span><span class="p">]:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;Displacement&quot;</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;closest to 40</span><span class="si">% o</span><span class="s2">f the slope&quot;</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rosenstein1993&quot;</span><span class="p">]:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;Autocorrelation&quot;</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;first drop below 1-(1/e) of maximum&quot;</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;kim1999&quot;</span><span class="p">,</span> <span class="s2">&quot;cc&quot;</span><span class="p">]:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;Correlation Integral&quot;</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;first local minimum&quot;</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;aston2020&quot;</span><span class="p">,</span> <span class="s2">&quot;lyle2021&quot;</span><span class="p">,</span> <span class="s2">&quot;spar&quot;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">_complexity_delay_spar</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;gautama2003&quot;</span><span class="p">,</span> <span class="s2">&quot;gautama&quot;</span><span class="p">,</span> <span class="s2">&quot;entropyratio&quot;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">_complexity_delay_entropyratio</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">delay_max</span><span class="o">=</span><span class="n">delay_max</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;complexity_delay(): &#39;method&#39; not recognized.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get metric</span>
+    <span class="n">metric_values</span> <span class="o">=</span> <span class="n">_embedding_delay_metric</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">tau_sequence</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
+
+    <span class="c1"># Get optimal tau</span>
+    <span class="n">optimal</span> <span class="o">=</span> <span class="n">_embedding_delay_select</span><span class="p">(</span><span class="n">metric_values</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">optimal</span><span class="p">):</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;No optimal time delay is found. Nan is returned.&quot;</span>
+            <span class="s2">&quot; Consider using a higher `delay_max`.&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">optimal</span> <span class="o">=</span> <span class="n">tau_sequence</span><span class="p">[</span><span class="n">optimal</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">show</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">_embedding_delay_plot</span><span class="p">(</span>
+                <span class="n">signal</span><span class="p">,</span>
+                <span class="n">metric_values</span><span class="o">=</span><span class="n">metric_values</span><span class="p">,</span>
+                <span class="n">tau_sequence</span><span class="o">=</span><span class="n">tau_sequence</span><span class="p">,</span>
+                <span class="n">tau</span><span class="o">=</span><span class="n">optimal</span><span class="p">,</span>
+                <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="c1"># Return optimal tau and info dict</span>
+    <span class="k">return</span> <span class="n">optimal</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="n">tau_sequence</span><span class="p">,</span>
+        <span class="s2">&quot;Scores&quot;</span><span class="p">:</span> <span class="n">metric_values</span><span class="p">,</span>
+        <span class="s2">&quot;Algorithm&quot;</span><span class="p">:</span> <span class="n">algorithm</span><span class="p">,</span>
+        <span class="s2">&quot;Metric&quot;</span><span class="p">:</span> <span class="n">metric</span><span class="p">,</span>
+        <span class="s2">&quot;Method&quot;</span><span class="p">:</span> <span class="n">method</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Methods</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_embedding_delay_select</span><span class="p">(</span><span class="n">metric_values</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;first local minimum&quot;</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;first local minimum (corrected)&quot;</span><span class="p">]:</span>
+        <span class="c1"># if immediately increasing, assume it is the first is the closest</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">metric_values</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># take last value if continuously decreasing with no inflections</span>
+        <span class="k">elif</span> <span class="nb">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">metric_values</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">metric_values</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Find reversed peaks</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="n">signal_findpeaks</span><span class="p">(</span>
+                <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">metric_values</span><span class="p">,</span> <span class="n">relative_height_min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">relative_max</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)[</span><span class="s2">&quot;Peaks&quot;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;first local minimum&quot;</span><span class="p">:</span>
+        <span class="c1"># Find reversed peaks</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="n">signal_findpeaks</span><span class="p">(</span>
+                <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">metric_values</span><span class="p">,</span> <span class="n">relative_height_min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">relative_max</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)[</span><span class="s2">&quot;Peaks&quot;</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;First local minimum detection failed. Try setting &quot;</span>
+                <span class="o">+</span> <span class="s2">&quot;`algorithm = &#39;first local minimum (corrected)&#39;` or using another method.&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">elif</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;first 1/e crossing&quot;</span><span class="p">:</span>
+        <span class="n">metric_values</span> <span class="o">=</span> <span class="n">metric_values</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">optimal</span> <span class="o">=</span> <span class="n">signal_zerocrossings</span><span class="p">(</span><span class="n">metric_values</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;first zero crossing&quot;</span><span class="p">:</span>
+        <span class="n">optimal</span> <span class="o">=</span> <span class="n">signal_zerocrossings</span><span class="p">(</span><span class="n">metric_values</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;closest to 40</span><span class="si">% o</span><span class="s2">f the slope&quot;</span><span class="p">:</span>
+        <span class="n">slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">metric_values</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">metric_values</span><span class="p">)</span>
+        <span class="n">slope_in_deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">slope</span><span class="p">))</span>
+        <span class="n">optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">slope_in_deg</span> <span class="o">==</span> <span class="n">find_closest</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">slope_in_deg</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;first drop below 1-(1/e) of maximum&quot;</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">metric_values</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">metric_values</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>  <span class="c1"># If no value are below that threshold</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">optimal</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">optimal</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="n">optimal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">return</span> <span class="n">optimal</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_embedding_delay_metric</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">tau_sequence</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;Mutual Information&quot;</span><span class="p">,</span>
+    <span class="n">dimensions</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="n">r_vals</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterating through dimensions and r values is relevant only if metric used is Correlation Integral.</span>
+<span class="sd">    For this method, either first zero crossing of the statistic averages or the first local</span>
+<span class="sd">    minimum of deviations to obtain optimal tau. This implementation takes the latter since in practice,</span>
+<span class="sd">    they are both in close proximity.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">metric</span> <span class="o">==</span> <span class="s2">&quot;Autocorrelation&quot;</span><span class="p">:</span>
+        <span class="n">values</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">signal_autocor</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tau_sequence</span><span class="p">)]</span>  <span class="c1"># upper limit</span>
+
+    <span class="k">elif</span> <span class="n">metric</span> <span class="o">==</span> <span class="s2">&quot;Correlation Integral&quot;</span><span class="p">:</span>
+        <span class="n">r_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">r_vals</span><span class="p">]</span>
+        <span class="c1"># initiate empty list for storing</span>
+        <span class="c1"># averages = np.zeros(len(tau_sequence))</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tau_sequence</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tau_sequence</span><span class="p">):</span>
+            <span class="c1"># average = 0</span>
+            <span class="n">change</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">dimensions</span><span class="p">:</span>
+                <span class="c1"># # find average of dependence statistic</span>
+                <span class="c1"># for r in r_vals:</span>
+                <span class="c1">#     s = _embedding_delay_cc_statistic(signal, delay=t, dimension=m, r=r)</span>
+                <span class="c1">#     average += s</span>
+
+                <span class="c1"># find average of statistic deviations across r_vals</span>
+                <span class="n">deviation</span> <span class="o">=</span> <span class="n">_embedding_delay_cc_deviation_max</span><span class="p">(</span>
+                    <span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">r_vals</span><span class="o">=</span><span class="n">r_vals</span>
+                <span class="p">)</span>
+                <span class="n">change</span> <span class="o">+=</span> <span class="n">deviation</span>
+            <span class="c1"># averages[i] = average / 16</span>
+            <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">change</span> <span class="o">/</span> <span class="mi">4</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tau_sequence</span><span class="p">))</span>
+
+        <span class="c1"># Loop through taus and compute all scores values</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">current_tau</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tau_sequence</span><span class="p">):</span>
+            <span class="n">embedded</span> <span class="o">=</span> <span class="n">complexity_embedding</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">current_tau</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">metric</span> <span class="o">==</span> <span class="s2">&quot;Mutual Information&quot;</span><span class="p">:</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mutual_information</span><span class="p">(</span>
+                    <span class="n">embedded</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">embedded</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;varoquaux&quot;</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">metric</span> <span class="o">==</span> <span class="s2">&quot;Mutual Information 2&quot;</span><span class="p">:</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mutual_information</span><span class="p">(</span>
+                    <span class="n">embedded</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">embedded</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;knn&quot;</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">metric</span> <span class="o">==</span> <span class="s2">&quot;Displacement&quot;</span><span class="p">:</span>
+                <span class="n">dimension</span> <span class="o">=</span> <span class="mi">2</span>
+
+                <span class="c1"># Reconstruct with zero time delay.</span>
+                <span class="n">tau0</span> <span class="o">=</span> <span class="n">embedded</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">dimension</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">embedded</span><span class="p">),</span> <span class="n">dimension</span><span class="p">)</span>
+                <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">scipy</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">embedded</span><span class="p">,</span> <span class="n">tau0</span><span class="p">)]</span>
+                <span class="p">)</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;metric&#39; not recognized.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">values</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Internals for C-C method, Kim et al. (1999)</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_embedding_delay_cc_integral_sum</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Correlation integral is a cumulative distribution function, which denotes</span>
+<span class="sd">    the probability of distance between any pairs of points in phase space</span>
+<span class="sd">    not greater than the specified `r`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Embed signal</span>
+    <span class="n">embedded</span> <span class="o">=</span> <span class="n">complexity_embedding</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">embedded</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Prepare indices for comparing all unique pairwise vectors</span>
+    <span class="n">combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="p">),</span> <span class="n">r</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">first_index</span><span class="p">,</span> <span class="n">second_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">combinations</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">combinations</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">vectorized_integral</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">_embedding_delay_cc_integral</span><span class="p">,</span> <span class="n">excluded</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;embedded&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">])</span>
+    <span class="n">integral</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+        <span class="n">vectorized_integral</span><span class="p">(</span>
+            <span class="n">first_index</span><span class="o">=</span><span class="n">first_index</span><span class="p">,</span> <span class="n">second_index</span><span class="o">=</span><span class="n">second_index</span><span class="p">,</span> <span class="n">embedded</span><span class="o">=</span><span class="n">embedded</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">r</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">integral</span>
+
+
+<span class="k">def</span> <span class="nf">_embedding_delay_cc_integral</span><span class="p">(</span><span class="n">first_index</span><span class="p">,</span> <span class="n">second_index</span><span class="p">,</span> <span class="n">embedded</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">embedded</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Number of embedded points</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">embedded</span><span class="p">[</span><span class="n">first_index</span><span class="p">]</span> <span class="o">-</span> <span class="n">embedded</span><span class="p">[</span><span class="n">second_index</span><span class="p">],</span> <span class="nb">ord</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>  <span class="c1"># sup-norm</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">heaviside</span><span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">diff</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">integral</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">M</span> <span class="o">*</span> <span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span> <span class="o">*</span> <span class="n">h</span>  <span class="c1"># find average</span>
+
+    <span class="k">return</span> <span class="n">integral</span>
+
+
+<span class="k">def</span> <span class="nf">_embedding_delay_cc_statistic</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The dependence statistic as the serial correlation of a nonlinear time series.&quot;&quot;&quot;</span>
+
+    <span class="c1"># create disjoint time series</span>
+    <span class="n">series</span> <span class="o">=</span> <span class="p">[</span><span class="n">signal</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">::</span> <span class="n">delay</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">delay</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+
+    <span class="n">statistic</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">sub_series</span> <span class="ow">in</span> <span class="n">series</span><span class="p">:</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">_embedding_delay_cc_integral_sum</span><span class="p">(</span>
+            <span class="n">sub_series</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">r</span>
+        <span class="p">)</span> <span class="o">-</span> <span class="p">((</span><span class="n">_embedding_delay_cc_integral_sum</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">r</span><span class="p">))</span> <span class="o">**</span> <span class="n">dimension</span><span class="p">)</span>
+        <span class="n">statistic</span> <span class="o">+=</span> <span class="n">diff</span>
+
+    <span class="k">return</span> <span class="n">statistic</span> <span class="o">/</span> <span class="n">delay</span>
+
+
+<span class="k">def</span> <span class="nf">_embedding_delay_cc_deviation_max</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">r_vals</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="n">delay</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A measure of the variation of the dependence statistic with r using</span>
+<span class="sd">    several representative values of r.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vectorized_deviation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span>
+        <span class="n">_embedding_delay_cc_deviation</span><span class="p">,</span> <span class="n">excluded</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="s2">&quot;delay&quot;</span><span class="p">,</span> <span class="s2">&quot;dimension&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">deviations</span> <span class="o">=</span> <span class="n">vectorized_deviation</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">r_vals</span><span class="o">=</span><span class="n">r_vals</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">deviations</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">deviations</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_embedding_delay_cc_deviation</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">r_vals</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="n">delay</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_embedding_delay_cc_statistic</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">r_vals</span><span class="p">)</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Plotting Generics</span>
+<span class="c1"># =============================================================================</span>
+<span class="k">def</span> <span class="nf">_embedding_delay_plot</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">metric_values</span><span class="p">,</span>
+    <span class="n">tau_sequence</span><span class="p">,</span>
+    <span class="n">tau</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;Mutual Information&quot;</span><span class="p">,</span>
+    <span class="n">ax0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">ax1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">plot</span><span class="o">=</span><span class="s2">&quot;2D&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="c1"># Prepare figure</span>
+    <span class="k">if</span> <span class="n">ax0</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ax1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span>
+            <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">plot</span> <span class="o">==</span> <span class="s2">&quot;2D&quot;</span><span class="p">:</span>
+            <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">plot</span> <span class="o">==</span> <span class="s2">&quot;3D&quot;</span><span class="p">:</span>
+            <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Optimization of Delay&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time Delay&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_sequence</span><span class="p">,</span> <span class="n">metric_values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#FFC107&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">tau</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#E91E63&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Optimal delay: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Attractor&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Signal [i]&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Signal [i-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get data points, set axis limits</span>
+    <span class="n">embedded</span> <span class="o">=</span> <span class="n">complexity_embedding</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">tau</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">embedded</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">embedded</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">embedded</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+    <span class="c1"># Colors</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;plasma&quot;</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+    <span class="c1"># Attractor for 2D vs 3D</span>
+    <span class="k">if</span> <span class="n">plot</span> <span class="o">==</span> <span class="s2">&quot;2D&quot;</span><span class="p">:</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">points</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">:]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">lc</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">LineCollection</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+        <span class="n">lc</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">plot</span> <span class="o">==</span> <span class="s2">&quot;3D&quot;</span><span class="p">:</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">points</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">:]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">seg</span> <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">l</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seg</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">seg</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">seg</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">set_solid_capstyle</span><span class="p">(</span><span class="s2">&quot;round&quot;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;Signal [i-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Optimal Delay via SPAR Method</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_complexity_delay_spar</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;fft&quot;</span>
+    <span class="c1"># Compute power in freqency domain</span>
+    <span class="n">psd</span> <span class="o">=</span> <span class="n">signal_psd</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">psd</span><span class="p">[</span><span class="s2">&quot;Power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">/</span> <span class="n">psd</span><span class="p">[</span><span class="s2">&quot;Frequency&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Convert to samples</span>
+
+    <span class="c1"># Get the 1/3 max frequency (in samples) (https://youtu.be/GGrOJtcTcHA?t=730)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+    <span class="n">optimal</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">freqs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">idxs</span> <span class="o">=</span> <span class="n">freqs</span> <span class="o">&lt;=</span> <span class="n">optimal</span> <span class="o">*</span> <span class="mi">6</span>
+        <span class="n">_embedding_delay_plot</span><span class="p">(</span>
+            <span class="n">signal</span><span class="p">,</span>
+            <span class="n">metric_values</span><span class="o">=</span><span class="n">power</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span>
+            <span class="n">tau_sequence</span><span class="o">=</span><span class="n">freqs</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span>
+            <span class="n">tau</span><span class="o">=</span><span class="n">optimal</span><span class="p">,</span>
+            <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;Power&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">optimal</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Algorithm&quot;</span><span class="p">:</span> <span class="n">algorithm</span><span class="p">,</span> <span class="s2">&quot;Method&quot;</span><span class="p">:</span> <span class="s2">&quot;SPAR&quot;</span><span class="p">}</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Joint-Optimization via Entropy Ratio (Gautama, 2003)</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="k">def</span> <span class="nf">_complexity_delay_entropyratio</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">delay_max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">dimension_max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">surrogate_n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">surrogate_method</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Joint-optimization using Entropy Ratio method.</span>
+
+<span class="sd">    * Gautama, T., Mandic, D. P., &amp; Van Hulle, M. M. (2003, April). A differential entropy based</span>
+<span class="sd">      method for determining the optimal embedding parameters of a signal. In 2003 IEEE</span>
+<span class="sd">      International Conference on Acoustics, Speech, and Signal Processing, 2003. Proceedings.</span>
+<span class="sd">      (ICASSP&#39;03). (Vol. 6, pp. VI-29). IEEE.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    signal : Union[list, np.array, pd.Series]</span>
+<span class="sd">        The signal (i.e., a time series) in the form of a vector of values.</span>
+<span class="sd">    delay_max : int</span>
+<span class="sd">        The maximum time delay (Tau) to test.</span>
+<span class="sd">    dimension_max : int</span>
+<span class="sd">        The maximum embedding dimension (often denoted &#39;m&#39; or &#39;d&#39;, sometimes referred to as &#39;order&#39;) to test.</span>
+<span class="sd">    surrogate_iter : int</span>
+<span class="sd">        The maximum surrogates generated using the iAAFT method.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Initalize vectors</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delay_max</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">delay_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">delay_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dimension_max</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">dimension_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dimension_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Prepare output</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Dimension&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">dimension_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">delay_max</span><span class="p">)),</span>
+            <span class="s2">&quot;Delay&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">delay_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dimension_max</span><span class="p">)),</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="c1"># N is the number of delay vectors</span>
+    <span class="c1"># out[&quot;N&quot;] = len(signal) - (out[&quot;Dimension&quot;] - 1) * out[&quot;Delay&quot;]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+
+    <span class="n">klens</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">klens_surrogates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)):</span>
+        <span class="n">klens</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entropy_kl</span><span class="p">(</span>
+            <span class="n">signal</span><span class="p">,</span>
+            <span class="n">delay</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Delay&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">dimension</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Dimension&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">klens_surrogates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">entropy_kl</span><span class="p">(</span>
+                    <span class="n">signal_surrogate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">surrogate_method</span><span class="p">),</span>
+                    <span class="n">delay</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Delay&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+                    <span class="n">dimension</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Dimension&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+                <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">surrogate_n</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;KLEn_Signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">klens</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;KLEn_Surrogate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">klens_surrogates</span>
+    <span class="c1"># Entropy Ratio (ER)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;KLEn_Ratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">klens</span> <span class="o">/</span> <span class="n">klens_surrogates</span>
+    <span class="c1"># To penalise for higher embedding dimensions, the minimum</span>
+    <span class="c1"># description length (MDL) method is superimposed, yielding</span>
+    <span class="c1"># the &quot;entropy ratio&quot; (ER):</span>
+    <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Entropy_Ratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;KLEn_Ratio&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Dimension&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]))</span> <span class="o">/</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># optimal dimension and tau is where entropy_ratio is minimum</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Entropy_Ratio&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
+    <span class="n">optimal_dimension</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Dimension&quot;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">optimal_delay</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Delay&quot;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Joint-Estimation of Optimal Delay and Dimension&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot_trisurf</span><span class="p">(</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Delay&quot;</span><span class="p">],</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Dimension&quot;</span><span class="p">],</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Entropy_Ratio&quot;</span><span class="p">],</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;GnBu&quot;</span><span class="p">),</span>
+            <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Minimum Entropy Ratio&quot;</span><span class="p">,</span>
+            <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">optimal_delay</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">optimal_dimension</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Entropy_Ratio&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Entropy_Ratio&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+            <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">optimal_delay</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">optimal_dimension</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Entropy_Ratio&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Entropy_Ratio&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+            <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Dimension&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Delay&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;Entropy Ratio&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dimension_max</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">dimension_max</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">delay_max</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">delay_max</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">optimal_delay</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Dimension&quot;</span><span class="p">:</span> <span class="n">optimal_dimension</span><span class="p">,</span> <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="n">out</span><span class="p">}</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Joint-Optimization via SymbolicDynamic (Matilla-García, 2021)</span>
+<span class="c1"># =============================================================================</span>
+
+
+<span class="c1"># def _complexity_delay_symbolicdynamics(</span>
+<span class="c1">#     signal,</span>
+<span class="c1">#     delay_max=20,</span>
+<span class="c1">#     dimension_max=5,</span>
+<span class="c1">#     show=False,</span>
+<span class="c1"># ):</span>
+<span class="c1">#     &quot;&quot;&quot;https://www.mdpi.com/1099-4300/23/2/221/htm&quot;&quot;&quot;</span>
+
+<span class="c1">#     delay = 1</span>
+<span class="c1">#     dimension = 3</span>
+<span class="c1">#     e = 3</span>
+
+<span class="c1">#     signal = [2, -7, -12, 5, -1, 9, 14]</span>
+
+<span class="c1">#     embedded = nk.complexity_embedding(signal, delay=delay, dimension=dimension)</span>
+<span class="c1">#     print(embedded)</span>
+
+<span class="c1">#     # How to create the symbolic sequence?</span>
+<span class="c1">#     symbols = np.zeros((len(embedded), dimension - 1))</span>
+<span class="c1">#     for d in range(1, dimension):</span>
+<span class="c1">#         # Difference with e</span>
+<span class="c1">#         symbols[:, d - 1][np.all(np.abs(embedded[:, d - 1 : d + 1]) &gt;= e, axis=1)] = 1</span>
+
+<span class="c1">#     symbols[:, 0][np.abs(embedded[:, 0]) &gt;= e] = 1</span>
+<span class="c1">#     symbols[:, 1][np.all(embedded[:, 1:] &lt; e, axis=1)] = 1</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the <a href="https://github.com/neuropsychology/NeuroKit/blob/master/AUTHORS.rst">Team</a>. This documentation is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020–2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
