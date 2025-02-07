@@ -437,10 +437,17 @@ def _correct_artifacts(artifacts, peaks):
         # Update remaining indices.
         ectopic_idcs = _update_indices(missed_idcs, ectopic_idcs, 1)
         longshort_idcs = _update_indices(missed_idcs, longshort_idcs, 1)
-    if ectopic_idcs:
-        peaks = _correct_misaligned(ectopic_idcs, peaks)
-    if longshort_idcs:
-        peaks = _correct_misaligned(longshort_idcs, peaks)
+
+    # Create array of both ectopic and longshort idcs
+    combined_idcs = ectopic_idcs + longshort_idcs
+    combined_idcs.sort()
+
+    peaks = _correct_misaligned(combined_idcs, peaks)
+
+    # if ectopic_idcs:
+    #     peaks = _correct_misaligned(ectopic_idcs, peaks)
+    # if longshort_idcs:
+    #     peaks = _correct_misaligned(longshort_idcs, peaks)
     return peaks
 
 
@@ -481,15 +488,50 @@ def _correct_misaligned(misaligned_idcs, peaks):
         misaligned_idcs < len(corrected_peaks) - 1,  # pylint: disable=E1111
     )
     misaligned_idcs = misaligned_idcs[valid_idcs]
-    prev_peaks = corrected_peaks[[i - 1 for i in misaligned_idcs]]
-    next_peaks = corrected_peaks[[i + 1 for i in misaligned_idcs]]
 
-    half_ibi = (next_peaks - prev_peaks) / 2
-    peaks_interp = prev_peaks + half_ibi
-    # Shift the R-peaks from the old to the new position.
-    corrected_peaks = np.delete(corrected_peaks, misaligned_idcs)
-    corrected_peaks = np.concatenate((corrected_peaks, peaks_interp)).astype(int)
-    corrected_peaks.sort(kind="mergesort")
+    # Simple: copy the previous ibi
+    # for midc in misaligned_idcs:
+    #     back2 = corrected_peaks[midc - 2]
+    #     back1 = corrected_peaks[midc - 1]
+
+    #     # half_ibi = int((back1 - back2) / 2)
+    #     prev_ibi = back1 - back2
+
+    #     # peaks_interp.append(back1 + half_ibi)
+    #     corrected_peaks[midc] = back1 + prev_ibi
+
+    # More Complex: interpolate over points until you reach a point which is valid
+    for midc in misaligned_idcs:
+        prev_peak_i = midc - 1
+        next_peak_i = midc + 1
+
+        prev_peak_distance = 1
+        next_peak_distance = 1
+        total_distance = 2
+
+        # Find prev and next peak that are not included in misaligned_idcs
+        while prev_peak_i in misaligned_idcs:
+            prev_peak_i -= 1
+
+        while next_peak_i in misaligned_idcs:
+            next_peak_i += 1
+
+        # If new indices are out of range, resort to simple method
+        if prev_peak_i < 0 and next_peak_i < len(corrected_peaks) - 2:
+            prev_peak_i = midc + 1
+            next_peak_i = midc + 2
+        elif next_peak_i >= len(corrected_peaks) and prev_peak_i > 1:
+            prev_peak_i = midc - 2
+            next_peak_i = midc - 1
+        else:
+            prev_peak_distance = midc - prev_peak_i
+            next_peak_distance = next_peak_i - midc
+            total_distance = prev_peak_distance + next_peak_distance
+
+        prev_peak = corrected_peaks[prev_peak_i]
+        next_peak = corrected_peaks[next_peak_i]
+
+        corrected_peaks[midc] = ((prev_peak * next_peak_distance) + (next_peak * prev_peak_distance)) / total_distance
 
     return corrected_peaks
 
